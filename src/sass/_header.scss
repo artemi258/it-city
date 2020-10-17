@@ -3,7 +3,7 @@
     background: url(../img/bg.jpg) center 20% / cover no-repeat;
     &__nav {
         position: fixed;
-        height: 80px;
+        height: 70px;
         background-color:rgba(27, 154, 218, 0.6);
         width: 100%;
         display: flex;
@@ -14,7 +14,7 @@
             align-items: center;
         }
         &-logo {
-            height: 60px;
+            height: 50px;
             width: 100px;
             img {
                 width: 100%;
@@ -47,5 +47,25 @@
                }
            }
        }
+    }
+    &__sub {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 100px;
+    }
+    &__promo {
+        width: 400px;
+        margin-top: 200px;
+        li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        color: #ffffff;
+        &::before {
+            content: '\2714';
+            width: 10px;
+            height: 10px;
+        }
+        }
     }
 }
