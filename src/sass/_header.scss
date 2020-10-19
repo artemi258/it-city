@@ -1,6 +1,5 @@
 .header {
-    height: 1000px;
-    background: url(../img/bg.jpg) center 20% / cover no-repeat;
+    position: relative;
     &__nav {
         position: fixed;
         height: 70px;
@@ -8,6 +7,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        z-index: 2;
         &-item {
             display: flex;
             justify-content: space-between;
@@ -47,24 +47,82 @@
                }
            }
        }
+       &-sub {
+           height: 80px;
+           width: 100%;
+           position: absolute;
+           top: 70px;
+           background-color: rgba(0,2,254, 0.7);
+       }
+       &-wrapper {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           a {
+               text-decoration: none;
+           }
+       }
+       &-social {
+           width: 35px;
+           height: 35px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           border-radius: 100%;
+           border-color: #ffffff;
+           color: #4887F5;
+           background-color: #ffffff;
+           cursor: pointer;
+           
+       }
     }
     &__sub {
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 100px;
+        width: 100%;
+        background: url(../img/bg.jpg) center 10% / cover no-repeat;
+        min-height: 800px;
+        padding: 150px 0 100px 0;
+        &-img {
+            position: absolute;
+            left: 5px;
+            top: 117px;
+            z-index: 1;
+            height: 400px;
+            width: 380px;
+        }
     }
     &__promo {
-        width: 400px;
-        margin-top: 200px;
+        display: flex;
+        justify-content: flex-end;
+        &-img {
+            height: 100px;
+        }
+    }
+    &__text {
+        width: 535px;
+        margin-top: 110px;
+        padding: 0;
+        margin-bottom: 0;
         li {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        color: #ffffff;
+        color: #1ACFBF;
+        font-size: 23px;
+        margin-top: 15px;
+        text-shadow: 2px  2px 0 #000,
+                    -1px -1px 0 #000,  
+                    1px -1px 0 #000,
+                    -1px  1px 0 #000,
+                    1px  1px 0 #000;;
+        &:first-child {
+            margin-top: 0;
+        }
         &::before {
             content: '\2714';
             width: 10px;
             height: 10px;
+            margin-right: 20px;
+            color: #CD2A0A;
         }
         }
     }
