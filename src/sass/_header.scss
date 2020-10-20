@@ -52,7 +52,7 @@
            width: 100%;
            position: absolute;
            top: 70px;
-           background-color: rgba(0,2,254, 0.7);
+           background-color: rgba(27,192,218, 0.7);
        }
        &-wrapper {
            display: flex;
@@ -63,18 +63,31 @@
            }
        }
        &-social {
-           width: 35px;
-           height: 35px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           border-radius: 100%;
-           border-color: #ffffff;
-           color: #4887F5;
-           background-color: #ffffff;
-           cursor: pointer;
-           
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        border-color: #ffffff;
+        color: #4887F5;
+        background-color: #ffffff;
+        cursor: pointer;
+        }
+        &-phone {
+            display: flex;
+            flex-direction: column;
+        }
+       &-title {
+           color: white;
+           font-size: 18px;
        }
+       &-tel {
+           color: white;
+           &:hover {
+               color: #95DA1B;
+           }
+       }  
     }
     &__sub {
         width: 100%;
@@ -83,8 +96,8 @@
         padding: 150px 0 100px 0;
         &-img {
             position: absolute;
-            left: 5px;
-            top: 117px;
+            left: 0;
+            top: 70px;
             z-index: 1;
             height: 400px;
             width: 380px;
@@ -98,22 +111,23 @@
         }
     }
     &__text {
-        width: 535px;
-        margin-top: 110px;
+        width: 545px;
+        margin-top: 50px;
         padding: 0;
         margin-bottom: 0;
-        li {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        color: #1ACFBF;
-        font-size: 23px;
-        margin-top: 15px;
-        text-shadow: 2px  2px 0 #000,
-                    -1px -1px 0 #000,  
-                    1px -1px 0 #000,
-                    -1px  1px 0 #000,
-                    1px  1px 0 #000;;
+            li {
+            list-style-type: none;
+            letter-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            color: #FFD500;
+            font-size: 24px;
+            margin-top: 15px;
+            text-shadow: 2px  2px 0 #000,
+                        -1px -1px 0 #000,  
+                        1px -1px 0 #000,
+                        -1px  1px 0 #000,
+                        1px  1px 0 #000;;
         &:first-child {
             margin-top: 0;
         }
