@@ -1,0 +1,44 @@
+.cartridge {
+    min-height: 1000px;
+    background-color: #C6DBE3;
+    padding: 70px 0;
+    &__img {
+        height: 250px;
+        width: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        width: 350px;
+        border: #047CE0 solid 1px;
+        margin-top: 5px;
+        border-radius: 10%;
+        padding: 5px 5px;
+    }
+    &__elem {
+        font-size: 16px;
+        width: 310px;
+        color: #0F5ACD;
+    }
+    &__price {
+        color: #0F5ACD;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        border-left: #047CE0 solid 1px;
+        height: 100%;
+        font-size: 16px;
+    }
+}
