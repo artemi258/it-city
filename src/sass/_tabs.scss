@@ -2,6 +2,44 @@
     min-height: 1000px;
     background-color: #C6DBE3;
     padding: 70px 0;
+    &__tab {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 70px;
+    }
+    &__link {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        font-size: 20px;
+        margin-right: 50px;
+        background-color: #0985F2;
+        color: #ffffff;
+        outline: 2px solid;
+        outline-color: #0985F2;
+        padding: 5px 5px;
+        border: 5px ridge #0985F2;
+        cursor: pointer;
+        transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);  
+        &:hover {
+            border: none;
+            outline-color: rgba(9, 133, 242, 0);
+            outline-offset: 20px;
+            box-shadow: 2px 2px 20px 3px #0985F2;
+            transform: translateY(-2px);
+        }
+        &:active {
+            transition: none;
+            transform: none;
+            box-shadow: none;
+            border: 5px ridge #0985F2;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
     &__img {
         height: 300px;
         width: 100%;
