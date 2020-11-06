@@ -1,0 +1,11 @@
+@mixin titleHeaderAfter {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            background-color: $light-blue;
+            height: 20px;
+            width: 45%;
+            transform: translateX(61%);
+            bottom: 40%;
+            z-index: -1;
+}

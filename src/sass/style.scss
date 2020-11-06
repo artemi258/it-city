@@ -1,9 +1,12 @@
-@import 'header';
+@import 'base/mixins';
+@import 'base/vareable';
 @import 'fonts';
+@import 'header';
 @import 'phone';
 @import 'icomoon';
 @import 'title';
 @import 'tabs';
+
 .container {
     width: 1140px;
     margin: 0 auto;
