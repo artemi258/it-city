@@ -6,12 +6,13 @@
 @import 'icomoon';
 @import 'title';
 @import 'tabs';
+@import 'nav';
+@import 'footer';
 
 .container {
     width: 1140px;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
 }
 * {
     font-family: 'Roboto Mono', sans-serif;
