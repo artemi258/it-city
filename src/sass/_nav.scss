@@ -6,7 +6,7 @@
     background-color: rgba(27,192,218, 0.7);
     &__footer {
         position: static;
-        background-color: #000000;
+        background-color: $light-blue;
         height: 100px;
         &-wrapper {
             height: 100px;
@@ -30,10 +30,13 @@
         justify-content: center;
         align-items: center;
         border-radius: 100%;
-        border-color: #ffffff;
-        color: #4887F5;
+        color: $light-blue;
         background-color: #ffffff;
         cursor: pointer;
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 2px 2px 5px #000000;
+        }
     }
     &__phone {
         display: flex;
@@ -46,7 +49,7 @@
     &__tel {
         color: white;
         &:hover {
-            color: #95DA1B;
+            color: $azure;
         }
     }
     &__time {
@@ -57,7 +60,7 @@
         font-size: 17px;
         color: white;
     &:hover {
-     color: #95DA1B;
+     color: $azure;
     }
     }
 }
