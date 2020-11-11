@@ -1,7 +1,6 @@
-new WOW().init();
-
 window.addEventListener('DOMContentLoaded', () => {
-    
+
+    new WOW().init();
 
     const tabsContent = document.querySelectorAll('.tabs__content'),
           tabs = document.querySelectorAll('.tabs__link'),

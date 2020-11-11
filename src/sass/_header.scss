@@ -89,19 +89,19 @@
                 position: absolute;
                 right: 10px;
                 top: 120px;
-                height: 370px;
-                width: 450px;
+                height: 300px;
+                width: 390px;
                 z-index: 1;
         }
         &-text {
             position: absolute;
-            top: 440px;
+            top: 360px;
             right: 0;
             z-index: 2;
             color: rgba(225, 245, 247, 0.7);
             font-size: 40px;
             text-transform: uppercase;
-            text-shadow:black 2px 3px 4px;            
+            text-shadow:black 2px 3px 4px;
         }
     }
     &__promo { 

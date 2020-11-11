@@ -1,0 +1,18 @@
+@keyframes subComputer {
+    from {
+        top: 120px;
+        right: -500px;
+    }
+    to {
+        top: 120px;
+        right: 10px;
+    }
+}
+@keyframes subText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
