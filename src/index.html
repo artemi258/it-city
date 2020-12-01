@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <nav class="header__nav">
             <div class="container">
                 <div class="header__nav-item">
                     <a href="#" class="header__nav-logo"><img src="img/it.png" alt="logo"></a>
                     <ul>
-                       <li><a href="">Главная</a></li>
-                       <li><a href="">Заправка</a></li>
-                       <li><a href="">Ремонт</a></li>
+                       <li><a href="#header">Главная</a></li>
+                       <li><a href="#information">О нас</a></li>
+                       <li><a href="#price">Прайс</a></li>
                        <li><a href="">Канцелярия</a></li>
                     </ul>
                 </div>
@@ -57,37 +57,38 @@
                         <img src="img/computer.png" alt="computer" class="header__sub-computer">
                             <div class="header__sub-text animate__animated animate__fadeIn wow" data-wow-duration="2.5s" data-wow-delay="1s">более 10 лет работы</div>
                                 <div class="header__promo"><span class="animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="0.7s">Продажа компьютеров,</span> <span class="animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="0.9s">любой офисной техники,</span> <span class="animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="1.2s">расходных материалов и</span> <span class="animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="1.5s">комплектующих по</span> <span class="animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="1.7s">доступным ценам.</span></div>
-                    
-
-                        <!-- <div class="header__promo">
-                            <img src="img/human.png" alt="human" class="header__sub-img animate__animated animate__fadeInLeftBig wow" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <ul class="header__text">
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="0.2s">Продажа компьютеров, любой офисной техники, расходных материалов и 
-                                    комплектующих по доступным ценам.
-                                    </li>
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="0.4s">Большой выбор аксессуаров в наличии и под заказ.</li>
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="0.6s">Установка и настройка оборудования для работы Интернет</li>
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="0.8s">Модернизация и ремонт компьютерной и оргтехники.</li>
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="1s">Заправка картриджей.</li>
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="1.2s">Установка лицензионного ПО.</li>
-                                <li class="animate__animated animate__rotateInDownRight wow" data-wow-duration="1s" data-wow-delay="1.4s">Обследование, проектирование, монтаж и настройка локальных компьютерных сетей.</li>
-                            </ul>
-                        </div> -->
                 </div>        
             </div>
     </header>
 
-    <section class="tabs">
+    <section class="information" id="information">
         <div class="container">
-                <div class="title-header"><h2 class="title title-price">прайс на услуги</h2></div>
+            <div class="title-information"><h2 class="title title-price">О нас</h2></div>
+                <div class="information__wrapper animate__animated animate__fadeInUp wow" data-wow-duration="2s">
+                    <ul class="information__text">
+                        <li>Большой выбор аксессуаров в наличии и под заказ.</li>
+                        <li>Установка и настройка оборудования для работы Интернет.</li>
+                        <li>Модернизация и ремонт компьютерной и оргтехники.</li>
+                    </ul>
+                    <ul class="information__text">
+                        <li>Заправка картриджей.</li>
+                        <li>Установка лицензионного ПО.</li>
+                        <li>Продажа IPTV приставок и приставок для бесплатного просмотра 20 каналов эфирного цифрового ТВ.</li>
+                    </ul>
+                </div>
+        </div>
+    </section>
+
+    <section class="tabs" id="price">
+        <div class="container">
+                <div class="title-tabs"><h2 class="title title-price">прайс на услуги</h2></div>
             <div class="tabs__tab">
                 <div class="tabs__link tabs__link-active">Заправка картриджей</div>
                 <div class="tabs__link">Ремонт принтеров</div>
                 <div class="tabs__link">Ремонт компьютеров и ноутбуков</div>
             </div>
             <div class="tabs__content">
-                <h2 class="title title-cartridge animate__animated animate__zoomIn wow" data-wow-duration="1s">заправка лазерных картриджей</h2>
-                    <!-- <div class="tabs__img"><img src="img/cartridge.jpg" alt="cartridge"></div> -->
+                <!-- <h2 class="title title-cartridge animate__animated animate__zoomIn wow" data-wow-duration="1s">заправка лазерных картриджей</h2> -->
                     <div class="tabs__wrapper">
                         <div class="tabs__table">
                             <div class="tabs__item animate__animated animate__fadeInUp wow" data-wow-duration="1.4s">
@@ -248,8 +249,7 @@
                     </div>
             </div>
             <div class="tabs__content">
-                    <h2 class="title title-cartridge animate__animated animate__zoomIn wow" data-wow-duration="1s">ремонт лазерных принтеров</h2>
-                    <!-- <div class="tabs__img"><img src="img/printer.jpg" alt="printer"></div> -->
+                    <!-- <h2 class="title title-cartridge animate__animated animate__zoomIn wow" data-wow-duration="1s">ремонт лазерных принтеров</h2> -->
                         <div class="tabs__wrapper">
                             <div class="tabs__table">
                                 <div class="tabs__item tabs__item-printer animate__animated animate__fadeInUp wow" data-wow-duration="1.4s">
@@ -322,8 +322,7 @@
                                 </div>
             </div>
             <div class="tabs__content">
-                <h2 class="title title-cartridge animate__animated animate__zoomIn wow" data-wow-duration="1s">ремонт компьютеров</h2>
-                    <!-- <div class="tabs__img"><img src="img/computer.jpg" alt="computer"></div> -->
+                <!-- <h2 class="title title-cartridge animate__animated animate__zoomIn wow" data-wow-duration="1s">ремонт компьютеров</h2> -->
                         <div class="tabs__wrapper">
                             <div class="tabs__table">
                                 <div class="tabs__item tabs__item-computer animate__animated animate__fadeInUp wow" data-wow-duration="1.4s">
@@ -406,7 +405,10 @@
         </div>
     </section>
 
-    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6213fd3b8742e1ecc6a50def22490e552b968b0c99b8b84778c80c601311cd59&amp;width=100%25&amp;height=500&amp;lang=ru_RU&amp;scroll=false"></script>
+    <section class="location">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6213fd3b8742e1ecc6a50def22490e552b968b0c99b8b84778c80c601311cd59&amp;width=100%25&amp;height=500&amp;lang=ru_RU&amp;scroll=true"></script>
+            <div class="location__photo"><img src="img/it.jpg" alt="photo"></div>
+    </section>
 
     <footer>
         <div class="nav nav__footer">

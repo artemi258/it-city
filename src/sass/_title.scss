@@ -7,7 +7,15 @@
     margin-top: 22px;
     margin-bottom: 0;
     text-shadow:black 2px 3px 4px;
-    &-header {
+    &-information {
+        position: relative;
+        z-index: 1;
+        &::after {
+            @include titleHeaderAfter;
+            width: 20%;
+        }
+    }
+    &-tabs {
         position: relative;
         z-index: 1;
         &::after {

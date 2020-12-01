@@ -1,0 +1,35 @@
+.information {
+    min-height: 700px;
+    background-color: #A8FFFA;
+    padding: 70px 0;
+    &__wrapper {
+        margin: 50px auto 0 auto;
+        width: 90%;
+        min-height: 400px;
+        box-shadow: 0 7px 15px -5px #000000; 
+        padding: 20px 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__text {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 45%;
+        li {
+            font-size: 24px;
+            margin-top: 15px;
+            color: $blue;
+            &::before {
+                content: '\2713';
+                height: 20px;
+                width: 20px;
+                margin-right: 15px;
+                color: $light-blue;
+            }
+        }
+        li:first-child {
+            margin-top: 0;
+        }
+    }
+}
