@@ -3,8 +3,8 @@
     background-color: #A8FFFA;
     padding: 70px 0;
     &__wrapper {
-        margin: 50px auto 0 auto;
-        width: 90%;
+        width: 63%;
+        margin-top: 30px;
         min-height: 400px;
         box-shadow: 0 7px 15px -5px #000000; 
         padding: 20px 20px;
@@ -15,7 +15,7 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
-        width: 45%;
+        width: 48%;
         li {
             font-size: 24px;
             margin-top: 15px;
@@ -30,6 +30,17 @@
         }
         li:first-child {
             margin-top: 0;
+        }
+    }
+    &__photo {
+        position: absolute;
+        right: 0;
+        top: 75px;
+        height: 484px;
+        width: 405px;
+        img {
+            height: 100%;
+            width: 100%;
         }
     }
 }

@@ -17,28 +17,25 @@
         margin-right: 50px;
         background-color: $light-blue;
         color: #ffffff;
-        outline: 2px solid;
-        outline-color: $light-blue;
         padding: 5px 5px;
         cursor: pointer;
-        transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 0.5s;
         line-height: 23px;
+        border-radius: 30% 0 20% 0;
         &-active {
-            background-color:$azure;
+            background-color: $azure;
             color: $blue;
-            box-shadow: $azure 3px 3px 25px 2px;
+            box-shadow: $azure 3px 3px 25px;
         }  
         &:hover {
             border: none;
             outline-color: rgba(9, 133, 242, 0);
             outline-offset: 20px;
-            box-shadow: 2px 2px 20px 3px $light-blue;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         &:active {
             transition: none;
             transform: none;
-            box-shadow: 1px 1px 10px 2px $light-blue;
         }
         &:last-child {
             margin-right: 0;
