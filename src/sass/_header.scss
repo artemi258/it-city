@@ -7,7 +7,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        z-index: 3;
+        z-index: 4;
         &-item {
             display: flex;
             justify-content: space-between;
@@ -92,6 +92,15 @@
                 height: 300px;
                 width: 390px;
                 z-index: 1;
+        }
+        &-hat {
+            position: absolute;
+            right: -67px;
+            top: 85px;
+            height: 140px;
+            width: 190px;
+            transform: skewY(12deg);
+            z-index: 3;
         }
         &-text {
             position: absolute;
