@@ -10,6 +10,16 @@
         padding: 20px 20px;
         display: flex;
         justify-content: space-between;
+        &-shop {
+            height: 450px;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            img {
+                width: 49%;
+                height: 450px;
+            }
+        }
     }
     &__text {
         list-style-type: none;
