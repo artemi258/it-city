@@ -22,11 +22,15 @@
             @include titleHeaderAfter;
         }
     }
+    &-stationery {
+        position: relative;
+        z-index: 1;
+        &::after {
+            @include titleHeaderAfter;
+            width: 35%;
+        }
+    }
     &-price {
         margin-top: 0;
-    }
-    &-cartridge {
-        margin-top: 40px;
-        text-shadow: $light-blue 2px 3px 4px;
     }
 }
