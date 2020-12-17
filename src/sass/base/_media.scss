@@ -1,4 +1,4 @@
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .container {
         width: 992px;
     }
@@ -66,7 +66,6 @@
         &__photo {
             right: 0px;
             height: 470px;
-            width: 400px;
         }
         &__text {
             li {
@@ -90,7 +89,7 @@
     }
 };
 
-@media (min-width: 768px) {
+@media (max-width: 991px) {
     .container {
         width: 768px;
     }
@@ -153,8 +152,75 @@
         &__email {
             font-size: 12px;
         }
+        &__footer {
+            &-wrapper {
+                height: 45px;
+            }
+        }
+    }
+    .information {
+        &__text {
+            li {
+                font-size: 15px;
+            }
+        }
+        &__wrapper {
+            min-height: 300px;
+            &-shop {
+                img {
+                    height: 400px;
+                }
+            }
+        }
+        &__photo {
+            height: 345px;
+        }
+        &__promo {
+            margin-top: 60px;
+            font-size: 23px;
+        }
+    }
+    .tabs {
+        &__link {
+            width: 140px;
+            font-size: 18px;
+        }
+        &__item {
+            width: 255px;
+        }
+        &__elem {
+            font-size: 12px;
+        }
+        &__price {
+            font-size: 12px;
+        }
+    }
+    .stationery {
+        &__text {
+            font-size: 22px;
+        }
+        &__wrapper {
+            &-img {
+                height: 335px;
+            }
+        }
     }
     .title {
         font-size: 35px;
+        &-information {
+            &::after {
+                height: 13px;
+            }
+        }
+        &-tabs {
+            &::after {
+                height: 13px;
+            }
+        }
+        &-stationery {
+            &::after {
+                height: 13px;
+            }
+        }
     }
 }
