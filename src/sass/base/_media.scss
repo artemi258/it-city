@@ -1,4 +1,4 @@
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .container {
         width: 992px;
     }
@@ -66,7 +66,6 @@
         &__photo {
             right: 0px;
             height: 470px;
-            width: 400px;
         }
         &__text {
             li {
@@ -129,13 +128,9 @@
         }
     }
     .nav {
-        height: 45px;
         top: 50px;
         ul a {
             font-size: 20px;
-        }
-        &__wrapper {
-            justify-content: space-around;
         }
         &__social {
             width: 30px;
@@ -153,8 +148,193 @@
         &__email {
             font-size: 12px;
         }
+        &__footer {
+            &-wrapper {
+                height: 45px;
+            }
+        }
+    }
+    .information {
+        &__text {
+            li {
+                font-size: 15px;
+            }
+        }
+        &__wrapper {
+            min-height: 300px;
+            &-shop {
+                img {
+                    height: 400px;
+                }
+            }
+        }
+        &__photo {
+            height: 345px;
+        }
+        &__promo {
+            margin-top: 60px;
+            font-size: 22px;
+        }
+    }
+    .tabs {
+        &__link {
+            width: 140px;
+            font-size: 18px;
+        }
+        &__item {
+            width: 255px;
+        }
+        &__elem {
+            font-size: 12px;
+        }
+        &__price {
+            font-size: 12px;
+        }
+    }
+    .stationery {
+        &__text {
+            font-size: 22px;
+        }
+        &__wrapper {
+            &-img {
+                height: 335px;
+            }
+        }
     }
     .title {
         font-size: 35px;
+        &-information {
+            &::after {
+                height: 13px;
+            }
+        }
+        &-tabs {
+            &::after {
+                height: 13px;
+            }
+        }
+        &-stationery {
+            &::after {
+                height: 13px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 576px;
+    }
+    .nav {
+        top: 30px;
+        &__wrapper {
+            justify-content: space-between;
+        }
+    }
+    .header {
+        &__nav {
+            height: 30px;
+            &__wrapper {
+
+            }
+            ul {
+                display: none;
+            }
+            &-logo {
+                width: 72px;
+            }
+            &-item {
+                justify-content: start;
+            }
+        }
+        &__promo {
+            span {
+                font-size: 22px;
+            }
+        }
+        &__sub {
+            min-height: 470px;
+            padding-bottom: 70px;
+            &-computer {
+                height: 110px;
+                width: 145px;
+            }
+            &-hat {
+                height: 50px;
+                width: 60px;
+                top: 103px;
+                right: 36px;
+            }
+            &-text {
+                top: 193px;
+                right: 32px;
+                font-size: 17px;
+            }
+        }
+    }
+    .tabs {
+        &__link {
+            width: 103px;
+            font-size: 13px;
+        }
+        &__wrapper {
+            flex-wrap: wrap;
+        }
+        &__table {
+            &:nth-child(3) {
+                margin-top: 10px;
+            }
+        }
+        &__elem {
+            font-size: 11px;
+        }
+    }
+    .information {
+        padding: 50px 0;
+        &__text {
+            li {
+                font-size: 13px;
+            }
+        }
+        &__photo {
+            height: 325px;
+            top: 60px;
+        }
+        &__promo {
+            font-size: 20px;
+            margin-top: 40px;
+        }
+        &__wrapper {
+            margin-top: 20px;
+            padding: 10px 10px;
+            &-shop {
+                img {
+                    height: 320px;
+                }
+            }
+        }
+    }
+    .stationery {
+        padding: 80px 0;
+        &__text {
+            margin-top: 10px;
+        }
+        &__wrapper {
+            &-img {
+                height: 300px;
+            }
+        }
+    }
+    .title {
+        font-size: 30px;
+        margin-top: 35px;
+        &-price {
+            margin-top: 0;
+        }
+        &-stationery {
+            &::after {
+                width: 42%;
+            }
+        }
     }
 }
