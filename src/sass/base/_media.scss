@@ -8,7 +8,7 @@
             &-item {
                 justify-content: space-around;
             }
-            ul a {
+            &-menu a {
                 font-size: 21px;
             }
         }
@@ -183,6 +183,7 @@
         }
         &__item {
             width: 255px;
+            height: 70px;
         }
         &__elem {
             font-size: 12px;
@@ -225,6 +226,9 @@
     .container {
         width: 576px;
     }
+    .burger {
+        display: block;
+    }
     .nav {
         top: 30px;
         &__wrapper {
@@ -234,14 +238,32 @@
     .header {
         &__nav {
             height: 30px;
-            ul {
-                display: none;
+            &-menu {
+                flex-direction: column;
+                position: fixed;
+                top: 30px;
+                right: 0;
+                background-color: rgba(57, 68, 88, 0.7);
+                transform: translateX(100%);
+                transition: 0.5s all linear;
+                a {
+                    font-size: 16px;
+                }
+                li {
+                    padding: 5px 10px;
+                    :last-child {
+                        padding-right: 10px;
+                    }
+                    &::after {
+                        content: '';
+                    }
+                }
             }
             &-logo {
                 width: 72px;
             }
             &-item {
-                justify-content: start;
+                justify-content: space-between;
             }
         }
         &__promo {
@@ -271,11 +293,14 @@
     }
     .tabs {
         &__link {
-            width: 103px;
-            font-size: 13px;
+            width: 90px;
+            height: 65px;
+            line-height: 16px;
+            font-size: 11px;
         }
         &__wrapper {
             flex-wrap: wrap;
+            margin-top: 30px;
         }
         &__table {
             &:nth-child(3) {
@@ -283,7 +308,14 @@
             }
         }
         &__elem {
-            font-size: 11px;
+            font-size: 9px;
+        }
+        &__price {
+            font-size: 9px;
+        }
+        &__item {
+            width: 220px;
+            height: 47px;
         }
     }
     .information {
@@ -298,7 +330,7 @@
             top: 60px;
         }
         &__promo {
-            font-size: 20px;
+            font-size: 18px;
             margin-top: 40px;
         }
         &__wrapper {
@@ -306,13 +338,13 @@
             padding: 10px 10px;
             &-shop {
                 img {
-                    height: 320px;
+                    height: 290px;
                 }
             }
         }
     }
     .stationery {
-        padding: 80px 0;
+        padding: 70px 0;
         &__text {
             margin-top: 10px;
         }
@@ -321,9 +353,17 @@
                 height: 300px;
             }
         }
+        &__text {
+            font-size: 16px;
+        }
+        &__wrapper {
+            &-img {
+                height: 250px;
+            }
+        }
     }
     .title {
-        font-size: 30px;
+        font-size: 27px;
         margin-top: 35px;
         &-price {
             margin-top: 0;

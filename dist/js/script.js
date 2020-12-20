@@ -43,5 +43,16 @@ window.addEventListener('DOMContentLoaded', () => {
           $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
           return false;
         });
+
+    const burger = document.querySelector('.burger'),
+          nav = document.querySelector('.header__nav-item ul');
+
+          burger.addEventListener('click', () => {
+              burger.classList.toggle('burger__active');
+              nav.classList.toggle('nav__active');
+          });
+
+          console.log(nav);
+
 });
 
