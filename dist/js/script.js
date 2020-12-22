@@ -52,7 +52,6 @@ window.addEventListener('DOMContentLoaded', () => {
               nav.classList.toggle('nav__active');
           });
 
-          console.log(nav);
 
 });
 

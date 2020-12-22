@@ -375,3 +375,177 @@
         }
     }
 }
+
+@media (max-width: 575px) {
+    .container {
+        width: 320px;
+    }
+    .icon-vk {
+        &::before {
+            font-size: 12px;
+            line-height: 2;
+        }
+    }
+    .nav {
+        top: 20px;
+        &__social {
+            width: 20px;
+            height: 20px;
+        }
+        &__title {
+            font-size: 8px;
+        }
+        &__time {
+            font-size: 8px;
+        }
+        &__email {
+            font-size: 8px;
+        }
+        &__tel {
+            font-size: 8px;
+        }
+        &__wrapper {
+            justify-content: space-around;
+        }
+        &__footer {
+            height: 72px;
+        }
+    }
+    .header {
+        &__promo {
+            width: 220px;
+            margin-top: 18px;
+            span {
+                font-size: 11px;
+            }
+        }
+        &__sub {
+            min-height: 300px;
+            &-computer {
+                height: 60px;
+                width: 70px;
+                right: 39px;
+                top: 70px;
+            }
+            &-hat {
+                height: 40px;
+                width: 30px;
+                top: 59px;
+                right: 26px;
+            }
+            &-text {
+                top: 114px;
+                right: 18px;
+                font-size: 10px;
+            }
+        }
+        &__nav {
+            height: 20px;
+            &-menu {
+                top: 20px;
+                a {
+                    font-size: 12px;
+                }
+            }
+            &-logo {
+                width: 40px;
+            }
+        }
+    }
+    .information {
+        padding: 30px 0;
+        &__wrapper {
+            margin-top: 10px;
+            min-height: 200px;
+        }
+        &__text {
+            li {
+                font-size: 8px;
+                &::before {
+                    margin-right: 6px;
+                }
+            }
+        }
+        &__photo {
+            height: 234px;
+            top: 38px;
+        }
+        &__promo {
+            font-size: 13px;
+        }
+        &__wrapper {
+            &-shop {
+                min-height: 200px;
+                img {
+                    height: 180px;
+                }
+            }
+        }
+    }
+    .tabs {
+        padding: 50px 0;
+        &__tab {
+            margin-top: 20px;
+        }
+        &__link {
+            margin-right: 15px;
+            width: 70px;
+            height: 50px;
+            font-size: 9px;
+            line-height: 12px;
+        }
+        &__wrapper {
+            margin-top: 20px;
+        }
+        &__elem {
+            font-size: 8px;
+        }
+        &__price {
+            font-size: 8px;
+        }
+        &__item {
+            width: 220px;
+            height: 45px;
+        }
+    }
+    .stationery {
+        padding: 50px 0;
+        &__text {
+            font-size: 13px;
+        }
+        &__wrapper {
+            &-img {
+                height: 200px;
+                width: 90%;
+            }
+        }
+    }
+    .burger {
+        span {
+            width: 18px;
+            height: 1px;
+        }
+    }
+    .title {
+        font-size: 20px;
+        margin-top: 10px;
+        &-information {
+            &::after {
+                width: 23%;
+                height: 8px;
+            }
+        }
+        &-tabs {
+            &::after {
+                height: 8px;
+                width: 63%;
+            }
+        }
+        &-stationery {
+            &::after {
+                width: 48%;
+                height: 8px;
+            }
+        }
+    }
+}
