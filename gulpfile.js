@@ -8,8 +8,9 @@ const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 const webpack = require("webpack-stream");
 
-const dist = "dist";
+// const dist = "dist";
 // const dist = "C:/OpenServer/domains/IT";
+const dist = "C:/OpenServer/domains/It-city";
 
 gulp.task('server', function() {
 
@@ -23,7 +24,7 @@ gulp.task('server', function() {
 });
 
 gulp.task("build-prod-js", () => {
-    return gulp.src("./src/js/**/*.js")
+    return gulp.src("./src/js/script.js")
                 .pipe(webpack({
                     mode: 'production',
                     output: {
@@ -64,7 +65,7 @@ gulp.task('styles', function() {
 gulp.task('watch', function() {
     gulp.watch("src/sass/**/*.+(scss|sass|css)", gulp.parallel('styles'));
     gulp.watch("src/*.html").on('change', gulp.parallel('html'));
-    gulp.watch("src/js/**/*.js", gulp.parallel("build-prod-js"));
+    gulp.watch("src/js/script.js", gulp.parallel("build-prod-js"));
 });
 gulp.task('html', function() {
     return gulp.src("src/*.html")

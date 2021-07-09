@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     body: data
                 });
     
-                return await res;
+                return await res.text();
                       
             };
 
@@ -169,6 +169,5 @@ window.addEventListener('DOMContentLoaded', () => {
                     });
                 });
             });
-
 });
 

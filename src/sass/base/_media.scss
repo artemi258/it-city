@@ -34,6 +34,9 @@
                 right: 75px;
                 font-size: 30px;
             }
+            &-btn {
+                padding: 10px 20px;
+            }
         }
     }
     .nav {
@@ -86,6 +89,11 @@
        &__price {
            font-size: 14px;
        }
+    }
+    .popup {
+        &__form {
+            padding: 6% 7%;
+        }
     }
 };
 
@@ -220,6 +228,20 @@
             }
         }
     }
+    .popup {
+        &__form {
+            padding: 4% 5%;
+        }
+        &__consultation {
+            width: 400px;
+        }
+        &__text {
+            font-size: 31px;
+        }
+        &__button {
+            padding: 10px 20px;
+        }
+    }
 }
 
 @media (max-width: 767px) {
@@ -250,7 +272,7 @@
                     font-size: 16px;
                 }
                 li {
-                    padding: 5px 10px;
+                    padding: 8px 10px;
                     :last-child {
                         padding-right: 10px;
                     }
@@ -288,6 +310,11 @@
                 top: 193px;
                 right: 32px;
                 font-size: 17px;
+            }
+            &-btn {
+                padding: 5px 10px;
+                font-size: 15px;
+                margin-top: 50px;
             }
         }
     }
@@ -438,13 +465,18 @@
                 right: 18px;
                 font-size: 10px;
             }
+            &-btn {
+                padding: 5px 10px;
+                font-size: 10px;
+                margin-top: 30px;
+            }
         }
         &__nav {
             height: 20px;
             &-menu {
                 top: 20px;
                 a {
-                    font-size: 12px;
+                    font-size: 20px;
                 }
             }
             &-logo {
@@ -546,6 +578,26 @@
                 width: 48%;
                 height: 8px;
             }
+        }
+    }
+    .popup {
+        &__form {
+            padding: 3% 4%;
+        }
+        &__consultation {
+            width: 250px;
+        }
+        &__text {
+            font-size: 20px;
+        }
+        &__button {
+            padding: 5px 10px;
+        }
+        &__close {
+            right: -28px;
+            height: 25px;
+            width: 25px;
+            font-size: 40px;
         }
     }
 }
