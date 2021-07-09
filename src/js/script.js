@@ -97,20 +97,31 @@ window.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('blur', createMask);
         });
 
+        //FORMS
+
+        const message = {
+            loading: 'img/load.gif',
+            success: 'Отправлено!',
+            error: 'Ошибка'
+        };
+
         const btn = document.querySelector('.header__sub-btn'),
               popup = document.querySelector('.popup'),
               popupClose = document.querySelector('.popup__close'),
               input = document.querySelectorAll('input');
 
             btn.addEventListener('click', () => {
+                popup.classList.add('animate__animated', 'wow', 'animate__fadeIn');
                 popup.style.display = 'block';
             });
             popupClose.addEventListener('click', () => {
                 popup.style.display = 'none';
+                popup.classList.remove('animate__animated', 'wow', 'animate__fadeIn');
             });
             popup.addEventListener('click', (e) => {
                 if (e.target === popup) {
                     popup.style.display = 'none';
+                    popup.classList.remove('animate__animated', 'wow', 'animate__fadeIn');
                 }
             });
 
@@ -136,6 +147,15 @@ window.addEventListener('DOMContentLoaded', () => {
             form.forEach(item => {
                 item.addEventListener('submit', (e) => {
                     e.preventDefault();
+
+                    let statusImg = document.createElement('img');
+                    statusImg.classList.add('imgFadeInUp');
+                    statusImg.setAttribute('src', message.spinner);
+                    statusMessage.appendChild(statusImg);
+        
+                    let textMessage = document.createElement('div');
+                    textMessage.textContent = message.loading;
+                    statusMessage.appendChild(textMessage);
 
                     const formData = new FormData(item);
 
