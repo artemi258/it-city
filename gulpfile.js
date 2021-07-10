@@ -8,9 +8,9 @@ const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 const webpack = require("webpack-stream");
 
-// const dist = "dist";
+const dist = "dist";
 // const dist = "C:/OpenServer/domains/IT";
-const dist = "C:/OpenServer/domains/It-city";
+// const dist = "C:/OpenServer/domains/It-city";
 
 gulp.task('server', function() {
 
