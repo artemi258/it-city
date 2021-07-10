@@ -15,7 +15,7 @@ $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'smtp.yandex.ru';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
 $mail->Username = 'it-city-mira4@yandex.ru';                 // Наш логин
-$mail->Password = '9533865588';                           // Наш пароль от ящика
+$mail->Password = 'oggbmydcpiubrlcf';                           // Наш пароль от ящика
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;                                    // TCP port to connect to
  
@@ -34,7 +34,8 @@ $mail->Body    = '
 		Пользователь оставил данные <br> 
 	Имя: ' . $name . ' <br>
 	Номер телефона: ' . $phone . '<br>
-	E-mail: ' . $email . '';
+	E-mail: ' . $email . '<br> 
+	Сообщение: ' . $message . '';
 
 if(!$mail->send()) {
     return false;
