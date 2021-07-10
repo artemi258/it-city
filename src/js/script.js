@@ -97,22 +97,55 @@ window.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('blur', createMask);
         });
 
+
+        //MODAL
+
+
+        
+
         const btn = document.querySelector('.header__sub-btn'),
               popup = document.querySelector('.popup'),
               popupClose = document.querySelector('.popup__close'),
-              input = document.querySelectorAll('input');
+              input = document.querySelectorAll('input'),
+              header = document.querySelector('.header__nav'),
+              windowWidth = document.documentElement.clientWidth;
+
+              const width = calcScroll();
 
             btn.addEventListener('click', () => {
+                popup.classList.add('animate__animated', 'wow', 'animate__fadeIn');
                 popup.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                document.body.style.marginRight = `${width}px`;
+                header.style.width = `${windowWidth}px`;
+                header.style.right = `${width}px`;
             });
             popupClose.addEventListener('click', () => {
                 popup.style.display = 'none';
+                document.body.style.overflow = '';
+                document.body.style.marginRight = `0px`;
+                header.style.right = `0px`;
+                header.style.width = '100%';
+                popup.classList.remove('animate__animated', 'wow', 'animate__fadeIn');
             });
             popup.addEventListener('click', (e) => {
                 if (e.target === popup) {
                     popup.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.body.style.marginRight = `0px`;
+                    header.style.right = `0px`;
+                    header.style.width = '100%';
+                    popup.classList.remove('animate__animated', 'wow', 'animate__fadeIn');
                 }
             });
+
+                    //FORMS
+
+            const message = {
+                loading: 'img/load.gif',
+                success: 'img/ok.png',
+                error: 'Ошибка'
+            };
 
             const form = document.querySelectorAll('form');
 
@@ -123,7 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     body: data
                 });
     
-                return await res.text();
+                return await res;
                       
             };
 
@@ -137,17 +170,57 @@ window.addEventListener('DOMContentLoaded', () => {
                 item.addEventListener('submit', (e) => {
                     e.preventDefault();
 
+                    let statusMessage = document.createElement('div');
+                    statusMessage.classList.add('popup__status');
+                    item.appendChild(statusMessage);
+
+                    let statusImg = document.createElement('img');
+                    statusImg.classList.add('popup__status-img');
+                    statusImg.setAttribute('src', message.loading);
+                    statusMessage.appendChild(statusImg);
+
                     const formData = new FormData(item);
 
                     postData('mailer/smart.php', formData)
                     .then(item => {
                         console.log(item);
-                        clearInput();
+                        statusImg.setAttribute('src', message.success);
                     })
                     .catch(() => {
-                        console.log('ошибка');
+                        statusImg.setAttribute('src', message.error);
+                    })
+                    .finally(() => {
+                        clearInput();
+                        setTimeout(() => {
+                            statusMessage.remove();
+                        }, 5000);
                     });
                 });
             });
+
+            function calcScroll() {
+                let div = document.createElement('div');
+        
+                div.style.width = '50px';
+                div.style.height = '50px';
+                div.style.overflowY = 'scroll';
+                div.style.visibility = 'hidden';
+        
+        
+        
+                document.body.appendChild(div);
+        
+                document.body.appendChild(div);
+        
+                let scrollWidth = div.offsetWidth - div.clientWidth;
+        
+                div.remove();
+        
+        
+                return scrollWidth;
+            }
+
+          
+
 });
 
