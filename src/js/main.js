@@ -1,6 +1,11 @@
+
+import WOW from 'wow.js';
+
+new WOW().init();
+
 window.addEventListener('DOMContentLoaded', () => {
 
-    new WOW().init();
+    'use strict';
 
     const tabsContent = document.querySelectorAll('.tabs__content'),
           tabs = document.querySelectorAll('.tabs__link'),
@@ -38,11 +43,11 @@ window.addEventListener('DOMContentLoaded', () => {
           }
     });
 
-    $("a[href^='#']").click(function(){
-          const _href = $(this).attr("href");
-          $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-          return false;
-        });
+    // $("a[href^='#']").click(function(){
+    //       const _href = $(this).attr("href");
+    //       $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+    //       return false;
+    //     });
 
     const burger = document.querySelector('.burger'),
           nav = document.querySelector('.header__nav-item ul');

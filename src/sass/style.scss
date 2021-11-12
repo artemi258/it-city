@@ -1,3 +1,5 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css';
+@import '../../node_modules/animate.css/animate.min.css';
 @import 'fonts';
 @import 'base/mixins';
 @import 'base/vareable';
@@ -10,6 +12,7 @@
 @import 'nav';
 @import 'stationery';
 @import 'popup';
+
 .container {
     width: 1140px;
     margin: 0 auto;
