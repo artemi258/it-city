@@ -47,10 +47,22 @@
                     border-color: $light-blue;
                     &:focus {
                         outline: none;
-                      border: 3px solid $azure;
+                        border-color: $azure;
+                        box-shadow: 1px 1px 10px 1px $azure;
                     }
-                    &:last-child {
-                        height: 100px;
+                }
+                textarea {
+                    height: 100px;
+                    padding: 5px 10px;
+                    margin-bottom: 5%;
+                    border-radius: 1rem;
+                    text-align: center;
+                    border-color: $light-blue;
+                    resize: none;
+                    &:focus {
+                        outline: none;
+                        border-color: $azure;
+                        box-shadow: 1px 1px 10px 1px $azure;
                     }
                 }
         }
