@@ -5181,6 +5181,15 @@ window.addEventListener('DOMContentLoaded', function () {
     div.remove();
     return scrollWidth;
   }
+
+  var tabsItem = document.querySelectorAll('.tabs__item');
+  tabsItem.forEach(function (item, i) {
+    if (i % 2 == 0) {
+      item.classList.add('wow', 'animate__animated', 'animate__slideInRight');
+    } else {
+      item.classList.add('wow', 'animate__animated', 'animate__slideInLeft');
+    }
+  });
 });
 
 /***/ })

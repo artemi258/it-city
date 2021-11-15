@@ -7,6 +7,9 @@
         justify-content: center;
         margin-top: 30px;
     }
+    &__table {
+        width: 100%;
+    }
     &__link {
         display: flex;
         text-align: center;
@@ -23,9 +26,8 @@
         line-height: 23px;
         border-radius: 30% 0 20% 0;
         &-active {
-            background-color: $azure;
-            color: $blue;
-            box-shadow: $azure 3px 3px 25px;
+            background-color: $blue;
+            box-shadow: $blue 3px 3px 25px;
         }  
         &:hover {
             border: none;
@@ -50,55 +52,52 @@
         }
     }
     &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 50px;
+        // display: flex;
+        // justify-content: space-between;
+        margin-top: 30px;
     }
     &__item {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 80px;
-        width: 350px;
+        width: 100%;
+        min-height: 70px;
         border: $blue solid 1px;
         border-radius: 10%;
-        padding: 5px 7px;
+        padding: 10px 7px;
         background-color: $azure;
         box-shadow: 1px 0px 10px #000000;
-        &-printer {
-            width: 500px;
-        }
-        &-computer {
-            width: 480px;
-        }
+        margin: 0 auto;
+        // &-printer {
+        //     width: 500px;
+        // }
+        // &-computer {
+        //     width: 480px;
+        // }
     }
     &__elem {
         font-size: 16px;
-        width: 310px;
+        width: 834px;
         color: $blue;
         letter-spacing: 1px;
-        &-printer {
-            width: 410px;
-        }
-        &-computer {
-            width: 380px;
-        }
+        // &-printer {s
+        //     width: 410px;
+        // }
+        // &-computer {
+        //     width: 380px;
+        // }
     }
     &__price {
         color: $blue;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-align: center;
-        width: 50px;
+        width: 150px;
         border-left: $blue solid 1px;
-        height: 100%;
         font-size: 16px;
-        &-printer {
-            width: 90px
-        }
-        &-computer {
-            width: 100px;
-        }
+        // &-printer {
+        //     width: 90px
+        // }
+        // &-computer {
+        //     width: 100px;
+        // }
     }
 }

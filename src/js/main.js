@@ -225,6 +225,17 @@ window.addEventListener('DOMContentLoaded', () => {
                 return scrollWidth;
             }
 
+            const tabsItem = document.querySelectorAll('.tabs__item');
+
+            tabsItem.forEach((item, i) => {
+                if ( i % 2 == 0) {
+                    item.classList.add('wow', 'animate__animated', 'animate__slideInRight');
+                } else {
+                    item.classList.add('wow', 'animate__animated', 'animate__slideInLeft');
+                }
+
+            })
+
           
 
 });
