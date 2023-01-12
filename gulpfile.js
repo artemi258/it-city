@@ -14,7 +14,6 @@ const dist = "./dist/";
 // const dist = "C:/MAMP/htdocs/Delivery/";
 // const dist = "C:/OpenServer/domains/Delivery/";
 
-
 gulp.task('server', function() {
 
     browserSync({

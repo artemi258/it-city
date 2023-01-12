@@ -1,6 +1,8 @@
 
 import WOW from 'wow.js';
 
+import '../sass/style.scss';
+
 new WOW().init();
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function hideTabContent() {
         tabsContent.forEach(item => {
             item.style.display = 'none';
+            item.classList.remove('wow', 'animate__animated', 'animate__fadeIn');
 
         tabs.forEach(item => {
             item.classList.remove('tabs__link-active');
@@ -26,6 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
   
     function showTabContent(i = 0) {
         tabsContent[i].style.display = 'block';
+        tabsContent[i].classList.add('wow', 'animate__animated', 'animate__fadeIn');
         tabs[i].classList.add('tabs__link-active');
     }
 
@@ -51,11 +55,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const burger = document.querySelector('.burger'),
           nav = document.querySelector('.header__nav-item ul');
+          
 
           burger.addEventListener('click', () => {
               burger.classList.toggle('burger__active');
               nav.classList.toggle('nav__active');
-          });
+            });
+
+            function eventCloseNav() {
+                if (document.documentElement.clientWidth < 768) {
+                    nav.addEventListener('click', (e) => {
+                    if (e.target.href) {
+                      burger.classList.toggle('burger__active');
+                      nav.classList.toggle('nav__active');
+                    }
+                    });
+                };
+            }
+
+            window.addEventListener('resize', function() {
+                eventCloseNav();
+            });
+            eventCloseNav();
+            
 
           let setCursorPosition = (pos, elem) => {
             elem.focus();
@@ -102,11 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('blur', createMask);
         });
 
-
         //MODAL
-
-
-        
 
         const btn = document.querySelector('.header__sub-btn'),
               popup = document.querySelector('.popup'),
@@ -225,16 +243,16 @@ window.addEventListener('DOMContentLoaded', () => {
                 return scrollWidth;
             }
 
-            const tabsItem = document.querySelectorAll('.tabs__item');
+            // const tabsItem = document.querySelectorAll('.tabs__item');
 
-            tabsItem.forEach((item, i) => {
-                if ( i % 2 == 0) {
-                    item.classList.add('wow', 'animate__animated', 'animate__slideInRight');
-                } else {
-                    item.classList.add('wow', 'animate__animated', 'animate__slideInLeft');
-                }
+            // tabsItem.forEach((item, i) => {
+            //     if ( i % 2 == 0) {
+            //         item.classList.add('wow', 'animate__animated', 'animate__slideInRight');
+            //     } else {
+            //         item.classList.add('wow', 'animate__animated', 'animate__slideInLeft');
+            //     }
 
-            })
+            // })
 
           
 

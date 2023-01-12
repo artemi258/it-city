@@ -257,14 +257,16 @@
             height: 30px;
             &-menu {
                 flex-direction: column;
+                justify-content: space-around;
                 position: fixed;
                 top: 30px;
                 right: 0;
+                height: 50vh;
                 background-color: rgba(57, 68, 88, 0.7);
                 transform: translateX(100%);
                 transition: 0.5s all linear;
                 a {
-                    font-size: 16px;
+                    font-size: 20px;
                 }
                 li {
                     padding: 8px 10px;
@@ -461,7 +463,7 @@
             &-menu {
                 top: 20px;
                 a {
-                    font-size: 20px;
+                    font-size: 18px;
                 }
             }
             &-logo {
