@@ -1,104 +1,85 @@
 .tabs {
-    min-height: 500px;
-    background-color: #a8fffa;
-    padding: 70px 0;
-    &__tab {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-    }
-    &__table {
-        width: 33%;
-    }
-    &__link {
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        width: 150px;
-        font-size: 20px;
-        margin-right: 50px;
-        background-color: $light-blue;
-        color: #ffffff;
-        padding: 5px 5px;
-        cursor: pointer;
-        transition: all 0.5s;
-        line-height: 23px;
-        border-radius: 30% 0 20% 0;
-        &-active {
-            background-color: $blue;
-            box-shadow: $blue 3px 3px 25px;
-        }  
-        &:hover {
-            border: none;
-            outline-color: rgba(9, 133, 242, 0);
-            outline-offset: 20px;
-            transform: translateY(-5px);
-        }
-        &:active {
-            transition: none;
-            transform: none;
-        }
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-    &__img {
-        height: 200px;
-        width: 100%;
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-    &__wrapper {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 30px;
-    }
-    &__item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 110px;
-        min-height: 70px;
-        border: $blue solid 1px;
-        border-radius: 10%;
-        padding: 10px 7px;
-        background-color: $azure;
-        box-shadow: 1px 0px 10px #000000;
-        margin: 0 auto;
-        // &-printer {
-        //     width: 500px;
-        // }
-        // &-computer {
-        //     width: 480px;
-        // }
-    }
-    &__elem {
-        font-size: 16px;
-        width: 834px;
-        color: $blue;
-        letter-spacing: 1px;
-        // &-printer {s
-        //     width: 410px;
-        // }
-        // &-computer {
-        //     width: 380px;
-        // }
-    }
-    &__price {
-        color: $blue;
-        text-align: center;
-        width: 150px;
-        border-left: $blue solid 1px;
-        font-size: 16px;
-        // &-printer {
-        //     width: 90px
-        // }
-        // &-computer {
-        //     width: 100px;
-        // }
-    }
+	min-height: 500px;
+	background-color: #a8fffa;
+	padding: 70px 0;
+	&__tab {
+		display: flex;
+		justify-content: center;
+		margin-top: 30px;
+	}
+	&__table {
+		width: 33%;
+	}
+	&__link {
+		display: flex;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		width: 150px;
+		font-size: 20px;
+		margin-right: 50px;
+		background-color: $light-blue;
+		color: #ffffff;
+		padding: 5px 5px;
+		cursor: pointer;
+		transition: all 0.5s;
+		line-height: 23px;
+		border-radius: 30% 0 20% 0;
+		&-active {
+			background-color: $blue;
+			box-shadow: $blue 3px 3px 25px;
+		}
+		&:hover {
+			border: none;
+			outline-color: rgba(9, 133, 242, 0);
+			outline-offset: 20px;
+			transform: translateY(-5px);
+		}
+		&:active {
+			transition: none;
+			transform: none;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	&__img {
+		height: 200px;
+		width: 100%;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&__wrapper {
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+		margin-top: 30px;
+	}
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		border: $blue solid 1px;
+		border-radius: 10%;
+		padding: 10px 7px;
+		background-color: $azure;
+		box-shadow: 2px 4px 3px #000000;
+		margin: 0 auto;
+	}
+	&__elem {
+		font-size: 16px;
+		width: 90%;
+		color: $blue;
+		letter-spacing: 1px;
+	}
+	&__price {
+		color: $blue;
+		text-align: center;
+		width: 10%;
+		border-left: $blue solid 1px;
+		font-size: 16px;
+	}
 }

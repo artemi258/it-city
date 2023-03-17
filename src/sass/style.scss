@@ -14,16 +14,16 @@
 @import 'popup';
 
 .container {
-    width: 1140px;
-    margin: 0 auto;
-    position: relative;
+	width: 1140px;
+	margin: 0 auto;
+	position: relative;
 }
 .burger {
-    display: none
+	display: none;
 }
 @import 'base/media';
 @import 'burger';
 * {
-    font-family: 'Roboto Mono', sans-serif;
-    font-size: 15px;
+	font-family: 'Roboto Mono', sans-serif;
+	font-size: 15px;
 }

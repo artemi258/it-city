@@ -1,36 +1,36 @@
 .title {
-    font-size: 50px;
-    color: white;
-    font-family: 'Kumbh Sans', sans-serif;
-    text-align: center;
-    text-transform: uppercase;
-    margin-top: 22px;
-    margin-bottom: 0;
-    text-shadow:black 2px 3px 4px;
-    &-information {
-        position: relative;
-        z-index: 1;
-        &::after {
-            @include titleHeaderAfter;
-            width: 20%;
-        }
-    }
-    &-tabs {
-        position: relative;
-        z-index: 1;
-        &::after {
-            @include titleHeaderAfter;
-        }
-    }
-    &-stationery {
-        position: relative;
-        z-index: 1;
-        &::after {
-            @include titleHeaderAfter;
-            width: 35%;
-        }
-    }
-    &-price {
-        margin-top: 0;
-    }
+	font-size: 50px;
+	color: white;
+	font-family: 'Kumbh Sans', sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 22px;
+	margin-bottom: 0;
+	text-shadow: black 2px 3px 4px;
+	&-information {
+		position: relative;
+		z-index: 1;
+		&::after {
+			@include titleHeaderAfter;
+			width: 20%;
+		}
+	}
+	&-tabs {
+		position: relative;
+		z-index: 1;
+		&::after {
+			@include titleHeaderAfter;
+		}
+	}
+	&-stationery {
+		position: relative;
+		z-index: 1;
+		&::after {
+			@include titleHeaderAfter;
+			width: 35%;
+		}
+	}
+	&-price {
+		margin-top: 0;
+	}
 }
