@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<!-- Yandex.Metrika counter -->
-		<script type="text/javascript">
+		<script async type="text/javascript">
 			(function (m, e, t, r, i, k, a) {
 				m[i] =
 					m[i] ||
@@ -89,7 +89,6 @@
 				<div class="container">
 					<h1 class="title">компьютерный центр</h1>
 					<img src="img/computer.png" alt="computer" class="header__sub-computer" />
-					<img src="img/hat.png" alt="hat" class="header__sub-hat" />
 					<div
 						class="header__sub-text animate__animated animate__fadeIn wow"
 						data-wow-duration="3s"
@@ -542,6 +541,7 @@
 			</div>
 		</section>
 		<script
+			async
 			class="map"
 			type="text/javascript"
 			charset="utf-8"
@@ -567,6 +567,8 @@
 							></textarea>
 						</div>
 						<button class="popup__button">ОТПРАВИТЬ</button>
+						<div class="popup__text popup__text-success">Сообщение отправлено!</div>
+						<div class="popup__text popup__text-error">Ошибка! Попробуйте в другой раз</div>
 					</form>
 				</div>
 			</div>
