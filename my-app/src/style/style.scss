@@ -1,0 +1,14 @@
+@import './fonts';
+@import './vareable';
+@import './mixins';
+@import './reboot';
+@import './animations';
+
+.container {
+	width: 1140px;
+	margin: 0 auto;
+}
+
+* {
+	font-family: Roboto Mono, sans-serif;
+}
