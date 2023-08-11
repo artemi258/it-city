@@ -7,6 +7,7 @@ import modal from './module/modal';
 import tabs from './module/tabs';
 
 import '../sass/style.scss';
+import { metrika } from './module/metrika';
 
 const wow = new WOW({
 	boxClass: 'wow', // animated element css class (default is wow)
@@ -23,7 +24,7 @@ const wow = new WOW({
 
 window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
-
+	process.env.NODE_ENV === 'development' ? null : metrika();
 	wow.init();
 	tabs();
 	burger();

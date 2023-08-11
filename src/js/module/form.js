@@ -18,7 +18,7 @@ export default function form() {
 			body: data
 		});
 
-		return await res;
+		return res;
 	};
 
 	const clearInput = () => {
