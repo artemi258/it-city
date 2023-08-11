@@ -2,7 +2,7 @@
 	position: relative;
 	&__wrapper {
 		width: 100%;
-		background: url('../../public/assets/images/bgHeader.jpg') center center / cover no-repeat;
+		background: url('../../assets/images/bgHeader.jpg') center center / cover no-repeat;
 		height: calc(100vh - 70px);
 		padding: 50px 0;
 	}
@@ -14,11 +14,14 @@
 		text-shadow: #000 2px 3px 4px;
 		text-transform: uppercase;
 	}
+	&__block {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 45px;
+	}
 	&__text {
-		position: absolute;
-		top: 360px;
-		right: 0;
-		z-index: 2;
+		display: flex;
+		align-items: end;
 		color: rgba(225, 245, 247, 0.7);
 		font-size: 40px;
 		text-transform: uppercase;
@@ -46,7 +49,6 @@
 	&__promo {
 		width: 510px;
 		letter-spacing: 1px;
-		margin-top: 45px;
 		span {
 			display: inline-block;
 			font-size: 36px;
@@ -57,7 +59,6 @@
 	}
 	&__text {
 		width: 545px;
-		margin-top: 35px;
 		padding: 0;
 		margin-bottom: 0;
 		li {

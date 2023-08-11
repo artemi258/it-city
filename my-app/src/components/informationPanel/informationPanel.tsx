@@ -1,4 +1,4 @@
-import vk from '../../public/assets/icons/vk.svg';
+import vk from '../../assets/icons/vk.svg';
 
 import './informationPanel.scss';
 
