@@ -1,4 +1,6 @@
 import { InformationPanel } from '../informationPanel/informationPanel';
+import { motion } from 'framer-motion';
+import { fadeInChildren, fadeInParent } from '../../utils/animations';
 
 import arrow from '../../assets/images/arrow.png';
 
@@ -9,60 +11,40 @@ export const Header = () => {
 		<header className="header">
 			<InformationPanel />
 			<div className="header__wrapper">
-				<div className="container">
-					<h1 className="header__title">компьютерный центр</h1>
+				<motion.div
+					initial={'hidden'}
+					animate={'visible'}
+					variants={fadeInParent}
+					className="container"
+				>
+					<motion.h1 variants={fadeInChildren} className="header__title">
+						компьютерный центр
+					</motion.h1>
 
 					<div className="header__block">
 						<div className="header__promo">
-							<span
-								className="animate__animated animate__fadeInUp wow"
-								data-wow-duration="2s"
-								data-wow-delay="0.7s"
-							>
-								Продажа компьютеров,
-							</span>
-							<span
-								className="animate__animated animate__fadeInUp wow"
-								data-wow-duration="2s"
-								data-wow-delay="0.9s"
-							>
-								любой офисной техники,
-							</span>
-							<span
-								className="animate__animated animate__fadeInUp wow"
-								data-wow-duration="2s"
-								data-wow-delay="1.2s"
-							>
-								расходных материалов и
-							</span>
-							<span
-								className="animate__animated animate__fadeInUp wow"
-								data-wow-duration="2s"
-								data-wow-delay="1.5s"
-							>
-								комплектующих по
-							</span>
-							<span
-								className="animate__animated animate__fadeInUp wow"
-								data-wow-duration="2s"
-								data-wow-delay="1.7s"
-							>
-								доступным ценам.
-							</span>
+							<motion.span variants={fadeInChildren}>Продажа компьютеров,</motion.span>
+							<motion.span variants={fadeInChildren}>любой офисной техники,</motion.span>
+							<motion.span variants={fadeInChildren}>расходных материалов и</motion.span>
+							<motion.span variants={fadeInChildren}>комплектующих по</motion.span>
+							<motion.span variants={fadeInChildren}>доступным ценам.</motion.span>
 						</div>
-						<div
-							className="header__text animate__animated animate__fadeIn wow"
-							data-wow-duration="3s"
-							data-wow-delay="1s"
-						>
+						<motion.div variants={fadeInChildren} className="header__text">
 							более 10 лет работы
-						</div>
+						</motion.div>
 					</div>
 
-					<button className="header__btn">Напишите нам</button>
-				</div>
+					<motion.button variants={fadeInChildren} className="header__btn">
+						Напишите нам
+					</motion.button>
+				</motion.div>
+				<motion.img
+					variants={fadeInChildren}
+					src={arrow}
+					alt="стрелка вниз"
+					className="header__arrow"
+				/>
 			</div>
-			<img src={arrow} alt="стрелка вниз" className="header__arrow" />
 		</header>
 	);
 };

@@ -1,0 +1,23 @@
+.app {
+	background-color: var(--background);
+	&__shop {
+		min-height: 700px;
+		&-links {
+			display: flex;
+			justify-content: center;
+			a {
+				padding: 10px 20px;
+				font-weight: 700;
+				font-size: 20px;
+				border-radius: 5%;
+				background-color: var(--light-blue);
+				box-shadow: 3px 3px 10px black;
+				color: white;
+				cursor: pointer;
+				&:not(:first-child) {
+					margin-left: 30px;
+				}
+			}
+		}
+	}
+}
