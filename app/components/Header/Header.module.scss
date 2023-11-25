@@ -1,0 +1,69 @@
+.header {
+ width: 100%;
+ height: auto;
+ background-color: var(--light-blue);
+ padding-bottom: 5px;
+ .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+ }
+ .social {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  color: var(--light-blue);
+  margin-right: 5px;
+  cursor: pointer;
+  img {
+   width: 100%;
+   height: 100%;
+  }
+  &:hover {
+   transform: translateY(-2px);
+   box-shadow: 2px 2px 5px #000000;
+  }
+ }
+ .phone {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 5px 5px 0 0;
+ }
+ .adress {
+  color: white;
+  font-style: normal;
+  padding: 5px 5px 0 0;
+ }
+ .tel {
+  color: white;
+  &:hover {
+   color: var(--azure);
+  }
+ }
+ .time {
+  color: white;
+  padding: 5px 5px 0 0;
+ }
+ .email {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  padding: 5px 5px 0 0;
+  a {
+   &:hover {
+    color: var(--azure);
+   }
+  }
+ }
+ .logo {
+  height: 50px;
+  width: 115px;
+ }
+}
