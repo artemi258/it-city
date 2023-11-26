@@ -37,21 +37,6 @@
  .btn {
   grid-area: btn;
   justify-self: start;
-  padding: 10px 20px;
-  font-weight: 700;
-  font-size: 20px;
-  border: 1px solid var(--light-blue);
-  border-radius: 5%;
-  background-color: var(--light-blue);
-  box-shadow: 3px 3px 10px black;
-  color: white;
-  cursor: pointer;
-  &:hover {
-   background: linear-gradient(180deg, var(--light-blue) 0%, var(--azure) 100%);
-  }
-  &:active {
-   box-shadow: 1px 1px 10px black;
-  }
  }
 
  .promo {

@@ -8,6 +8,7 @@ import arrow from './arrow.png';
 import Image from 'next/image';
 
 import styles from './MainPage.module.scss';
+import { Button } from '@/components';
 
 const MontserratFont = Montserrat({ subsets: ['cyrillic'], style: ['normal'] });
 
@@ -35,9 +36,9 @@ export const MainPage = (): JSX.Element => {
       более 10 лет работы
      </motion.div>
 
-     <motion.button variants={fadeInChildren} className={styles.btn}>
+     <Button variants={fadeInChildren} className={styles.btn}>
       Напишите нам
-     </motion.button>
+     </Button>
     </motion.div>
    </div>
 

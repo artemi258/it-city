@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto_Mono } from 'next/font/google';
 import '@/public/style/globals.scss';
-import { Header, MainPage } from './components';
+import { Header, MainPage } from './componentsPages';
 
 const RobotoMono = Roboto_Mono({ subsets: ['cyrillic'], style: ['normal'] });
 

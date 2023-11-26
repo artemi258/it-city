@@ -1,0 +1,18 @@
+.button {
+ padding: 10px 20px;
+ color: white;
+ box-shadow: 3px 3px 10px black;
+ background-color: var(--light-blue);
+ text-align: center;
+ border: none;
+ font-weight: 700;
+ border-radius: 5%;
+ font-size: 20px;
+ cursor: pointer;
+ &:hover {
+  background: linear-gradient(180deg, var(--light-blue) 0%, var(--azure) 100%);
+ }
+ &:active {
+  box-shadow: 1px 1px 10px black;
+ }
+}
