@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto_Mono } from 'next/font/google';
 import '@/public/style/globals.scss';
+import { Header, MainPage } from './components';
 
 const RobotoMono = Roboto_Mono({ subsets: ['cyrillic'], style: ['normal'] });
 
@@ -13,7 +14,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
  return (
   <html lang='ru'>
-   <body className={RobotoMono.className}>{children}</body>
+   <body className={RobotoMono.className}>
+    <Header />
+    <main>
+     <MainPage />
+     {children}
+    </main>
+   </body>
   </html>
  );
 }
