@@ -1,12 +1,11 @@
 import Image from 'next/image';
-import { IHeaderProps } from './Header.props';
 
 import vk from './vk.svg';
 import logo from './logo.svg';
 
 import styles from './Header.module.scss';
 
-export const Header = (props: IHeaderProps): JSX.Element => {
+export const Header = (): JSX.Element => {
  return (
   <header className={styles.header}>
    <div className='container'>
@@ -16,20 +15,15 @@ export const Header = (props: IHeaderProps): JSX.Element => {
       <Image src={vk} alt='иконка вконтакте' />
      </a>
      <address className={styles.adress}>
-      Наш адресс:
-      <br />
-      г.Североуральск, Мира 4
+      Наш адресс: <span>г.Североуральск, Мира 4</span>
      </address>
      <div className={styles.time}>
       Часы работы:
-      <br />
-      Понедельник-пятница с 10-00 до 19-00
-      <br />
-      Суббота с 10-00 до 16-00
+      <span>Понедельник-пятница с 10-00 до 19-00</span>
+      <span>Суббота с 10-00 до 16-00</span>
      </div>
      <div className={styles.email}>
       Наша почта:
-      <br />
       <a className={styles.link} href='mailto:itcity.su@gmail.com'>
        itcity.su@gmail.com
       </a>

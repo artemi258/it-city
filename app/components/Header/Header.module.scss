@@ -2,12 +2,13 @@
  width: 100%;
  height: auto;
  background-color: var(--light-blue);
- padding-bottom: 5px;
+ padding: 5px 0;
  .wrapper {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template: auto / 115px 35px auto auto auto auto;
   align-items: center;
-  flex-wrap: wrap;
+  justify-items: flex-end;
+  gap: 5px;
  }
  .social {
   width: 35px;
@@ -18,7 +19,6 @@
   border-radius: 100%;
   border: 1px solid #fff;
   color: var(--light-blue);
-  margin-right: 5px;
   cursor: pointer;
   img {
    width: 100%;
@@ -30,15 +30,15 @@
   }
  }
  .phone {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template: auto auto auto / auto;
   color: white;
-  padding: 5px 5px 0 0;
  }
  .adress {
+  display: grid;
+  grid-template: auto auto / auto;
   color: white;
   font-style: normal;
-  padding: 5px 5px 0 0;
  }
  .tel {
   color: white;
@@ -47,15 +47,14 @@
   }
  }
  .time {
+  display: grid;
+  grid-template: auto auto auto / auto;
   color: white;
-  padding: 5px 5px 0 0;
  }
  .email {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template: auto auto / auto;
   color: white;
-  padding: 5px 5px 0 0;
   a {
    &:hover {
     color: var(--azure);
