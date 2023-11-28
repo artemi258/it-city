@@ -1,0 +1,15 @@
+.textarea {
+ height: 100px;
+ padding: 5px 10px;
+ border-radius: 10px;
+ border: 1px solid var(--light-blue);
+ resize: none;
+ &:focus {
+  outline: none;
+  border-color: var(--azure);
+  box-shadow: 1px 1px 10px 1px var(--azure);
+ }
+}
+.error {
+ border: 1px solid var(--red);
+}
