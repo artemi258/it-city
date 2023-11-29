@@ -7,5 +7,5 @@ export interface IButtonProps
   'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag' | 'ref'
  > {
  children: ReactNode;
- variants: Variants;
+ variants?: Variants;
 }

@@ -3,6 +3,7 @@
  height: auto;
  background-color: var(--light-blue);
  padding: 5px 0;
+
  .wrapper {
   display: grid;
   grid-template: auto / 115px 35px auto auto auto auto;
@@ -10,6 +11,7 @@
   justify-items: flex-end;
   gap: 5px;
  }
+
  .social {
   width: 35px;
   height: 35px;
@@ -29,28 +31,33 @@
    box-shadow: 2px 2px 5px #000000;
   }
  }
+
  .phone {
   display: grid;
   grid-template: auto auto auto / auto;
   color: white;
  }
+
  .adress {
   display: grid;
   grid-template: auto auto / auto;
   color: white;
   font-style: normal;
  }
+
  .tel {
   color: white;
   &:hover {
    color: var(--azure);
   }
  }
+
  .time {
   display: grid;
   grid-template: auto auto auto / auto;
   color: white;
  }
+
  .email {
   display: grid;
   grid-template: auto auto / auto;
@@ -61,6 +68,7 @@
    }
   }
  }
+
  .logo {
   height: 50px;
   width: 115px;

@@ -9,7 +9,7 @@
     "props": "templates/component/TemplateName.props.ts",
     "style": "templates/component/TemplateName.module.scss"
    },
-   "path": "app/(site)/components",
+   "path": "components",
    "withStyle": true,
    "withProps": true,
    "withTest": false,

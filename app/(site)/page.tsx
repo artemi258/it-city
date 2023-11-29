@@ -1,12 +1,10 @@
-import { Input } from '../../components/Input/Input';
-import { Textarea } from '../../components/Textarea/Textarea';
+import { Form } from '@/components/Form/Form';
 
 export default function Home(): JSX.Element {
  return (
   <>
    <main>
-    <Input />
-    <Textarea />
+    <Form />
    </main>
   </>
  );
