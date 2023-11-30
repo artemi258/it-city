@@ -19,4 +19,9 @@
 }
 .error {
  border: 1px solid var(--red);
+ &:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 1px 1px 10px 1px var(--red);
+ }
 }

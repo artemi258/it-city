@@ -1,50 +1,112 @@
-import { IFormProps } from './Form.props';
+'use client';
+
+import { IForm, IFormProps } from './Form.props';
+import { fadeInPopup, fadeInSpinner } from '@/utils/animations';
 import { Button, Input, Textarea } from '..';
 import cn from 'classnames';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { FormEvent, useState } from 'react';
 
 import SpinnerIcon from './spinner.svg';
 
 import styles from './Form.module.scss';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-export const Form = (props: IFormProps): JSX.Element => {
+export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => {
+ const [isSubmit, setIsSubmit] = useState<boolean>(false);
+ const {
+  register,
+  handleSubmit,
+  formState: { errors },
+  reset,
+ } = useForm<IForm>();
+
+ const onSubmit: SubmitHandler<IForm> = (data): void => {
+  setIsSubmit(true);
+  setTimeout(() => setIsSubmit(false), 4000);
+ };
+
  return (
-  <section className={styles.popup}>
-   <div className={styles.wrapper}>
-    <Button type='button' className={styles.close}>
-     ×
-    </Button>
-    <form className={styles.form}>
-     <h2 className={styles.title}>Задайте свой вопрос</h2>
-     <Input
-      className={cn(styles.inputName, styles.input)}
-      type='text'
-      name='name'
-      placeholder='Ваше имя'
-     />
-     <Input
-      className={cn(styles.inputPhone, styles.input)}
-      id='phone'
-      type='text'
-      name='phone'
-      placeholder='Ваш телефон'
-     />
-     <Input
-      className={cn(styles.inputEmail, styles.input)}
-      id='phone'
-      type='email'
-      name='email'
-      placeholder='Ваш E-mail'
-     />
-     <Textarea className={styles.textarea} name='message' placeholder='Задайте ваш вопрос здесь' />
-     <div className={styles.spinner}>
-      <Image src={SpinnerIcon} alt='спиннер' />
-     </div>
-     <Button className={styles.button}>ОТПРАВИТЬ</Button>
-     <div className={cn(styles.message, styles.success)}>Сообщение отправлено!</div>
-     <div className={cn(styles.message, styles.error)}>Ошибка! Попробуйте в другой раз</div>
-    </form>
-   </div>
-  </section>
+  <>
+   <motion.div
+    onClick={(): void => setPopupOpen((state) => !state)}
+    initial={{ backgroundColor: '' }}
+    animate={
+     isPopupOpen
+      ? { visibility: 'visible', backgroundColor: 'rgba(0, 0, 0, 0.5)' }
+      : { visibility: 'hidden', backgroundColor: '' }
+    }
+    className={styles.background}></motion.div>
+
+   <motion.section
+    initial={'hidden'}
+    animate={isPopupOpen ? 'visible' : 'hidden'}
+    variants={fadeInPopup}
+    className={styles.popup}>
+    <div className={styles.wrapper}>
+     <Button
+      onClick={(): void => setPopupOpen((state) => !state)}
+      type='button'
+      className={styles.close}>
+      ×
+     </Button>
+     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <h2 className={styles.title}>Задайте свой вопрос</h2>
+      <Input
+       {...register('name', { required: '123', pattern: /^[А-Яа-яЁё]+$/ })}
+       className={cn(styles.inputName, styles.input)}
+       type='text'
+       placeholder='Ваше имя'
+       error={errors.name}
+      />
+      <Input
+       {...register('phone', { pattern: /^\+?\d{11}$/ })}
+       className={cn(styles.inputPhone, styles.input)}
+       type='text'
+       placeholder='Ваш телефон'
+       error={errors.phone}
+      />
+      <Input
+       {...register('email', { pattern: /^[\w-.]+@[\w]+\.[A-Za-z]{2,}$/i })}
+       className={cn(styles.inputEmail, styles.input)}
+       type='text'
+       placeholder='Ваш E-mail'
+       error={errors.email}
+      />
+      <Textarea
+       {...register('message', { required: true })}
+       className={styles.textarea}
+       placeholder='Задайте ваш вопрос здесь'
+       error={errors.message}
+      />
+      <div className={styles.politic}>
+       <input
+        {...register('checkbox', { required: true })}
+        id='checkbox'
+        className={styles.checkbox}
+        type='checkbox'
+       />
+       <label htmlFor='checkbox' className={styles.text}>
+        Я согласен(а) с
+        <a className={styles.link} href='./politic.html' target='_blank'>
+         политикой конфиденциальности
+        </a>
+       </label>
+      </div>
+      <motion.div
+       initial={'hidden'}
+       animate={isSubmit ? 'visible' : 'hidden'}
+       variants={fadeInSpinner}
+       className={styles.spinner}>
+       <Image src={SpinnerIcon} alt='спиннер' />
+      </motion.div>
+      <Button className={styles.button}>ОТПРАВИТЬ</Button>
+      <div className={cn(styles.message, styles.success)}>Сообщение отправлено!</div>
+      <div className={cn(styles.message, styles.error)}>Ошибка! Попробуйте в другой раз</div>
+     </form>
+    </div>
+   </motion.section>
+  </>
  );
 };

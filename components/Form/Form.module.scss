@@ -1,28 +1,30 @@
 .popup {
  position: fixed;
- //  display: none;
+ top: 50%;
+ left: 50%;
+ width: 500px;
+ z-index: 100;
+}
+
+.background {
+ position: fixed;
  top: 0;
  left: 0;
  width: 100%;
  height: 100%;
+ transition: all 0.5s linear;
  z-index: 10;
- background-color: rgba(0, 0, 0, 0.5);
 }
 
 .wrapper {
  background-color: var(--light-blue);
- position: fixed;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
  border-radius: 5px;
- width: 500px;
  padding: 20px 30px;
 }
 
 .form {
  display: grid;
- grid-template: auto repeat(3, 60px) 110px auto auto auto / 1fr;
+ grid-template: auto repeat(3, 60px) 110px repeat(4, auto) / 1fr;
  text-align: center;
  grid-template-areas:
   'title'
@@ -30,6 +32,7 @@
   'inputPhone'
   'inputEmail'
   'textarea'
+  'politic'
   'spinner'
   'button'
   'message';
@@ -80,7 +83,29 @@
 
 .spinner {
  grid-area: spinner;
- display: none;
+ overflow: hidden;
+}
+
+.politic {
+ grid-area: politic;
+ display: flex;
+ align-items: center;
+ padding: 5px 0;
+}
+
+.text {
+ color: #ffffff;
+ cursor: pointer;
+}
+
+.link {
+ color: var(--blue);
+ margin-left: 5px;
+ text-decoration: underline;
+}
+
+.checkbox {
+ margin-right: 5px;
 }
 
 .button {
