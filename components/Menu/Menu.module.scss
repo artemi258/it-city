@@ -1,0 +1,27 @@
+.menu {
+ display: grid;
+ grid-template: auto / repeat(auto-fit, 120px);
+ justify-content: center;
+ gap: 10px;
+}
+
+.link {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 10px 20px;
+ color: white;
+ box-shadow: 3px 3px 10px black;
+ background-color: var(--light-blue);
+ text-align: center;
+ border: none;
+ font-weight: 700;
+ border-radius: 5%;
+ cursor: pointer;
+ &:hover {
+  background: linear-gradient(180deg, var(--light-blue) 0%, var(--azure) 100%);
+ }
+ &:active {
+  box-shadow: 1px 1px 10px black;
+ }
+}
