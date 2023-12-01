@@ -15,17 +15,20 @@
    "withTest": false,
    "withStory": false,
    "withLazy": false
-  },
-  "page": {
-   "customTemplates": {
-    "test": "templates/page/TemplateName.test.js"
-   },
-   "path": "src/pages",
-   "withLazy": true,
-   "withStory": false,
-   "withStyle": true,
-   "withTest": true
   }
+ },
+ "page": {
+  "customTemplates": {
+   "component": "templates/component/TemplateName.tsx",
+   "props": "templates/component/TemplateName.props.ts",
+   "style": "templates/component/TemplateName.module.scss"
+  },
+  "path": "app/(site)/componentsPages",
+  "withStyle": true,
+  "withProps": true,
+  "withTest": false,
+  "withStory": false,
+  "withLazy": false
  },
  "usesStyledComponents": false,
  "testLibrary": "None"

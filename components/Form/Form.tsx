@@ -54,28 +54,37 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <h2 className={styles.title}>Задайте свой вопрос</h2>
       <Input
-       {...register('name', { required: '123', pattern: /^[А-Яа-яЁё]+$/ })}
+       {...register('name', {
+        required: 'кириллица, без пробелов и без цифр, нет спецсимволов',
+        pattern: /^[А-Яа-яЁё]+$/,
+       })}
        className={cn(styles.inputName, styles.input)}
        type='text'
        placeholder='Ваше имя'
        error={errors.name}
       />
       <Input
-       {...register('phone', { pattern: /^\+?\d{11}$/ })}
+       {...register('phone', {
+        required: 'от 10 до 15 символов, состоит из цифр, может начинается с плюса',
+        pattern: /^\+?\d{11}$/,
+       })}
        className={cn(styles.inputPhone, styles.input)}
        type='text'
        placeholder='Ваш телефон'
        error={errors.phone}
       />
       <Input
-       {...register('email', { pattern: /^[\w-.]+@[\w]+\.[A-Za-z]{2,}$/i })}
+       {...register('email', {
+        required: 'латиница, может включать цифры и спецсимволы вроде дефиса',
+        pattern: /^[\w-.]+@[\w]+\.[A-Za-z]{2,}$/i,
+       })}
        className={cn(styles.inputEmail, styles.input)}
        type='text'
        placeholder='Ваш E-mail'
        error={errors.email}
       />
       <Textarea
-       {...register('message', { required: true })}
+       {...register('message', { required: 'не должно быть пустым' })}
        className={styles.textarea}
        placeholder='Задайте ваш вопрос здесь'
        error={errors.message}
@@ -86,6 +95,7 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
         id='checkbox'
         className={styles.checkbox}
         type='checkbox'
+        required
        />
        <label htmlFor='checkbox' className={styles.text}>
         Я согласен(а) с

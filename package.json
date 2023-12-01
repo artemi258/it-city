@@ -7,7 +7,8 @@
   "build": "next build",
   "start": "next start",
   "lint": "next lint",
-  "component": "npx generate-react-cli component"
+  "component": "npx generate-react-cli component",
+  "componentPage": "npx generate-react-cli page"
  },
  "dependencies": {
   "classnames": "2.3.2",
