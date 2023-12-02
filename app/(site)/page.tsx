@@ -1,3 +1,9 @@
+import { AboutUs } from '@/components';
+
 export default function Home(): JSX.Element {
- return <div>content</div>;
+ return (
+  <div>
+   <AboutUs />
+  </div>
+ );
 }
