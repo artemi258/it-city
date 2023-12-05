@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import { Htag } from '..';
 import { IAboutUsProps } from './AboutUs.props';
+import { motion } from 'framer-motion';
 
 import it from './it.jpg';
 import shop from './shop.jpg';
@@ -11,7 +14,11 @@ import styles from './AboutUs.module.scss';
 
 export const AboutUs = (props: IAboutUsProps): JSX.Element => {
  return (
-  <div className={styles.aboutUs}>
+  <motion.div
+   whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
+   viewport={{ once: true }}
+   initial={{ opacity: 0 }}
+   className={styles.aboutUs}>
    <div className='container'>
     <div className={styles.wrapper}>
      <Htag classn={styles.title} tag='h2'>
@@ -47,6 +54,6 @@ export const AboutUs = (props: IAboutUsProps): JSX.Element => {
      </div>
     </div>
    </div>
-  </div>
+  </motion.div>
  );
 };

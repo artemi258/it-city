@@ -1,1 +1,3 @@
-export interface IMenuProps {}
+export interface IMenuProps {
+ type: 'content' | 'services';
+}

@@ -3,6 +3,7 @@
  grid-template: auto / repeat(auto-fit, 120px);
  justify-content: center;
  gap: 10px;
+ margin-bottom: 30px;
 }
 
 .link {
@@ -29,4 +30,7 @@
 .active {
  background-color: var(--blue);
  color: var(--azure);
+ &:hover {
+  background: linear-gradient(180deg, var(--blue) 0%, var(--light-blue) 100%);
+ }
 }

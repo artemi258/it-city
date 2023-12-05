@@ -7,8 +7,7 @@ export const Content = ({ children }: IContentProps): JSX.Element => {
  return (
   <section className={styles.content}>
    <div className='container'>
-    <Menu />
-    <div className={styles.wrapper}></div>
+    <Menu type='content' />
     {children}
    </div>
   </section>

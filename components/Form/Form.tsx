@@ -51,7 +51,11 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
       className={styles.close}>
       ×
      </Button>
-     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+     <motion.form
+      layout
+      transition={{ layout: { duration: 0.3 } }}
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}>
       <h2 className={styles.title}>Задайте свой вопрос</h2>
       <Input
        {...register('name', {
@@ -114,7 +118,7 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
       <Button className={styles.button}>ОТПРАВИТЬ</Button>
       <div className={cn(styles.message, styles.success)}>Сообщение отправлено!</div>
       <div className={cn(styles.message, styles.error)}>Ошибка! Попробуйте в другой раз</div>
-     </form>
+     </motion.form>
     </div>
    </motion.section>
   </>
