@@ -17,7 +17,12 @@ export const Menu = ({ type }: IMenuProps): JSX.Element => {
     return (
      <Link
       key={menu.title}
-      className={cn(styles.link, { [styles.active]: pathname === menu.href })}
+      className={cn(styles.link, {
+       [styles.active]:
+        type === 'content' && menu.href.includes('services') && pathname.includes('services')
+         ? true
+         : pathname === menu.href,
+      })}
       href={menu.href}>
       {menu.title}
      </Link>

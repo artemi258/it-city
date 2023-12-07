@@ -1,5 +1,3 @@
-'use client';
-
 import { Menu } from '@/components/Menu/Menu';
 import { IContentProps } from './Content.props';
 
