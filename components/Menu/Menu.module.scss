@@ -29,7 +29,6 @@
 
 .active {
  background-color: var(--blue);
- color: var(--azure);
  &:hover {
   background: linear-gradient(180deg, var(--blue) 0%, var(--light-blue) 100%);
  }

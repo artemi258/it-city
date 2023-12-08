@@ -6,12 +6,12 @@ import { Button, Input, Textarea } from '..';
 import cn from 'classnames';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import SpinnerIcon from './spinner.svg';
 
 import styles from './Form.module.scss';
-import { SubmitHandler, useForm } from 'react-hook-form';
 
 export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
