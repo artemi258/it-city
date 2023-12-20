@@ -3,7 +3,7 @@ import { HydratedDocument } from 'mongoose';
 
 export type ProductDocument = HydratedDocument<ProductModel>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class ProductModel {
  @Prop({ require: true })
  category: string;
@@ -18,7 +18,7 @@ export class ProductModel {
  price: string;
 
  @Prop({ require: true })
- image: string;
+ image: Buffer;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(ProductModel);
