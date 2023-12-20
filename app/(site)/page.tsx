@@ -1,4 +1,4 @@
-import { AboutUs } from '@/components';
+import { AboutUs } from '@/app/(site)/componentsPages';
 
 export default function Home(): JSX.Element {
  return <AboutUs />;

@@ -2,7 +2,7 @@
 
 import { IForm, IFormProps } from './Form.props';
 import { fadeInPopup, fadeInSpinner } from '@/utils/animations';
-import { Button, Input, Textarea } from '..';
+import { Button, Input, Textarea } from '@/app/components';
 import cn from 'classnames';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -22,10 +22,7 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
   reset,
  } = useForm<IForm>();
 
- const onSubmit: SubmitHandler<IForm> = (data): void => {
-  setIsSubmit(true);
-  setTimeout(() => setIsSubmit(false), 4000);
- };
+ const onSubmit: SubmitHandler<IForm> = (data): void => {};
 
  return (
   <>

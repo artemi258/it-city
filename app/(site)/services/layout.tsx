@@ -1,4 +1,4 @@
-import { Menu } from '@/components/Menu/Menu';
+import { Menu } from '../componentsPages';
 
 const ServicesLayout = ({ children }: { children: React.ReactNode }): JSX.Element => {
  return (

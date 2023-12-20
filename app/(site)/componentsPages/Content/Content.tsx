@@ -1,5 +1,5 @@
-import { Menu } from '@/components/Menu/Menu';
 import { IContentProps } from './Content.props';
+import { Menu } from '..';
 
 import styles from './Content.module.scss';
 

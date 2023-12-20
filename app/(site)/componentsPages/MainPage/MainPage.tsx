@@ -5,7 +5,8 @@ import { fadeInChildren, fadeInParent } from '@/utils/animations';
 import { Montserrat } from 'next/font/google';
 import { useState } from 'react';
 import Image from 'next/image';
-import { Button, Form } from '@/components';
+import { Form } from '..';
+import { Button } from '@/app/components';
 
 import arrow from './arrow.png';
 
@@ -58,7 +59,7 @@ export const MainPage = (): JSX.Element => {
      <Image priority src={arrow} alt='стрелка вниз' />
     </motion.div>
    </section>
-   <Form isPopupOpen={isPopupOpen} setPopupOpen={setPopupOpen} />
+   {/* <Form isPopupOpen={isPopupOpen} setPopupOpen={setPopupOpen} /> */}
   </>
  );
 };

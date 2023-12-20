@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Htag } from '..';
+import { Htag } from '@/app/components';
 import { IAboutUsProps } from './AboutUs.props';
 import { motion } from 'framer-motion';
 

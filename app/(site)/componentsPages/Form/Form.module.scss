@@ -1,0 +1,131 @@
+.popup {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ width: 500px;
+ z-index: 100;
+}
+
+.background {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ transition: all 0.5s linear;
+ z-index: 10;
+}
+
+.wrapper {
+ background-color: var(--light-blue);
+ border-radius: 5px;
+ padding: 20px 30px;
+}
+
+.form {
+ display: grid;
+ grid-template: auto repeat(4, auto) repeat(4, auto) / 1fr;
+ text-align: center;
+ grid-template-areas:
+  'title'
+  'inputName'
+  'inputPhone'
+  'inputEmail'
+  'textarea'
+  'politic'
+  'spinner'
+  'button'
+  'message';
+}
+
+.title {
+ grid-area: title;
+ font-size: 25px;
+ color: #ffffff;
+ margin-bottom: 10px;
+}
+
+.close {
+ position: absolute;
+ top: 0;
+ right: -45px;
+ height: 40px;
+ width: 40px;
+ font-size: 50px;
+ padding: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #ffffff;
+ cursor: pointer;
+}
+
+.input {
+ margin-bottom: 10px;
+}
+
+.inputName {
+ grid-area: inputName;
+}
+
+.inputPhone {
+ grid-area: inputPhone;
+}
+
+.inputEmail {
+ grid-area: inputEmail;
+}
+
+.textarea {
+ grid-area: textarea;
+ margin-bottom: 10px;
+}
+
+.spinner {
+ grid-area: spinner;
+ overflow: hidden;
+}
+
+.politic {
+ grid-area: politic;
+ display: flex;
+ align-items: center;
+ padding: 5px 0;
+}
+
+.text {
+ color: #ffffff;
+ cursor: pointer;
+}
+
+.link {
+ color: var(--blue);
+ margin-left: 5px;
+ text-decoration: underline;
+}
+
+.checkbox {
+ margin-right: 5px;
+}
+
+.button {
+ grid-area: button;
+ justify-self: center;
+ margin-top: 10px;
+}
+
+.message {
+ grid-area: message;
+ font-size: 22px;
+ margin-top: 10px;
+}
+
+.success {
+ color: rgb(101, 237, 101);
+ display: none;
+}
+
+.error {
+ color: rgb(249, 73, 73);
+ display: none;
+}
