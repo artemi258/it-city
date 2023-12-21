@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export interface IForm {
- name: string;
- phone: string;
- email: string;
- message: string;
- checkbox: boolean;
+ image: File;
+ category: string;
+ title: string;
+ description: string;
+ price: string;
 }
 
 export interface IFormProps {
