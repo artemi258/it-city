@@ -1,7 +1,7 @@
 export class CreateProductDto {
  category: string;
  title: string;
- description: number;
+ description: string;
  price: string;
  image: File;
 }
@@ -9,7 +9,7 @@ export class CreateProductDto {
 export interface IcreateProductService {
  category: string;
  title: string;
- description: number;
+ description: string;
  price: string;
  image: string;
 }

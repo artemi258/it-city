@@ -16,6 +16,7 @@ export class ProductController {
   @Body() dto: CreateProductDto,
   @UploadedFile() image: Express.Multer.File,
  ): Promise<ProductModel> {
+  console.log('AAAAAAAAAA', image);
   return await this.productService.create({ ...dto, image: image.buffer.toString('base64') });
  }
 
