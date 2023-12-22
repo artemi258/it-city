@@ -2,7 +2,7 @@ import { Body, Controller, Get, Patch, Post, UploadedFile, UseInterceptors } fro
 import { CreateProductDto } from './dto/createProduct.dto';
 import { ProductService } from './product.service';
 import { ProductModel } from './product.shema';
-import { GetProductDto } from './dto/getProduct.dto';
+import { GetProductsDto } from './dto/getProducts.dto';
 import { ChangeProductDto } from './dto/changeProduct.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -16,15 +16,28 @@ export class ProductController {
   @Body() dto: CreateProductDto,
   @UploadedFile() image: Express.Multer.File,
  ): Promise<ProductModel> {
-  console.log('AAAAAAAAAA', image);
-  return await this.productService.create({ ...dto, image: image.buffer.toString('base64') });
+  return await this.productService.createProduct({
+   ...dto,
+   image: image.buffer.toString('base64'),
+  });
  }
 
  @Get()
- async get(@Body() dto: GetProductDto): Promise<ProductModel[]> {
+ async get(@Body() dto: GetProductsDto): Promise<ProductModel[]> {
   return await this.productService.getProductsByCategory(dto);
  }
 
  @Patch()
- async changeProduct(@Body() dto: ChangeProductDto) {}
+ @UseInterceptors(FileInterceptor('image'))
+ async changeProduct(
+  @Body() dto: ChangeProductDto,
+  @UploadedFile() image: Express.Multer.File,
+ ): Promise<ProductModel> {
+  if (dto.image)
+   return await this.productService.changeProductById({
+    ...dto,
+    image: image.buffer.toString('base64'),
+   });
+  return await this.productService.changeProductById(dto);
+ }
 }

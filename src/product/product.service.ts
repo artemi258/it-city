@@ -3,7 +3,8 @@ import { ProductDocument, ProductModel } from './product.shema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { IcreateProductService } from './dto/createProduct.dto';
-import { GetProductDto } from './dto/getProduct.dto';
+import { GetProductsDto } from './dto/getProducts.dto';
+import { IchangeProductService } from './dto/changeProduct.dto';
 
 @Injectable()
 export class ProductService {
@@ -11,11 +12,15 @@ export class ProductService {
   @InjectModel(ProductModel.name) private readonly productModel: Model<ProductDocument>,
  ) {}
 
- async create(dto: IcreateProductService): Promise<ProductModel> {
+ async createProduct(dto: IcreateProductService): Promise<ProductModel> {
   return await this.productModel.create(dto);
  }
 
- async getProductsByCategory(category: GetProductDto): Promise<ProductModel[]> {
+ async getProductsByCategory(category: GetProductsDto): Promise<ProductModel[]> {
   return await this.productModel.find(category).lean().exec();
+ }
+
+ async changeProductById(product: IchangeProductService): Promise<ProductModel> {
+  return await this.productModel.findByIdAndUpdate().lean().exec();
  }
 }

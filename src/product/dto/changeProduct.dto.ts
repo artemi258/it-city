@@ -1,6 +1,17 @@
+import { ObjectId } from 'mongoose';
+
 export class ChangeProductDto {
- title: string;
- description: number;
- price: number;
- image: File;
+ id: ObjectId;
+ title?: string;
+ description?: number;
+ price?: number;
+ image?: File;
+}
+
+export interface IchangeProductService {
+ id: ObjectId;
+ title?: string;
+ description?: number;
+ price?: number;
+ image?: string | File;
 }
