@@ -8,8 +8,9 @@ services:
    - 3001:3001
   volumes:
    - ./:/app
+  command: npm run start:dev
   depends_on:
-      - mongo
+   - mongo
  mongo:
   image: mongo
   container_name: mongo
