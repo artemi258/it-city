@@ -18,7 +18,7 @@ export class ProductModel {
  price: string;
 
  @Prop({ require: true })
- image: Buffer;
+ image: string;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(ProductModel);
