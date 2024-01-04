@@ -1,6 +1,6 @@
 'use client';
 
-import { IForm, IFormProps } from './FormAdminPanel.props';
+import { IForm } from './FormAdminPanel.props';
 import { fadeInPopup, fadeInSpinner } from '@/utils/animations';
 import { Button, Input, Textarea } from '@/app/components';
 import cn from 'classnames';
@@ -12,8 +12,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import SpinnerIcon from './spinner.svg';
 
 import styles from './FormAdminPanel.module.scss';
+import { useFormStatus } from 'react-dom';
+import PostProduct from '../../../api/requests';
 
 const FormAdminPanel = (): JSX.Element => {
+ const { pending } = useFormStatus();
+
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
  const [isPopupOpen, setPopupOpen] = useState<boolean>(true);
 
@@ -25,37 +29,32 @@ const FormAdminPanel = (): JSX.Element => {
  } = useForm<IForm>();
 
  const onSubmit: SubmitHandler<IForm> = (data): void => {
-  setIsSubmit(true);
-  const formData = new FormData();
-  let key: keyof typeof data;
-  for (key in data) {
-   const file = data[key] as unknown as File[];
-   if (key === 'image') formData.append(key, file[0]);
-   formData.append(key, data[key]);
-  }
-  fetch('http://localhost:3001/api/product', {
-   method: 'POST',
-   body: formData,
-  }).then(() => setIsSubmit(false));
+  //    setIsSubmit(true);
+  //    const formData = new FormData();
+  //    let key: keyof typeof data;
+  //    for (key in data) {
+  //     const file = data[key] as unknown as File[];
+  //     if (key === 'image') formData.append(key, file[0]);
+  //     formData.append(key, data[key]);
+  //    }
+  //    fetch('http://localhost:3001/api/product', {
+  //     method: 'POST',
+  //     body: formData,
+  //    }).then(() => setIsSubmit(false));
  };
 
  return (
   <>
-   <motion.section className={styles.popup}>
+   <section className={styles.popup}>
     <div className={styles.wrapper}>
-     <motion.form
-      layout
-      transition={{ layout: { duration: 0.3 } }}
-      onSubmit={handleSubmit(onSubmit)}
-      className={styles.form}>
+     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <h2 className={styles.title}>Задайте свой вопрос</h2>
       <Input
        {...register('image', {
-        required: 'кириллица, без пробелов и без цифр, нет спецсимволов',
+        required: true,
        })}
        className={cn(styles.inputFile, styles.input)}
        type='file'
-       error={errors.image}
       />
       <Input
        {...register('category', {
@@ -93,7 +92,7 @@ const FormAdminPanel = (): JSX.Element => {
       />
       <motion.div
        initial={'hidden'}
-       animate={isSubmit ? 'visible' : 'hidden'}
+       animate={pending ? 'visible' : 'hidden'}
        variants={fadeInSpinner}
        className={styles.spinner}>
        <Image src={SpinnerIcon} alt='спиннер' />
@@ -101,9 +100,9 @@ const FormAdminPanel = (): JSX.Element => {
       <Button className={styles.button}>ОТПРАВИТЬ</Button>
       <div className={cn(styles.message, styles.success)}>Сообщение отправлено!</div>
       <div className={cn(styles.message, styles.error)}>Ошибка! Попробуйте в другой раз</div>
-     </motion.form>
+     </form>
     </div>
-   </motion.section>
+   </section>
   </>
  );
 };
