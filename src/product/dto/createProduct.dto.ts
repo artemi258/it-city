@@ -6,7 +6,7 @@ export class CreateProductDto {
  image: File;
 }
 
-export interface IcreateProductService {
+export interface ICreateProductService {
  category: string;
  title: string;
  description: string;

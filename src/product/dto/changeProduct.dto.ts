@@ -8,7 +8,7 @@ export class ChangeProductDto {
  image?: File;
 }
 
-export interface IchangeProductService {
+export interface IChangeProductService {
  id: ObjectId;
  title?: string;
  description?: number;
