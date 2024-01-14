@@ -1,0 +1,55 @@
+.productsAdminPanelItem {
+ display: grid;
+ position: relative;
+ grid-template: 200px 170px / 250px;
+ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ gap: 5px;
+ background-color: #fff;
+ border-radius: 5px;
+ color: var(--blue);
+}
+
+.btn {
+ position: absolute;
+ width: 20px;
+ height: 20px;
+ top: 0;
+ right: -20px;
+ background-color: transparent;
+ border: none;
+ cursor: pointer;
+ &:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ }
+ &:active {
+  box-shadow: none;
+ }
+}
+
+.wrapper {
+ display: grid;
+ grid-template: 40px 85px 30px / 240px;
+ padding: 0 5px 5px 5px;
+ gap: 5px;
+}
+
+.img {
+ position: relative;
+ img {
+  border-radius: 5px;
+ }
+}
+.title {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.descr {
+ text-align: start;
+ line-height: 18px;
+}
+.price {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+}

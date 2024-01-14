@@ -1,69 +1,77 @@
 'use client';
 
-import { IForm } from './FormAdminPanel.props';
-import { fadeInPopup, fadeInSpinner } from '@/utils/animations';
-import { Button, Input, Textarea } from '@/app/components';
+import { fadeInSpinner } from '@/utils/animations';
+import { Button, Input } from '@/app/components';
 import cn from 'classnames';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { PostProduct } from '@/app/api/requests';
+import { IProduct } from '@/interfaces/product';
 
 import SpinnerIcon from './spinner.svg';
 
 import styles from './FormAdminPanel.module.scss';
-import { useFormStatus } from 'react-dom';
-import PostProduct from '../../../api/requests';
 
-const FormAdminPanel = (): JSX.Element => {
- const { pending } = useFormStatus();
-
+export default function FormAdminPanel(): JSX.Element {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
- const [isPopupOpen, setPopupOpen] = useState<boolean>(true);
+ const [isSuccess, setIsSuccess] = useState<boolean>(false);
+ const [isError, setIsError] = useState<boolean>(false);
 
  const {
   register,
   handleSubmit,
   formState: { errors },
   reset,
- } = useForm<IForm>();
+ } = useForm<IProduct>();
 
- const onSubmit: SubmitHandler<IForm> = (data): void => {
-  //    setIsSubmit(true);
-  //    const formData = new FormData();
-  //    let key: keyof typeof data;
-  //    for (key in data) {
-  //     const file = data[key] as unknown as File[];
-  //     if (key === 'image') formData.append(key, file[0]);
-  //     formData.append(key, data[key]);
-  //    }
-  //    fetch('http://localhost:3001/api/product', {
-  //     method: 'POST',
-  //     body: formData,
-  //    }).then(() => setIsSubmit(false));
+ const imageConversion = (data: IProduct): Promise<string> => {
+  return new Promise((res, _rej) => {
+   const file = data['image'] as unknown as File[];
+   const fileReader = new FileReader();
+
+   fileReader.readAsDataURL(file[0]);
+   fileReader.onload = (): void => {
+    res(fileReader.result as string);
+   };
+  });
+ };
+
+ const onSubmit: SubmitHandler<IProduct> = async (data): Promise<void> => {
+  setIsSubmit(true);
+
+  const image = await imageConversion(data);
+  data.image = image;
+
+  PostProduct(data)
+   .then((res) => {
+    if (res.ok) {
+     setIsSuccess(true);
+     setTimeout(() => setIsSuccess(false), 4000);
+    } else {
+     throw new Error();
+    }
+   })
+   .catch(() => {
+    setIsError(true);
+    setTimeout(() => setIsError(false), 4000);
+   })
+   .finally(() => setIsSubmit(false));
  };
 
  return (
   <>
    <section className={styles.popup}>
-    <div className={styles.wrapper}>
+    <motion.div layout transition={{ layout: { duration: 0.3 } }} className={styles.wrapper}>
      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <h2 className={styles.title}>Задайте свой вопрос</h2>
       <Input
        {...register('image', {
         required: true,
        })}
-       className={cn(styles.inputFile, styles.input)}
+       className={cn(styles.inputImage, styles.input)}
        type='file'
-      />
-      <Input
-       {...register('category', {
-        required: 'кириллица, без пробелов и без цифр, нет спецсимволов',
-       })}
-       className={cn(styles.inputCategory, styles.input)}
-       type='text'
-       placeholder='Категория'
-       error={errors.category}
       />
       <Input
        {...register('title', {
@@ -71,7 +79,7 @@ const FormAdminPanel = (): JSX.Element => {
        })}
        className={cn(styles.inputTitle, styles.input)}
        type='text'
-       placeholder='заголовок'
+       placeholder='название'
        error={errors.title}
       />
       <Input
@@ -92,19 +100,19 @@ const FormAdminPanel = (): JSX.Element => {
       />
       <motion.div
        initial={'hidden'}
-       animate={pending ? 'visible' : 'hidden'}
+       animate={isSubmit ? 'visible' : 'hidden'}
        variants={fadeInSpinner}
        className={styles.spinner}>
        <Image src={SpinnerIcon} alt='спиннер' />
       </motion.div>
       <Button className={styles.button}>ОТПРАВИТЬ</Button>
-      <div className={cn(styles.message, styles.success)}>Сообщение отправлено!</div>
-      <div className={cn(styles.message, styles.error)}>Ошибка! Попробуйте в другой раз</div>
      </form>
-    </div>
+     {isSuccess && <div className={cn(styles.message, styles.success)}>Сообщение отправлено!</div>}
+     {isError && (
+      <div className={cn(styles.message, styles.error)}>Ошибка! Попробуйте в другой раз</div>
+     )}
+    </motion.div>
    </section>
   </>
  );
-};
-
-export default FormAdminPanel;
+}

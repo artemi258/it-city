@@ -16,7 +16,6 @@
  grid-template-areas:
   'title'
   'inputImage'
-  'inputCategory'
   'inputTitle'
   'inputDescription'
   'inputPrice'
@@ -38,10 +37,6 @@
 
 .inputImage {
  grid-area: inputImage;
-}
-
-.inputCategory {
- grid-area: inputCategory;
 }
 
 .inputTitle {
@@ -85,10 +80,10 @@
 
 .success {
  color: rgb(101, 237, 101);
- display: none;
+ text-align: center;
 }
 
 .error {
  color: rgb(249, 73, 73);
- display: none;
+ text-align: center;
 }
