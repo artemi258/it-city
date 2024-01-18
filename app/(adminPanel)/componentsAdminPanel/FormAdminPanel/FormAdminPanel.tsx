@@ -65,7 +65,7 @@ export default function FormAdminPanel(): JSX.Element {
    <section className={styles.popup}>
     <motion.div layout transition={{ layout: { duration: 0.3 } }} className={styles.wrapper}>
      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <h2 className={styles.title}>Задайте свой вопрос</h2>
+      <h2 className={styles.title}>Создать товар</h2>
       <Input
        {...register('image', {
         required: true,
