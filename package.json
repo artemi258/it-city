@@ -3,7 +3,8 @@
  "version": "0.1.0",
  "private": true,
  "scripts": {
-  "dev": "next dev && npx json-server post.json -p 3001",
+  "dev": "npm run server && next dev",
+  "server": "npx json-server db.json -p 3001",
   "build": "next build",
   "start": "next start",
   "lint": "next lint",
