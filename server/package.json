@@ -1,0 +1,13 @@
+{
+ "name": "parsingsite",
+ "version": "1.0.0",
+ "description": "",
+ "scripts": {
+  "server": "npx json-server db.json -p 3001"
+ },
+ "author": "",
+ "license": "ISC",
+ "dependencies": {
+  "json-server": "1.0.0-alpha.20"
+ }
+}
