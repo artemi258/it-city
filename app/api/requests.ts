@@ -9,7 +9,7 @@ export async function PostProduct(data: IForm): Promise<Response> {
   formData.append(key, data[key]);
  }
 
- return fetch(`${baseURL}products`, {
+ return fetch(`db.json/products`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data),
@@ -17,8 +17,8 @@ export async function PostProduct(data: IForm): Promise<Response> {
 }
 
 export const GetProducts = async () => {
- const res = await fetch(`${baseURL}products`, {
+ const res = await fetch(`db.json`, {
   method: 'GET',
- });
- return await res.json();
+ }).then((res) => res.json());
+ return await res.products;
 };

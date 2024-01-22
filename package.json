@@ -3,7 +3,7 @@
  "version": "0.1.0",
  "private": true,
  "scripts": {
-  "dev": "npm run server && next dev",
+  "dev": "next dev",
   "server": "npx json-server db.json -p 3001",
   "build": "next build",
   "start": "next start",
