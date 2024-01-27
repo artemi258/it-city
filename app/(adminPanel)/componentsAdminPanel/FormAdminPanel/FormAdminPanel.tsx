@@ -13,8 +13,9 @@ import { IProduct } from '@/interfaces/product';
 import SpinnerIcon from './spinner.svg';
 
 import styles from './FormAdminPanel.module.scss';
+import { IFormAdminPanelProps } from './FormAdminPanel.props';
 
-export default function FormAdminPanel(): JSX.Element {
+export default function FormAdminPanel({ path }: IFormAdminPanelProps): JSX.Element {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
  const [isSuccess, setIsSuccess] = useState<boolean>(false);
  const [isError, setIsError] = useState<boolean>(false);
@@ -26,24 +27,21 @@ export default function FormAdminPanel(): JSX.Element {
   reset,
  } = useForm<IProduct>();
 
- const imageConversion = (data: IProduct): Promise<string> => {
-  return new Promise((res, _rej) => {
-   const file = data['image'] as unknown as File[];
-   const fileReader = new FileReader();
+ //  const imageConversion = (data: IProduct): Promise<string> => {
+ //   return new Promise((res, _rej) => {
+ //    const file = data['image'] as unknown as File[];
+ //    const fileReader = new FileReader();
 
-   fileReader.readAsDataURL(file[0]);
-   fileReader.onload = (): void => {
-    res(fileReader.result as string);
-   };
-  });
- };
+ //    fileReader.readAsDataURL(file[0]);
+ //    fileReader.onload = (): void => {
+ //     res(fileReader.result as string);
+ //    };
+ //   });
+ //  };
 
  const onSubmit: SubmitHandler<IProduct> = async (data): Promise<void> => {
   setIsSubmit(true);
-
-  const image = await imageConversion(data);
-  data.image = image;
-
+  data.category = path;
   PostProduct(data)
    .then((res) => {
     if (res.ok) {

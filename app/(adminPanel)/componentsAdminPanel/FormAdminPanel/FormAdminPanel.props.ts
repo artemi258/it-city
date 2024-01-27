@@ -4,3 +4,7 @@ export interface IForm {
  description: string;
  price: string;
 }
+
+export interface IFormAdminPanelProps {
+ path: string;
+}
