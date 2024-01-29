@@ -1,16 +1,16 @@
 version: '3'
 services:
- server:
-  build: ./
-  container_name: server
-  restart: always
-  ports:
-   - 3001:3001
-  volumes:
-   - ./:/app
-  command: npm run start:dev
-  depends_on:
-   - mongo
+ #  server:
+ #   build: ./
+ #   container_name: server
+ #   restart: always
+ #   ports:
+ #    - 3001:3001
+ #   volumes:
+ #    - ./:/app
+ #   command: npm run start:dev
+ #   depends_on:
+ #    - mongo
  mongo:
   image: mongo
   container_name: mongo

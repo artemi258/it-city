@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Patch, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+ Body,
+ Controller,
+ Get,
+ Param,
+ Patch,
+ Post,
+ UploadedFile,
+ UseInterceptors,
+} from '@nestjs/common';
 import { CreateProductDto } from './dto/createProduct.dto';
 import { ProductService } from './product.service';
 import { ProductModel } from './product.shema';
@@ -18,13 +27,13 @@ export class ProductController {
  ): Promise<ProductModel> {
   return await this.productService.createProduct({
    ...dto,
-   image: image.buffer.toString('base64'),
+   image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
   });
  }
 
- @Get()
- async get(@Body() dto: GetProductsDto): Promise<ProductModel[]> {
-  return await this.productService.getProductsByCategory(dto);
+ @Get(':category')
+ async getAllProducts(@Param('category') category: string): Promise<any> {
+  return await this.productService.getProductsByCategory({ category });
  }
 
  @Patch()
@@ -36,7 +45,7 @@ export class ProductController {
   if (dto.image)
    return await this.productService.changeProductById({
     ...dto,
-    image: image.buffer.toString('base64'),
+    image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
    });
   return await this.productService.changeProductById(dto);
  }

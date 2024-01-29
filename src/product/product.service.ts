@@ -12,8 +12,8 @@ export class ProductService {
   @InjectModel(ProductModel.name) private readonly productModel: Model<ProductDocument>,
  ) {}
 
- async createProduct(dto: ICreateProductService): Promise<ProductModel> {
-  return await this.productModel.create(dto);
+ async createProduct(product: any): Promise<ProductModel> {
+  return await this.productModel.create(product);
  }
 
  async getProductsByCategory(category: GetProductsDto): Promise<ProductModel[]> {

@@ -17,8 +17,8 @@ export class ProductModel {
  @Prop({ require: true })
  price: string;
 
- @Prop({ require: true })
- image: string;
+ @Prop({ require: true, type: Object })
+ image: Object;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(ProductModel);
