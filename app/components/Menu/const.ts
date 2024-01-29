@@ -8,6 +8,11 @@ interface IServicesRoutes {
  href: string;
 }
 
+interface IAdminPanelRoutes {
+ title: string;
+ href: string;
+}
+
 const contentRoutes: IContentRoutes[] = [
  { title: 'О нас', href: '/' },
  { title: 'прайс на услуги', href: '/services' },
@@ -19,7 +24,13 @@ const servicesRoutes: IServicesRoutes[] = [
  { title: 'Ремонт компьютеров и ноутбуков', href: '/services/repairs' },
 ];
 
+const adminPanelRoutes: IAdminPanelRoutes[] = [
+ { title: 'Общие товары', href: '/adminPanel/general' },
+ { title: 'Канцелярия', href: '/adminPanel/stationery' },
+];
+
 export const routes = {
  content: contentRoutes,
  services: servicesRoutes,
+ adminPanel: adminPanelRoutes,
 };

@@ -1,19 +1,16 @@
-import type { Metadata } from 'next';
-import { Roboto_Mono } from 'next/font/google';
-import '@/public/style/globals.scss';
+'use client';
 
-const RobotoMono = Roboto_Mono({ subsets: ['cyrillic'], style: ['normal'] });
-
-export const metadata: Metadata = {
- title: 'Админ панель',
-};
+import { Menu } from '@/app/components';
+import { useState } from 'react';
+import FormAuth from '../componentsAdminPanel/FormAuth/FormAuth';
 
 export default function AdminPanelLayout({ children }: { children: React.ReactNode }): JSX.Element {
+ const [auth, setAuth] = useState<boolean>(false);
+
  return (
-  <html lang='ru'>
-   <body className={RobotoMono.className}>
-    <main className='container'>{children}</main>
-   </body>
-  </html>
+  <main className='container'>
+   {auth ? <Menu type='adminPanel' /> : null}
+   {auth ? children : <FormAuth cb={setAuth} />}
+  </main>
  );
 }

@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import { GetProducts } from '@/app/api/requests';
 import ProductsAdminPanelItem from './ProductsAdminPanelItem/ProductsAdminPanelItem';
 import { IProductWithId } from '@/interfaces/product';
-import { Button } from '@/app/components';
+import { Button, Htag } from '@/app/components';
 
 import styles from './ProductsAdminPanel.module.scss';
 import { motion } from 'framer-motion';
 import { fadeInChildren } from '@/utils/animations';
 import { IProductsAdminPanelProps } from './ProductsAdminPanel.props';
-import Skeleton from '../../../components/Skeleton/Skeleton';
+import Skeleton from '@/app/components/Skeleton/Skeleton';
 
 export default function ProductsAdminPanel({ path }: IProductsAdminPanelProps): JSX.Element {
  const [products, setProducts] = useState<IProductWithId[]>([]);
@@ -19,16 +19,19 @@ export default function ProductsAdminPanel({ path }: IProductsAdminPanelProps): 
 
  useEffect(() => {
   setLoading(true);
-  //   GetProducts(path).then((res) => {
-  //    setLoading(false);
-  //    setProducts(res);
-  //   });
+  GetProducts(path).then((res) => {
+   setLoading(false);
+   setProducts(res);
+  });
  }, []);
 
  const onclick = (): void => setQuantity((state) => state + 8);
 
  return (
   <div className={styles.productsAdminPanel}>
+   <Htag tag='h2' classn={styles.title}>
+    {path === 'general' ? 'Общие товары' : 'Канцелярия'}
+   </Htag>
    {loading ? (
     <Skeleton />
    ) : (
@@ -49,9 +52,7 @@ export default function ProductsAdminPanel({ path }: IProductsAdminPanelProps): 
      ))}
     </motion.ul>
    )}
-   {products.length - 1 <= quantity ? (
-    <span className={styles.text}>показаны все товары</span>
-   ) : (
+   {products.length - 1 <= quantity ? null : (
     <Button onClick={onclick} className={styles.btn}>
      еще
     </Button>

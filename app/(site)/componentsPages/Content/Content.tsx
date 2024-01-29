@@ -1,7 +1,7 @@
 import { IContentProps } from './Content.props';
-import { Menu } from '..';
 
 import styles from './Content.module.scss';
+import { Menu } from '@/app/components';
 
 export const Content = ({ children }: IContentProps): JSX.Element => {
  return (

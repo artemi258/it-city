@@ -16,7 +16,6 @@ export default function ProductsAdminPanelItem({
  image,
 }: IProductsAdminPanelItemProps): JSX.Element {
  const descr = description.length > 75 ? `${description.slice(0, 75)}...` : description;
- console.log(image);
  return (
   <>
    <li className={styles.productsAdminPanelItem} key={id}>

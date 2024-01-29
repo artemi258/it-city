@@ -1,5 +1,6 @@
 import { IForm } from '../(adminPanel)/componentsAdminPanel/FormAdminPanel/FormAdminPanel.props';
-import { IProductWithId } from '../../interfaces/product';
+import { IAuth } from '@/interfaces/auth';
+import { IProductWithId } from '@/interfaces/product';
 
 const baseURL = 'http://localhost:3001/';
 
@@ -24,6 +25,15 @@ export async function PostProduct(data: IForm): Promise<Response> {
 export const GetProducts = async (path: string): Promise<IProductWithId[]> => {
  const res = await fetch(`${baseURL}api/product/${path}`, {
   method: 'GET',
+ });
+ return await res.json();
+};
+
+export const Auth = async (data: IAuth): Promise<{ auth: boolean }> => {
+ const res = await fetch(`${baseURL}api/auth`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
  });
  return await res.json();
 };
