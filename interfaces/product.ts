@@ -7,5 +7,5 @@ export interface IProduct {
 }
 
 export interface IProductWithId extends IProduct {
- id: string;
+ _id: string;
 }

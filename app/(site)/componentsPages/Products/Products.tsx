@@ -1,17 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { GetProducts } from '@/app/api/requests';
-import ProductsAdminPanelItem from './ProductsAdminPanelItem/ProductsAdminPanelItem';
+import styles from './Products.module.scss';
+import { IProductsProps } from './Products.props';
 import { IProductWithId } from '@/interfaces/product';
+import { GetProducts } from '@/app/api/requests';
 import { Button, Htag, Skeleton } from '@/app/components';
 import { motion } from 'framer-motion';
 import { fadeInChildren } from '@/utils/animations';
-import { IProductsAdminPanelProps } from './ProductsAdminPanel.props';
 
-import styles from './ProductsAdminPanel.module.scss';
-
-export const ProductsAdminPanel = ({ path }: IProductsAdminPanelProps): JSX.Element => {
+export default function Products(props: IProductsProps): JSX.Element {
  const [products, setProducts] = useState<IProductWithId[]>([]);
  const [quantity, setQuantity] = useState<number>(8);
  const [loading, setLoading] = useState<boolean>(false);
@@ -27,7 +25,7 @@ export const ProductsAdminPanel = ({ path }: IProductsAdminPanelProps): JSX.Elem
  const onclick = (): void => setQuantity((state) => state + 8);
 
  return (
-  <div className={styles.productsAdminPanel}>
+  <div className={styles.products}>
    <Htag tag='h2' classn={styles.title}>
     {path === 'general' ? 'Общие товары' : 'Канцелярия'}
    </Htag>
@@ -39,14 +37,14 @@ export const ProductsAdminPanel = ({ path }: IProductsAdminPanelProps): JSX.Elem
      animate='visible'
      variants={fadeInChildren}
      className={styles.products}>
-     {products.slice(0, quantity).map(({ _id, title, description, price, image }) => (
+     {products.slice(0, quantity).map(({ id, title, description, price, image }) => (
       <ProductsAdminPanelItem
-       id={_id}
+       id={id}
        description={description}
        image={image}
        price={price}
        title={title}
-       key={_id}
+       key={id}
       />
      ))}
     </motion.ul>
@@ -58,4 +56,4 @@ export const ProductsAdminPanel = ({ path }: IProductsAdminPanelProps): JSX.Elem
    )}
   </div>
  );
-};
+}

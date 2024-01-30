@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -5,7 +7,7 @@ import plug from './plug.jpg';
 
 import styles from './Skeleton.module.scss';
 
-export default function Skeleton(): JSX.Element {
+export const Skeleton = (): JSX.Element => {
  const content = [];
 
  for (let index = 0; index < 8; index++) {
@@ -22,4 +24,4 @@ export default function Skeleton(): JSX.Element {
  }
 
  return <ul className={styles.skeleton}>{content}</ul>;
-}
+};

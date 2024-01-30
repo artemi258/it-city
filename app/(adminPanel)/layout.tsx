@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Roboto_Mono } from 'next/font/google';
-import { Menu } from '@/app/components';
 
 import '@/public/style/globals.scss';
 

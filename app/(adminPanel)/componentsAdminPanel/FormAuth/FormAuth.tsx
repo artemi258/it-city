@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import cn from 'classnames';
-import { IAuthorization, IFormAuthProps } from './FormAuth.props';
+import { IFormAuthProps } from './FormAuth.props';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Input } from '@/app/components';
 import { useState } from 'react';
@@ -11,8 +11,9 @@ import Image from 'next/image';
 import SpinnerIcon from './spinner.svg';
 
 import styles from './FormAuth.module.scss';
+import { IAuth } from './auth.interface';
 
-export default function FormAuth({ cb }: IFormAuthProps): JSX.Element {
+export const FormAuth = ({ cb }: IFormAuthProps): JSX.Element => {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
  const [isSuccess, setIsSuccess] = useState<boolean>(false);
  const [isError, setIsError] = useState<boolean>(false);
@@ -22,9 +23,9 @@ export default function FormAuth({ cb }: IFormAuthProps): JSX.Element {
   handleSubmit,
   formState: { errors },
   reset,
- } = useForm<IAuthorization>();
+ } = useForm<IAuth>();
 
- const onSubmit: SubmitHandler<IAuthorization> = async (data): Promise<void> => {
+ const onSubmit: SubmitHandler<IAuth> = async (data): Promise<void> => {
   setIsSubmit(true);
   Auth(data)
    .then((res) => {
@@ -88,4 +89,4 @@ export default function FormAuth({ cb }: IFormAuthProps): JSX.Element {
    </motion.div>
   </div>
  );
-}
+};

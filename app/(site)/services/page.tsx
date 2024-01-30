@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 
-const Cartridges = (): JSX.Element => {
+export default function Cartridges(): JSX.Element {
  return (
   <motion.div
    initial={{ opacity: 0 }}
@@ -145,6 +145,4 @@ const Cartridges = (): JSX.Element => {
    </div>
   </motion.div>
  );
-};
-
-export default Cartridges;
+}

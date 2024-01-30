@@ -16,6 +16,7 @@ interface IAdminPanelRoutes {
 const contentRoutes: IContentRoutes[] = [
  { title: 'О нас', href: '/' },
  { title: 'прайс на услуги', href: '/services' },
+ { title: 'магазин', href: '/shop' },
 ];
 
 const servicesRoutes: IServicesRoutes[] = [
@@ -25,7 +26,7 @@ const servicesRoutes: IServicesRoutes[] = [
 ];
 
 const adminPanelRoutes: IAdminPanelRoutes[] = [
- { title: 'Общие товары', href: '/adminPanel/general' },
+ { title: 'Общие товары', href: '/adminPanel' },
  { title: 'Канцелярия', href: '/adminPanel/stationery' },
 ];
 

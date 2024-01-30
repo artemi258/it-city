@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 
-const Printers = (): JSX.Element => {
+export default function Printers(): JSX.Element {
  return (
   <motion.div
    initial={{ opacity: 0 }}
@@ -85,6 +85,4 @@ const Printers = (): JSX.Element => {
    </div>
   </motion.div>
  );
-};
-
-export default Printers;
+}
