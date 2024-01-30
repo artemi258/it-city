@@ -29,7 +29,7 @@ export const ProductsAdminPanel = ({ path }: IProductsAdminPanelProps): JSX.Elem
  return (
   <div className={styles.productsAdminPanel}>
    <Htag tag='h2' classn={styles.title}>
-    {path === 'general' ? 'Общие товары' : 'Канцелярия'}
+    {path ? 'Канцелярия' : 'Общие товары'}
    </Htag>
    {loading ? (
     <Skeleton />

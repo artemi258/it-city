@@ -6,5 +6,5 @@ export interface IForm {
 }
 
 export interface IFormAdminPanelProps {
- path: string;
+ path?: string;
 }

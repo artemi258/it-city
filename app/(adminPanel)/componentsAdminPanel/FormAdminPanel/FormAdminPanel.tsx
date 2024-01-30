@@ -15,7 +15,7 @@ import SpinnerIcon from './spinner.svg';
 
 import styles from './FormAdminPanel.module.scss';
 
-export const FormAdminPanel = ({ path }: IFormAdminPanelProps): JSX.Element => {
+export const FormAdminPanel = ({ path = 'general' }: IFormAdminPanelProps): JSX.Element => {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
  const [isSuccess, setIsSuccess] = useState<boolean>(false);
  const [isError, setIsError] = useState<boolean>(false);
