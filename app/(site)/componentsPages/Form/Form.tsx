@@ -12,9 +12,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import SpinnerIcon from './spinner.svg';
 
 import styles from './Form.module.scss';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
+import { changePopupActive } from './formSlice';
 
-export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => {
+export const Form = (): JSX.Element => {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);
+ const dispatch = useAppDispatch();
+ const { popupActive } = useAppSelector((state) => state.popup);
  const {
   register,
   handleSubmit,
@@ -22,15 +26,19 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
   reset,
  } = useForm<IForm>();
 
+ const closePopup = (): void => {
+  dispatch(changePopupActive(false));
+ };
+
  const onSubmit: SubmitHandler<IForm> = (data): void => {};
 
  return (
   <>
    <motion.div
-    onClick={(): void => setPopupOpen((state) => !state)}
+    onClick={closePopup}
     initial={{ backgroundColor: '' }}
     animate={
-     isPopupOpen
+     popupActive
       ? { visibility: 'visible', backgroundColor: 'rgba(0, 0, 0, 0.5)' }
       : { visibility: 'hidden', backgroundColor: '' }
     }
@@ -38,14 +46,11 @@ export const Form = ({ isPopupOpen, setPopupOpen }: IFormProps): JSX.Element => 
 
    <motion.section
     initial={'hidden'}
-    animate={isPopupOpen ? 'visible' : 'hidden'}
+    animate={popupActive ? 'visible' : 'hidden'}
     variants={fadeInPopup}
     className={styles.popup}>
     <div className={styles.wrapper}>
-     <Button
-      onClick={(): void => setPopupOpen((state) => !state)}
-      type='button'
-      className={styles.close}>
+     <Button onClick={closePopup} type='button' className={styles.close}>
       ×
      </Button>
      <motion.form

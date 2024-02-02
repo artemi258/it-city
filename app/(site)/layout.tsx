@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Roboto_Mono } from 'next/font/google';
-import { Content, Header, MainPage } from './componentsPages';
+import { Content, Form, Header, MainPage } from './componentsPages';
 
 import '@/public/style/globals.scss';
+import StoreProvider from './StoreProvider';
 
 const RobotoMono = Roboto_Mono({ subsets: ['cyrillic'], style: ['normal'] });
 
@@ -18,8 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
    <body className={RobotoMono.className}>
     <Header />
     <main>
-     <MainPage />
-     <Content>{children}</Content>
+     <StoreProvider>
+      <MainPage />
+      <Content>{children}</Content>
+      <Form />
+     </StoreProvider>
     </main>
    </body>
   </html>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { GetProducts } from '@/app/api/requests';
+import { GetProducts } from '@/api/requests';
 import ProductsAdminPanelItem from './ProductsAdminPanelItem/ProductsAdminPanelItem';
 import { IProductWithId } from '@/interfaces/product';
 import { Button, Htag, Skeleton } from '@/app/components';

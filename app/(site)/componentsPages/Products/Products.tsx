@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import styles from './Products.module.scss';
 import { IProductsProps } from './Products.props';
 import { IProductWithId } from '@/interfaces/product';
-import { GetProducts } from '@/app/api/requests';
+import { GetProducts } from '@/api/requests';
 import { Button, Htag, Skeleton } from '@/app/components';
 import { motion } from 'framer-motion';
 import { fadeInChildren } from '@/utils/animations';

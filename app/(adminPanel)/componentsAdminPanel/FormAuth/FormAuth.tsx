@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Input } from '@/app/components';
 import { useState } from 'react';
 import { fadeInSpinner } from '@/utils/animations';
-import { Auth } from '@/app/api/requests';
+import { Auth } from '@/api/requests';
 import Image from 'next/image';
 
 import SpinnerIcon from './spinner.svg';

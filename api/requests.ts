@@ -1,4 +1,4 @@
-import { IForm } from '../(adminPanel)/componentsAdminPanel/FormAdminPanel/FormAdminPanel.props';
+import { IForm } from '../app/(adminPanel)/componentsAdminPanel/FormAdminPanel/FormAdminPanel.props';
 import { IAuth } from '@/app/(adminPanel)/componentsAdminPanel/FormAuth/auth.interface';
 import { IProductWithId } from '@/interfaces/product';
 

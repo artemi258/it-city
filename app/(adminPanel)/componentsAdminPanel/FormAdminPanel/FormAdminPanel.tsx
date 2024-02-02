@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { PostProduct } from '@/app/api/requests';
+import { PostProduct } from '@/api/requests';
 import { IProduct } from '@/interfaces/product';
 import { IFormAdminPanelProps } from './FormAdminPanel.props';
 

@@ -11,11 +11,18 @@ import { Button } from '@/app/components';
 import arrow from './arrow.png';
 
 import styles from './MainPage.module.scss';
+import { changePopupActive } from '../Form/formSlice';
+import { useAppDispatch } from '@/lib/hooks/hooks';
 
 const MontserratFont = Montserrat({ subsets: ['cyrillic'], style: ['normal'] });
 
 export const MainPage = (): JSX.Element => {
- const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
+ const dispatch = useAppDispatch();
+
+ const handleClick = (): void => {
+  dispatch(changePopupActive(true));
+ };
+
  return (
   <>
    <section className={styles.mainPage}>
@@ -42,10 +49,7 @@ export const MainPage = (): JSX.Element => {
        более 10 лет работы
       </motion.div>
 
-      <Button
-       onClick={(): void => setPopupOpen((state) => !state)}
-       variants={fadeInChildren}
-       className={styles.btn}>
+      <Button onClick={handleClick} variants={fadeInChildren} className={styles.btn}>
        Напишите нам
       </Button>
      </motion.div>
