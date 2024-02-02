@@ -15,7 +15,6 @@ export async function PostProduct(data: IForm): Promise<Response> {
   }
  }
  data.image = data.image[0];
- console.log(data.image);
  return fetch(`${baseURL}api/product`, {
   method: 'POST',
   body: formData,

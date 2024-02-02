@@ -27,23 +27,12 @@ export const FormAdminPanel = ({ path = 'general' }: IFormAdminPanelProps): JSX.
   reset,
  } = useForm<IProduct>();
 
- //  const imageConversion = (data: IProduct): Promise<string> => {
- //   return new Promise((res, _rej) => {
- //    const file = data['image'] as unknown as File[];
- //    const fileReader = new FileReader();
-
- //    fileReader.readAsDataURL(file[0]);
- //    fileReader.onload = (): void => {
- //     res(fileReader.result as string);
- //    };
- //   });
- //  };
-
  const onSubmit: SubmitHandler<IProduct> = async (data): Promise<void> => {
   setIsSubmit(true);
   data.category = path;
   PostProduct(data)
    .then((res) => {
+    console.log(res);
     if (res.ok) {
      setIsSuccess(true);
      setTimeout(() => setIsSuccess(false), 4000);
