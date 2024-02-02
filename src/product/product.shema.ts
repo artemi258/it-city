@@ -5,20 +5,28 @@ export type ProductDocument = HydratedDocument<ProductModel>;
 
 @Schema({ timestamps: true })
 export class ProductModel {
- @Prop({ require: true, index: true })
- category: string;
+ @Prop({ require: true, index: true, unique: true })
+ role: string;
 
  @Prop({ require: true })
- title: string;
-
- @Prop({ require: true })
- description: string;
-
- @Prop({ require: true })
- price: string;
-
- @Prop({ require: true, type: Object })
- image: Object;
+ salary: string;
 }
+// @Schema({ timestamps: true })
+// export class ProductModel {
+//  @Prop({ require: true, index: true })
+//  category: string;
+
+//  @Prop({ require: true })
+//  title: string;
+
+//  @Prop({ require: true })
+//  description: string;
+
+//  @Prop({ require: true })
+//  price: string;
+
+//  @Prop({ require: true, type: Object })
+//  image: Object;
+// }
 
 export const ProductSchema = SchemaFactory.createForClass(ProductModel);

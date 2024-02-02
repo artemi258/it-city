@@ -14,6 +14,7 @@ import { ProductModel } from './product.shema';
 import { GetProductsDto } from './dto/getProducts.dto';
 import { ChangeProductDto } from './dto/changeProduct.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { read, utils } from 'xlsx';
 
 @Controller('product')
 export class ProductController {
@@ -24,11 +25,15 @@ export class ProductController {
  async create(
   @Body() dto: CreateProductDto,
   @UploadedFile() image: Express.Multer.File,
- ): Promise<ProductModel> {
-  return await this.productService.createProduct({
-   ...dto,
-   image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
-  });
+ ): Promise<any> {
+  const wb = read(image.buffer);
+  console.log(utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+  const arr = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+  return await this.productService.createProduct(arr);
+  //   return await this.productService.createProduct({
+  //    ...dto,
+  //    image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
+  //   });
  }
 
  @Get(':category')
