@@ -1,3 +1,3 @@
 export class GetProductsDto {
- category: string;
+ категория: string;
 }

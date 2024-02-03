@@ -5,11 +5,14 @@ export type ProductDocument = HydratedDocument<ProductModel>;
 
 @Schema({ timestamps: true })
 export class ProductModel {
- @Prop({ require: true, index: true, unique: true })
- role: string;
+ @Prop({ require: true })
+ __EMPTY_1: string;
 
  @Prop({ require: true })
- salary: string;
+ 'Розничная цена': string;
+
+ @Prop({ require: true, index: true })
+ 'категория': string;
 }
 // @Schema({ timestamps: true })
 // export class ProductModel {

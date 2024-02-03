@@ -13,6 +13,8 @@ export class ProductService {
  ) {}
 
  async createProduct(product: any): Promise<any> {
+  console.log(product);
+
   await this.productModel.deleteMany({});
   return await this.productModel.insertMany(product);
  }

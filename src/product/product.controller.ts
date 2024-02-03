@@ -27,9 +27,20 @@ export class ProductController {
   @UploadedFile() image: Express.Multer.File,
  ): Promise<any> {
   const wb = read(image.buffer);
-  console.log(utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
-  const arr = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-  return await this.productService.createProduct(arr);
+  const products: object[] = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+  let category: string;
+  let subCategory: string;
+  const productsWithCategory = products.slice(2).map((prod, i, arr) => {
+   if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
+    category = prod['__EMPTY_1'];
+   } else if (Object.values(prod).length === 1) {
+    subCategory = prod['__EMPTY_1'];
+   }
+   return { ...prod, category, subCategory };
+  });
+  console.log(productsWithCategory);
+  //   console.log(products.slice(2));
+  //   return await this.productService.createProduct(productsWithCategory);
   //   return await this.productService.createProduct({
   //    ...dto,
   //    image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
@@ -38,7 +49,7 @@ export class ProductController {
 
  @Get(':category')
  async getAllProducts(@Param('category') category: string): Promise<any> {
-  return await this.productService.getProductsByCategory({ category });
+  return await this.productService.getProductsByCategory({ категория: category });
  }
 
  @Patch()
