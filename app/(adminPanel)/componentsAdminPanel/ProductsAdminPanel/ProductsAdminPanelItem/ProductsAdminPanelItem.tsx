@@ -15,7 +15,7 @@ export default function ProductsAdminPanelItem({
  price,
  image,
 }: IProductsAdminPanelItemProps): JSX.Element {
- const descr = description.length > 75 ? `${description.slice(0, 75)}...` : description;
+ //  const descr = description.length > 75 ? `${description.slice(0, 75)}...` : description;
  return (
   <>
    <li className={styles.productsAdminPanelItem} key={id}>
@@ -29,7 +29,7 @@ export default function ProductsAdminPanelItem({
      <Htag classn={styles.title} tag='h3'>
       {title}
      </Htag>
-     <p className={styles.descr}>{descr}</p>
+     {/* <p className={styles.descr}>{descr}</p> */}
      <div className={styles.price}>{price}₽</div>
     </div>
    </li>

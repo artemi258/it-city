@@ -11,8 +11,8 @@ export default function AdminPanelLayout({ children }: { children: React.ReactNo
   <main className='container'>
    <Menu type='adminPanel' />
    {children}
-   {auth ? <Menu type='adminPanel' /> : null}
-   {auth ? children : <FormAuth cb={setAuth} />}
+   {/* {auth ? <Menu type='adminPanel' /> : null}
+   {auth ? children : <FormAuth cb={setAuth} />} */}
   </main>
  );
 }
