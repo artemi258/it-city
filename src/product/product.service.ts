@@ -3,7 +3,6 @@ import { ProductDocument, ProductModel } from './product.shema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { ICreateProductService } from './dto/createProduct.dto';
-import { GetProductsDto } from './dto/getProducts.dto';
 import { IChangeProductService } from './dto/changeProduct.dto';
 
 @Injectable()
@@ -12,15 +11,26 @@ export class ProductService {
   @InjectModel(ProductModel.name) private readonly productModel: Model<ProductDocument>,
  ) {}
 
- async createProduct(product: any): Promise<any> {
-  console.log(product);
-
+ async createProducts(product: any): Promise<any> {
   await this.productModel.deleteMany({});
   return await this.productModel.insertMany(product);
  }
 
- async getProductsByCategory(category: GetProductsDto): Promise<ProductModel[]> {
-  return await this.productModel.find(category).lean().exec();
+ async getProductsBySubCategory(subCategory: string): Promise<ProductModel[]> {
+  return await this.productModel.find({ 'subCategory.latin': subCategory }).lean().exec();
+ }
+
+ async getCategories(key: string): Promise<
+  {
+   latin: string;
+   ru: string;
+  }[]
+ > {
+  return await this.productModel.distinct(key);
+ }
+
+ async getSubCategories(category: string): Promise<any> {
+  return await this.productModel.find({ 'category.latin': category }).distinct('subCategory');
  }
 
  async changeProductById(product: IChangeProductService): Promise<ProductModel> {

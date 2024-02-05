@@ -1,3 +1,4 @@
+import { ruToLatin } from '@/utils/ruToLatin';
 import {
  Body,
  Controller,
@@ -11,58 +12,65 @@ import {
 import { CreateProductDto } from './dto/createProduct.dto';
 import { ProductService } from './product.service';
 import { ProductModel } from './product.shema';
-import { GetProductsDto } from './dto/getProducts.dto';
 import { ChangeProductDto } from './dto/changeProduct.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { read, utils } from 'xlsx';
+import { IProducts } from './product.interface';
 
 @Controller('product')
 export class ProductController {
  constructor(private readonly productService: ProductService) {}
 
  @Post()
- @UseInterceptors(FileInterceptor('image'))
- async create(
-  @Body() dto: CreateProductDto,
-  @UploadedFile() image: Express.Multer.File,
- ): Promise<any> {
-  const wb = read(image.buffer);
-  const products: object[] = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-  let category: string;
-  let subCategory: string;
+ @UseInterceptors(FileInterceptor('exel'))
+ async create(@UploadedFile() exel: Express.Multer.File): Promise<any> {
+  const wb = read(exel.buffer);
+  const products: IProducts[] = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+  let category: {
+   latin: string;
+   ru: string;
+  };
+  let subCategory: {
+   latin: string;
+   ru: string;
+  };
   const productsWithCategory = products.slice(2).map((prod, i, arr) => {
    if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
-    category = prod['__EMPTY_1'];
+    category = {
+     latin: ruToLatin(prod['__EMPTY_1']),
+     ru: prod['__EMPTY_1'],
+    };
+    return null;
    } else if (Object.values(prod).length === 1) {
-    subCategory = prod['__EMPTY_1'];
+    subCategory = {
+     latin: ruToLatin(prod['__EMPTY_1']),
+     ru: prod['__EMPTY_1'],
+    };
+    return null;
    }
-   return { ...prod, category, subCategory };
+   return { descr: prod['__EMPTY_1'], price: prod['__EMPTY_3'], category, subCategory };
   });
-  console.log(productsWithCategory);
-  //   console.log(products.slice(2));
-  //   return await this.productService.createProduct(productsWithCategory);
-  //   return await this.productService.createProduct({
-  //    ...dto,
-  //    image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
-  //   });
+  const filteredProducts = productsWithCategory.filter((prod) => prod);
+  return await this.productService.createProducts(filteredProducts);
+  // return await this.productService.createProduct({
+  //  ...dto,
+  //  image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
+  // });
  }
 
- @Get(':category')
- async getAllProducts(@Param('category') category: string): Promise<any> {
-  return await this.productService.getProductsByCategory({ категория: category });
+ @Get('category')
+ async getCategory(): Promise<any> {
+  return await this.productService.getCategories('category');
  }
 
- @Patch()
- @UseInterceptors(FileInterceptor('image'))
- async changeProduct(
-  @Body() dto: ChangeProductDto,
-  @UploadedFile() image: Express.Multer.File,
- ): Promise<ProductModel> {
-  if (dto.image)
-   return await this.productService.changeProductById({
-    ...dto,
-    image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
-   });
-  return await this.productService.changeProductById(dto);
+ @Get('category/:category')
+ async getSubCategory(@Param() { category }: { category: string }): Promise<any> {
+  return await this.productService.getSubCategories(category);
+ }
+
+ @Get(':subCategory')
+ async getProducts(@Param() { subCategory }: { subCategory: string }): Promise<any> {
+  console.log(await this.productService.getProductsBySubCategory(subCategory));
+  return await this.productService.getProductsBySubCategory(subCategory);
  }
 }
