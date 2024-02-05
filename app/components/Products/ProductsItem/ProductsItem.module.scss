@@ -1,4 +1,4 @@
-.productsAdminPanelItem {
+.productsItem {
  display: grid;
  position: relative;
  grid-template: 200px 170px / 250px;
@@ -28,7 +28,7 @@
 
 .wrapper {
  display: grid;
- grid-template: 40px 85px 30px / 240px;
+ grid-template: 135px 25px / 240px;
  padding: 0 5px 5px 5px;
  gap: 5px;
 }
@@ -39,11 +39,7 @@
   border-radius: 5px;
  }
 }
-.title {
- display: flex;
- justify-content: center;
- align-items: center;
-}
+
 .descr {
  text-align: start;
  line-height: 18px;
@@ -52,4 +48,5 @@
  display: flex;
  justify-content: flex-end;
  align-items: center;
+ font-size: 18px;
 }

@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { PostProduct } from '@/api/requests';
-import { IProduct } from '@/interfaces/product';
+import { IProduct } from '@/interfaces/product.interface';
 import { IFormAdminPanelProps } from './FormAdminPanel.props';
 
 import SpinnerIcon from './spinner.svg';
@@ -29,6 +29,7 @@ export const FormAdminPanel = ({ path = 'general' }: IFormAdminPanelProps): JSX.
 
  const onSubmit: SubmitHandler<IProduct> = async (data): Promise<void> => {
   setIsSubmit(true);
+  console.log(data);
   data.category = path;
   PostProduct(data)
    .then((res) => {
@@ -53,7 +54,7 @@ export const FormAdminPanel = ({ path = 'general' }: IFormAdminPanelProps): JSX.
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
      <h2 className={styles.title}>Создать товар</h2>
      <Input
-      {...register('image', {
+      {...register('exel', {
        required: true,
       })}
       className={cn(styles.inputImage, styles.input)}

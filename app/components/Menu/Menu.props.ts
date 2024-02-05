@@ -1,3 +1,5 @@
+import { IMenu } from '@/interfaces/menu.interface';
+
 export interface IMenuProps {
- type: 'content' | 'services' | 'adminPanel';
+ menu: IMenu[];
 }

@@ -9,7 +9,7 @@ export default function AdminPanelLayout({ children }: { children: React.ReactNo
 
  return (
   <main className='container'>
-   <Menu type='adminPanel' />
+   {/* <Menu type='adminPanel' /> */}
    {children}
    {/* {auth ? <Menu type='adminPanel' /> : null}
    {auth ? children : <FormAuth cb={setAuth} />} */}

@@ -1,6 +1,6 @@
 'use client';
 
-import { IForm, IFormProps } from './Form.props';
+import { IForm, IFormProps } from './Popup.props';
 import { fadeInPopup, fadeInSpinner } from '@/utils/animations';
 import { Button, Input, Textarea } from '@/app/components';
 import cn from 'classnames';
@@ -11,9 +11,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import SpinnerIcon from './spinner.svg';
 
-import styles from './Form.module.scss';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
-import { changePopupActive } from './formSlice';
+import styles from './Popup.module.scss';
+import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
+import { changePopupActive } from './popupSlice';
 
 export const Form = (): JSX.Element => {
  const [isSubmit, setIsSubmit] = useState<boolean>(false);

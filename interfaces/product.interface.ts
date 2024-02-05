@@ -1,8 +1,6 @@
 export interface IProduct {
  image: string;
- category: string;
- title: string;
- description: string;
+ descr: string;
  price: string;
 }
 

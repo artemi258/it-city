@@ -1,0 +1,16 @@
+.products {
+ display: grid;
+ grid-template: repeat(2, auto) / 1fr;
+ gap: 10px;
+}
+
+.wrapper {
+ display: grid;
+ grid-template: 370px / repeat(auto-fit, 250px);
+ justify-content: space-around;
+ gap: 10px;
+}
+
+.btn {
+ justify-self: center;
+}

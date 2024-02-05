@@ -11,8 +11,8 @@ import { Button } from '@/app/components';
 import arrow from './arrow.png';
 
 import styles from './MainPage.module.scss';
-import { changePopupActive } from '../Form/formSlice';
-import { useAppDispatch } from '@/lib/hooks/hooks';
+import { changePopupActive } from '../../../components/Popup/popupSlice';
+import { useAppDispatch } from '@/hooks/store.hook';
 
 const MontserratFont = Montserrat({ subsets: ['cyrillic'], style: ['normal'] });
 

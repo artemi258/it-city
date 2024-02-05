@@ -1,5 +1,5 @@
 export interface IForm {
- image: string;
+ exel: string;
  title: string;
  description: string;
  price: string;

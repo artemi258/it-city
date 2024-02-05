@@ -1,0 +1,12 @@
+.skeleton {
+ display: grid;
+ grid-template: 100px / repeat(auto-fit, 120px);
+ justify-content: center;
+ gap: 10px;
+ margin-bottom: 30px;
+}
+
+.content {
+ border-radius: 5%;
+ background-color: #d8dfe7;
+}

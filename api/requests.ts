@@ -1,21 +1,43 @@
 import { IForm } from '../app/(adminPanel)/componentsAdminPanel/FormAdminPanel/FormAdminPanel.props';
 import { IAuth } from '@/app/(adminPanel)/componentsAdminPanel/FormAuth/auth.interface';
-import { IProductWithId } from '@/interfaces/product';
+import { IProductWithId } from '@/interfaces/product.interface';
+import { useHttp } from '@/hooks/http.hook';
 
-const baseURL = 'http://localhost:3001/';
+const baseURL = 'http://localhost:3001';
+const { request } = useHttp();
+
+export const API = {
+ product: {
+  getMenuShop: (): Promise<
+   {
+    latin: string;
+    ru: string;
+   }[]
+  > => request(`${baseURL}/api/product/category`),
+  getSubMenuShop: (
+   category: string,
+  ): Promise<
+   {
+    latin: string;
+    ru: string;
+   }[]
+  > => request(`${baseURL}/api/product/category/${category}`),
+  getProducts: (subCategory: string) => request(`${baseURL}/api/product/${subCategory}`),
+ },
+};
 
 export async function PostProduct(data: IForm): Promise<Response> {
  const formData = new FormData();
  let key: keyof typeof data;
  for (key in data) {
-  if (key === 'image') {
+  if (key === 'exel') {
    formData.append(key, data[key][0]);
   } else {
    formData.append(key, data[key]);
   }
  }
- data.image = data.image[0];
- return fetch(`${baseURL}api/product`, {
+ data.exel = data.exel[0];
+ return fetch(`${baseURL}/api/product`, {
   method: 'POST',
   body: formData,
  });
