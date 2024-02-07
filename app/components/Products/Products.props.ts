@@ -1,3 +1,3 @@
 export interface IProductsProps {
- subCategory: string;
+ category: string;
 }

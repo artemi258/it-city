@@ -1,9 +1,16 @@
-import { Menu, SubMenu } from '@/app/components';
+'use client';
+
+import { Htag, Menu, SubMenu } from '@/app/components';
 import { API } from '@/api/requests';
 import { IMenu } from '@/interfaces/menu.interface';
-import { redirect } from 'next/navigation';
 
-export default async function ShopLayout({ children }: { children: React.ReactNode }): JSX.Element {
+import styles from './layout.module.scss';
+
+export default async function ShopLayout({
+ children,
+}: {
+ children: React.ReactNode;
+}): Promise<JSX.Element> {
  const fetchingMenu = await API.product.getMenuShop();
  const menu: IMenu[] = fetchingMenu.map((m, i) => ({
   title: m.ru,
@@ -12,6 +19,9 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
 
  return (
   <>
+   <Htag classn={styles.title} tag='h2'>
+    Каталог
+   </Htag>
    <Menu menu={menu} />
    <SubMenu />
    {children}

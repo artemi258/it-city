@@ -2,10 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit/react';
 import { API } from '@/api/requests';
 import { IProductWithId } from '@/interfaces/product.interface';
 
-export const fetchProducts = createAsyncThunk(
- 'products/fetchProductsStatus',
+export const fetchProductsBySubCategory = createAsyncThunk(
+ 'products/fetchProductsBySubCategoryStatus',
  async (subCategory: string) => {
-  return await API.product.getProducts(subCategory);
+  return await API.product.getProductsBySubCategory(subCategory);
+ },
+);
+
+export const fetchgetProductsByCategory = createAsyncThunk(
+ 'products/fetchProductsByCategoryStatus',
+ async (category: string) => {
+  return await API.product.getProductsByCategory(category);
  },
 );
 
@@ -26,16 +33,27 @@ const ProductsSlice = createSlice({
  initialState,
  reducers: {},
  extraReducers: (builder) => {
-  builder.addCase(fetchProducts.pending, (state) => {
-   state.loading = true;
-  });
-  builder.addCase(fetchProducts.fulfilled, (state, action) => {
-   state.loading = false;
-   state.products = action.payload;
-  });
-  builder.addCase(fetchProducts.rejected, (state, action) => {
-   state.error = action.payload as string;
-  });
+  builder
+   .addCase(fetchProductsBySubCategory.pending, (state) => {
+    state.loading = true;
+   })
+   .addCase(fetchProductsBySubCategory.fulfilled, (state, action) => {
+    state.loading = false;
+    state.products = action.payload;
+   })
+   .addCase(fetchProductsBySubCategory.rejected, (state, action) => {
+    state.error = action.payload as string;
+   })
+   .addCase(fetchgetProductsByCategory.pending, (state) => {
+    state.loading = true;
+   })
+   .addCase(fetchgetProductsByCategory.fulfilled, (state, action) => {
+    state.loading = false;
+    state.products = action.payload;
+   })
+   .addCase(fetchgetProductsByCategory.rejected, (state, action) => {
+    state.error = action.payload as string;
+   });
  },
 });
 

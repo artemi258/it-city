@@ -1,20 +1,21 @@
 .menu {
  display: grid;
- grid-template: auto / repeat(auto-fit, 120px);
+ grid-template: minmax(70px, auto) / repeat(auto-fit, minmax(120px, 150px));
+ grid-auto-rows: minmax(50px, auto);
  justify-content: center;
  gap: 10px;
  margin-bottom: 30px;
 }
 
 .link {
- display: flex;
- justify-content: center;
+ display: grid;
+ justify-items: center;
  align-items: center;
- padding: 10px 20px;
+ text-align: center;
+ padding: 5px 10px;
  color: white;
  box-shadow: 3px 3px 10px black;
  background-color: var(--light-blue);
- text-align: center;
  border: none;
  font-weight: 700;
  border-radius: 5%;

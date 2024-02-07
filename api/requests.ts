@@ -14,6 +14,7 @@ export const API = {
     ru: string;
    }[]
   > => request(`${baseURL}/api/product/category`),
+
   getSubMenuShop: (
    category: string,
   ): Promise<
@@ -21,8 +22,13 @@ export const API = {
     latin: string;
     ru: string;
    }[]
-  > => request(`${baseURL}/api/product/category/${category}`),
-  getProducts: (subCategory: string) => request(`${baseURL}/api/product/${subCategory}`),
+  > => request(`${baseURL}/api/product/subCategory/${category}`),
+
+  getProductsBySubCategory: (subCategory: string) =>
+   request(`${baseURL}/api/product/bySubCategory/${subCategory}`),
+
+  getProductsByCategory: (category: string) =>
+   request(`${baseURL}/api/product/byCategory/${category}`),
  },
 };
 

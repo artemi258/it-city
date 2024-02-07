@@ -1,5 +1,5 @@
 import { Store, ThunkDispatch, UnknownAction, configureStore } from '@reduxjs/toolkit';
-import popup from '@/app/components/popup/popupSlice';
+import popup from '@/app/components/Popup/popupSlice';
 import products from '@/app/components/Products/ProductsSlice';
 
 export const makeStore = (): {

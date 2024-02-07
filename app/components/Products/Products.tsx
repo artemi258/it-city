@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IProductsProps } from './Products.props';
 import { IProductWithId } from '@/interfaces/product.interface';
 import { API, GetProducts } from '@/api/requests';
@@ -12,19 +12,30 @@ import styles from './Products.module.scss';
 import { ProductsItem } from './ProductsItem/ProductsItem';
 import { useParams } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/store.hook';
-import { IProductsState, fetchProducts } from './ProductsSlice';
+import {
+ IProductsState,
+ fetchProductsBySubCategory,
+ fetchgetProductsByCategory,
+} from './ProductsSlice';
 
 export const Products = (): JSX.Element => {
- const { subCategory } = useParams();
+ const { category, subCategory } = useParams();
  const dispatch = useAppDispatch();
  const { products, loading, error } = useAppSelector<IProductsState>((state) => state.products);
-
  useEffect(() => {
-  dispatch(fetchProducts(subCategory as string));
+  subCategory
+   ? dispatch(fetchProductsBySubCategory(subCategory as string))
+   : dispatch(fetchgetProductsByCategory(category as string));
  }, []);
 
+ const scrollTo = (ref: HTMLDivElement): void => {
+  if (ref && products.length) {
+   window.scrollBy(0, ref.getBoundingClientRect().top - 30);
+  }
+ };
+
  return (
-  <div className={styles.products}>
+  <div ref={scrollTo} className={styles.products}>
    {loading ? (
     <Skeleton />
    ) : (
