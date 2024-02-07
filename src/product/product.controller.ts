@@ -63,14 +63,19 @@ export class ProductController {
   return await this.productService.getCategories('category');
  }
 
- @Get('category/:category')
+ @Get('subCategory/:category')
  async getSubCategory(@Param() { category }: { category: string }): Promise<any> {
-  return await this.productService.getSubCategories(category);
+  const subCategories = await this.productService.getSubCategories(category);
+  return [{ ru: 'Все' }, ...subCategories];
  }
 
- @Get(':subCategory')
- async getProducts(@Param() { subCategory }: { subCategory: string }): Promise<any> {
-  console.log(await this.productService.getProductsBySubCategory(subCategory));
+ @Get('bySubCategory/:subCategory')
+ async getProductsBySubCategory(@Param() { subCategory }: { subCategory: string }): Promise<any> {
   return await this.productService.getProductsBySubCategory(subCategory);
+ }
+
+ @Get('byCategory/:category')
+ async getProductsByCategory(@Param() { category }: { category: string }): Promise<any> {
+  return await this.productService.getProductsByCategory(category);
  }
 }

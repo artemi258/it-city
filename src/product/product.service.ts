@@ -20,6 +20,10 @@ export class ProductService {
   return await this.productModel.find({ 'subCategory.latin': subCategory }).lean().exec();
  }
 
+ async getProductsByCategory(category: string): Promise<ProductModel[]> {
+  return await this.productModel.find({ 'category.latin': category }).lean().exec();
+ }
+
  async getCategories(key: string): Promise<
   {
    latin: string;
