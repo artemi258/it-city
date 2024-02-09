@@ -5,17 +5,23 @@ import { API } from '@/api/requests';
 import { IMenu } from '@/interfaces/menu.interface';
 
 import styles from './layout.module.scss';
+import { useEffect, useState } from 'react';
 
-export default async function ShopLayout({
- children,
-}: {
- children: React.ReactNode;
-}): Promise<JSX.Element> {
- const fetchingMenu = await API.product.getMenuShop();
- const menu: IMenu[] = fetchingMenu.map((m, i) => ({
-  title: m.ru,
-  href: `/shop/${m.latin}`,
- }));
+export default function ShopLayout({ children }: { children: React.ReactNode }): JSX.Element {
+ const [menu, setMenu] = useState<IMenu[]>([]);
+ const getMenu = async (): Promise<void> => {
+  const fetchingMenu = await API.product.getMenuShop();
+  setMenu(
+   fetchingMenu.map((m, i) => ({
+    title: m.ru,
+    href: `/shop/${m.latin}`,
+   })),
+  );
+ };
+
+ useEffect(() => {
+  getMenu();
+ }, []);
 
  return (
   <>

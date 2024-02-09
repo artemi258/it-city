@@ -2,17 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit/react';
 import { API } from '@/api/requests';
 import { IProductWithId } from '@/interfaces/product.interface';
 
-export const fetchProductsBySubCategory = createAsyncThunk(
+export const getProductsBySubCategory = createAsyncThunk(
  'products/fetchProductsBySubCategoryStatus',
- async (subCategory: string) => {
-  return await API.product.getProductsBySubCategory(subCategory);
+ async ({ subCategory, offset }: { subCategory: string; offset: number }) => {
+  return await API.product.getProductsBySubCategory({ subCategory, offset });
  },
 );
 
-export const fetchgetProductsByCategory = createAsyncThunk(
+export const getProductsByCategory = createAsyncThunk(
  'products/fetchProductsByCategoryStatus',
- async (category: string) => {
-  return await API.product.getProductsByCategory(category);
+ async ({ category, offset }: { category: string; offset: number }) => {
+  return await API.product.getProductsByCategory({ category, offset });
  },
 );
 
@@ -31,27 +31,31 @@ const initialState: IProductsState = {
 const ProductsSlice = createSlice({
  name: 'products',
  initialState,
- reducers: {},
+ reducers: {
+  clearProducts: (state) => {
+   state.products = [];
+  },
+ },
  extraReducers: (builder) => {
   builder
-   .addCase(fetchProductsBySubCategory.pending, (state) => {
+   .addCase(getProductsBySubCategory.pending, (state) => {
     state.loading = true;
    })
-   .addCase(fetchProductsBySubCategory.fulfilled, (state, action) => {
+   .addCase(getProductsBySubCategory.fulfilled, (state, action) => {
     state.loading = false;
-    state.products = action.payload;
+    state.products = [...state.products, ...action.payload];
    })
-   .addCase(fetchProductsBySubCategory.rejected, (state, action) => {
+   .addCase(getProductsBySubCategory.rejected, (state, action) => {
     state.error = action.payload as string;
    })
-   .addCase(fetchgetProductsByCategory.pending, (state) => {
+   .addCase(getProductsByCategory.pending, (state) => {
     state.loading = true;
    })
-   .addCase(fetchgetProductsByCategory.fulfilled, (state, action) => {
+   .addCase(getProductsByCategory.fulfilled, (state, action) => {
     state.loading = false;
-    state.products = action.payload;
+    state.products = [...state.products, ...action.payload];
    })
-   .addCase(fetchgetProductsByCategory.rejected, (state, action) => {
+   .addCase(getProductsByCategory.rejected, (state, action) => {
     state.error = action.payload as string;
    });
  },
@@ -59,6 +63,6 @@ const ProductsSlice = createSlice({
 
 const { reducer, actions } = ProductsSlice;
 
-// export const { changePopupActive } = actions;
+export const { clearProducts } = actions;
 
 export default reducer;

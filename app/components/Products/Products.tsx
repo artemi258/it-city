@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IProductsProps } from './Products.props';
 import { IProductWithId } from '@/interfaces/product.interface';
 import { API, GetProducts } from '@/api/requests';
@@ -14,46 +14,47 @@ import { useParams } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/store.hook';
 import {
  IProductsState,
- fetchProductsBySubCategory,
- fetchgetProductsByCategory,
+ clearProducts,
+ getProductsBySubCategory,
+ getProductsByCategory,
 } from './ProductsSlice';
 
 export const Products = (): JSX.Element => {
  const { category, subCategory } = useParams();
+ const [offset, setOffset] = useState<number>(0);
  const dispatch = useAppDispatch();
  const { products, loading, error } = useAppSelector<IProductsState>((state) => state.products);
- useEffect(() => {
-  subCategory
-   ? dispatch(fetchProductsBySubCategory(subCategory as string))
-   : dispatch(fetchgetProductsByCategory(category as string));
- }, []);
 
- const scrollTo = (ref: HTMLDivElement): void => {
-  if (ref && products.length) {
-   window.scrollBy(0, ref.getBoundingClientRect().top - 30);
-  }
+ useEffect(() => {
+  products.length && dispatch(clearProducts());
+  offset && setOffset(0);
+  subCategory
+   ? dispatch(getProductsBySubCategory({ subCategory: subCategory as string, offset: 0 }))
+   : dispatch(getProductsByCategory({ category: category as string, offset: 0 }));
+ }, [category, subCategory]);
+
+ const addingMoreProducts = (): void => {
+  setOffset((prev) => prev + 12);
+  subCategory
+   ? dispatch(getProductsBySubCategory({ subCategory: subCategory as string, offset: offset + 12 }))
+   : dispatch(getProductsByCategory({ category: category as string, offset: offset + 12 }));
  };
 
  return (
-  <div ref={scrollTo} className={styles.products}>
-   {loading ? (
-    <Skeleton />
-   ) : (
-    <motion.ul
-     initial='hidden'
-     animate='visible'
-     variants={fadeInChildren}
-     className={styles.wrapper}>
+  <div className={styles.products}>
+   {!!products.length && (
+    <ul className={styles.wrapper}>
      {products.map(({ _id, descr, price, image }) => (
       <ProductsItem id={_id} descr={descr} image={image} price={price} key={_id} />
      ))}
-    </motion.ul>
+    </ul>
    )}
-   {/* {products.length - 1 <= quantity ? null : (
-    <Button onClick={onclick} className={styles.btn}>
+   {loading && <Skeleton />}
+   {products.length < offset + 12 ? null : (
+    <Button onClick={addingMoreProducts} className={styles.btn}>
      еще
     </Button>
-   )} */}
+   )}
   </div>
  );
 };

@@ -24,15 +24,15 @@ export const API = {
    }[]
   > => request(`${baseURL}/api/product/subCategory/${category}`),
 
-  getProductsBySubCategory: (subCategory: string) =>
-   request(`${baseURL}/api/product/bySubCategory/${subCategory}`),
+  getProductsBySubCategory: ({ subCategory, offset }: { subCategory: string; offset: number }) =>
+   request(`${baseURL}/api/product/bySubCategory/${subCategory}?offset=${offset}&limit=12`),
 
-  getProductsByCategory: (category: string) =>
-   request(`${baseURL}/api/product/byCategory/${category}`),
+  getProductsByCategory: ({ category, offset }: { category: string; offset: number }) =>
+   request(`${baseURL}/api/product/byCategory/${category}?offset=${offset}&limit=12`),
  },
 };
 
-export async function PostProduct(data: IForm): Promise<Response> {
+export async function PostProduct(data: any): Promise<Response> {
  const formData = new FormData();
  let key: keyof typeof data;
  for (key in data) {
