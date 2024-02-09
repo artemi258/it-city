@@ -6,6 +6,7 @@ import {
  Param,
  Patch,
  Post,
+ Query,
  UploadedFile,
  UseInterceptors,
 } from '@nestjs/common';
@@ -15,7 +16,7 @@ import { ProductModel } from './product.shema';
 import { ChangeProductDto } from './dto/changeProduct.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { read, utils } from 'xlsx';
-import { IProducts } from './product.interface';
+import { ProductMenu, IProducts } from './product.interface';
 
 @Controller('product')
 export class ProductController {
@@ -23,17 +24,11 @@ export class ProductController {
 
  @Post()
  @UseInterceptors(FileInterceptor('exel'))
- async create(@UploadedFile() exel: Express.Multer.File): Promise<any> {
+ async create(@UploadedFile() exel: Express.Multer.File): Promise<ProductModel[]> {
   const wb = read(exel.buffer);
-  const products: IProducts[] = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-  let category: {
-   latin: string;
-   ru: string;
-  };
-  let subCategory: {
-   latin: string;
-   ru: string;
-  };
+  const products = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+  let category: ProductMenu;
+  let subCategory: ProductMenu;
   const productsWithCategory = products.slice(2).map((prod, i, arr) => {
    if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
     category = {
@@ -59,23 +54,29 @@ export class ProductController {
  }
 
  @Get('category')
- async getCategory(): Promise<any> {
+ async getCategory(): Promise<unknown[]> {
   return await this.productService.getCategories('category');
  }
 
  @Get('subCategory/:category')
- async getSubCategory(@Param() { category }: { category: string }): Promise<any> {
+ async getSubCategory(@Param() { category }: { category: string }): Promise<ProductMenu[]> {
   const subCategories = await this.productService.getSubCategories(category);
   return [{ ru: 'Все' }, ...subCategories];
  }
 
  @Get('bySubCategory/:subCategory')
- async getProductsBySubCategory(@Param() { subCategory }: { subCategory: string }): Promise<any> {
-  return await this.productService.getProductsBySubCategory(subCategory);
+ async getProductsBySubCategory(
+  @Param() { subCategory }: { subCategory: string },
+  @Query() { offset, limit }: { offset: number; limit: number },
+ ): Promise<ProductModel[]> {
+  return await this.productService.getProductsBySubCategory({ subCategory, offset, limit });
  }
 
  @Get('byCategory/:category')
- async getProductsByCategory(@Param() { category }: { category: string }): Promise<any> {
-  return await this.productService.getProductsByCategory(category);
+ async getProductsByCategory(
+  @Param() { category }: { category: string },
+  @Query() { offset, limit }: { offset: number; limit: number },
+ ): Promise<ProductModel[]> {
+  return await this.productService.getProductsByCategory({ category, offset, limit });
  }
 }

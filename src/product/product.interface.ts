@@ -1,6 +1,14 @@
+import { ObjectId } from 'mongoose';
+
 export interface IProducts {
- title: string;
+ _id: ObjectId;
+ descr: string;
  price: string;
- category: string;
- subCategory: string;
+ category: ProductMenu[];
+ subCategory: ProductMenu[];
+}
+
+export class ProductMenu {
+ latin?: string;
+ ru: string;
 }
