@@ -44,8 +44,8 @@ export const Products = (): JSX.Element => {
   <div className={styles.products}>
    {!!products.length && (
     <ul className={styles.wrapper}>
-     {products.map(({ _id, descr, price, image }) => (
-      <ProductsItem id={_id} descr={descr} image={image} price={price} key={_id} />
+     {products.map(({ _id, name, price, image }) => (
+      <ProductsItem id={_id} name={name} image={image} price={price} key={_id} />
      ))}
     </ul>
    )}

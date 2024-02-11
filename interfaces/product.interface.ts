@@ -1,8 +1,7 @@
 export interface IProduct {
- image: string;
- descr: string;
+ name: string;
  price: string;
- category: string;
+ image: string;
 }
 
 export interface IProductWithId extends IProduct {

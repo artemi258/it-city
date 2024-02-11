@@ -10,7 +10,7 @@ import { fadeInChildren } from '../../../../utils/animations';
 
 import styles from './ProductsItem.module.scss';
 
-export const ProductsItem = ({ id, descr, price, image }: IProductsItemProps): JSX.Element => {
+export const ProductsItem = ({ id, name, price, image }: IProductsItemProps): JSX.Element => {
  return (
   <motion.li
    initial='hidden'
@@ -19,10 +19,10 @@ export const ProductsItem = ({ id, descr, price, image }: IProductsItemProps): J
    className={styles.productsItem}
    key={id}>
    <div className={styles.img}>
-    <Image fill src={image ? image : plug} alt={descr} />
+    <Image fill src={image ? image : plug} alt={name} />
    </div>
    <div className={styles.wrapper}>
-    <p className={styles.descr}>{descr}</p>
+    <p className={styles.descr}>{name}</p>
     <div className={styles.price}>{price}₽</div>
    </div>
   </motion.li>

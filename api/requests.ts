@@ -34,15 +34,9 @@ export const API = {
 
 export async function PostProduct(data: any): Promise<Response> {
  const formData = new FormData();
- let key: keyof typeof data;
- for (key in data) {
-  if (key === 'exel') {
-   formData.append(key, data[key][0]);
-  } else {
-   formData.append(key, data[key]);
-  }
- }
- data.exel = data.exel[0];
+
+ formData.append('exel', data['exel'][0]);
+
  return fetch(`${baseURL}/api/product`, {
   method: 'POST',
   body: formData,
