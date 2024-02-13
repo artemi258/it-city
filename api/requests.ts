@@ -24,11 +24,31 @@ export const API = {
    }[]
   > => request(`${baseURL}/api/product/subCategory/${category}`),
 
-  getProductsBySubCategory: ({ subCategory, offset }: { subCategory: string; offset: number }) =>
+  getProductsBySubCategory: ({
+   subCategory,
+   offset,
+  }: {
+   subCategory: string;
+   offset: number;
+  }): Promise<IProductWithId[]> =>
    request(`${baseURL}/api/product/bySubCategory/${subCategory}?offset=${offset}&limit=12`),
 
-  getProductsByCategory: ({ category, offset }: { category: string; offset: number }) =>
+  getProductsByCategory: ({
+   category,
+   offset,
+  }: {
+   category: string;
+   offset: number;
+  }): Promise<IProductWithId[]> =>
    request(`${baseURL}/api/product/byCategory/${category}?offset=${offset}&limit=12`),
+  searchProduct: ({
+   value,
+   category,
+  }: {
+   value: string;
+   category: string;
+  }): Promise<IProductWithId[]> =>
+   request(`${baseURL}/api/product/search/${category}/?text=${value}`),
  },
 };
 

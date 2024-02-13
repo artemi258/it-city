@@ -7,3 +7,4 @@ export * from './Menu/SubMenu';
 export * from './Skeleton/Skeleton';
 export * from './SkeletonMenu/SkeletonMenu';
 export * from './Products/Products';
+export * from './Search/Search';

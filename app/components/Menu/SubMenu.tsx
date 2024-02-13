@@ -12,6 +12,7 @@ import { SkeletonMenu } from '..';
 import styles from './Menu.module.scss';
 export const SubMenu = ({ menu }: Partial<IMenuProps>): JSX.Element => {
  const { category } = useParams();
+ const pathname = usePathname();
  const [loading, setLoading] = useState<boolean>(false);
  const [subCategories, setSubCategories] = useState<{ latin: string; ru: string }[]>([]);
 
@@ -33,7 +34,6 @@ export const SubMenu = ({ menu }: Partial<IMenuProps>): JSX.Element => {
     }))
   : menu;
 
- const pathname = usePathname();
  return (
   <>
    {loading && <SkeletonMenu />}

@@ -1,13 +1,16 @@
 'use client';
 
-import { Htag, Menu, SubMenu } from '@/app/components';
+import { Htag, Menu, Search, SubMenu } from '@/app/components';
 import { API } from '@/api/requests';
 import { IMenu } from '@/interfaces/menu.interface';
-
-import styles from './layout.module.scss';
 import { useEffect, useState } from 'react';
 
+import styles from './layout.module.scss';
+import { useParams } from 'next/navigation';
+
 export default function ShopLayout({ children }: { children: React.ReactNode }): JSX.Element {
+ const { category, subCategory } = useParams();
+
  const [menu, setMenu] = useState<IMenu[]>([]);
  const getMenu = async (): Promise<void> => {
   const fetchingMenu = await API.product.getMenuShop();
@@ -29,7 +32,8 @@ export default function ShopLayout({ children }: { children: React.ReactNode }):
     Каталог
    </Htag>
    <Menu menu={menu} />
-   <SubMenu />
+   {(category || subCategory) && <SubMenu />}
+   {category && !subCategory && <Search />}
    {children}
   </>
  );

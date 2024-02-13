@@ -8,9 +8,6 @@
  input {
   width: 100%;
  }
- &::placeholder {
-  text-align: center;
- }
  &:focus {
   outline: none;
   border-color: var(--azure);

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit/react';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit/react';
 import { API } from '@/api/requests';
 import { IProductWithId } from '@/interfaces/product.interface';
 
@@ -13,6 +13,13 @@ export const getProductsByCategory = createAsyncThunk(
  'products/fetchProductsByCategoryStatus',
  async ({ category, offset }: { category: string; offset: number }) => {
   return await API.product.getProductsByCategory({ category, offset });
+ },
+);
+
+export const getProductsBySearch = createAsyncThunk(
+ 'products/fetchProductsBySearchStatus',
+ async ({ value, category }: { value: string; category: string }) => {
+  return await API.product.searchProduct({ category, value });
  },
 );
 
@@ -34,6 +41,9 @@ const ProductsSlice = createSlice({
  reducers: {
   clearProducts: (state) => {
    state.products = [];
+  },
+  addProducts: (state, action: PayloadAction<IProductWithId[]>) => {
+   state.products = action.payload;
   },
  },
  extraReducers: (builder) => {
@@ -57,12 +67,22 @@ const ProductsSlice = createSlice({
    })
    .addCase(getProductsByCategory.rejected, (state, action) => {
     state.error = action.payload as string;
+   })
+   .addCase(getProductsBySearch.pending, (state) => {
+    state.loading = true;
+   })
+   .addCase(getProductsBySearch.fulfilled, (state, action) => {
+    state.loading = false;
+    state.products = action.payload;
+   })
+   .addCase(getProductsBySearch.rejected, (state, action) => {
+    state.error = action.payload as string;
    });
  },
 });
 
 const { reducer, actions } = ProductsSlice;
 
-export const { clearProducts } = actions;
+export const { addProducts, clearProducts } = actions;
 
 export default reducer;

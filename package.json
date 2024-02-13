@@ -8,8 +8,7 @@
   "build": "next build",
   "start": "next start",
   "lint": "next lint",
-  "component": "npx generate-react-cli component",
-  "componentPage": "npx generate-react-cli page"
+  "component": "npx generate-react-cli component"
  },
  "dependencies": {
   "@reduxjs/toolkit": "2.1.0",
