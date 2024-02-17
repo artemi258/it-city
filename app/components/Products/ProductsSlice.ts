@@ -4,22 +4,22 @@ import { IProductWithId } from '@/interfaces/product.interface';
 
 export const getProductsBySubCategory = createAsyncThunk(
  'products/fetchProductsBySubCategoryStatus',
- async ({ subCategory, offset }: { subCategory: string; offset: number }) => {
-  return await API.product.getProductsBySubCategory({ subCategory, offset });
+ ({ subCategory, offset }: { subCategory: string; offset: number }) => {
+  return API.product.getProductsBySubCategory({ subCategory, offset });
  },
 );
 
 export const getProductsByCategory = createAsyncThunk(
  'products/fetchProductsByCategoryStatus',
- async ({ category, offset }: { category: string; offset: number }) => {
-  return await API.product.getProductsByCategory({ category, offset });
+ ({ category, offset }: { category: string; offset: number }) => {
+  return API.product.getProductsByCategory({ category, offset });
  },
 );
 
 export const getProductsBySearch = createAsyncThunk(
  'products/fetchProductsBySearchStatus',
- async ({ value, category }: { value: string; category: string }) => {
-  return await API.product.searchProduct({ category, value });
+ ({ value, category }: { value: string; category: string }) => {
+  return API.product.searchProduct({ category, value });
  },
 );
 
@@ -66,6 +66,7 @@ const ProductsSlice = createSlice({
     state.products = [...state.products, ...action.payload];
    })
    .addCase(getProductsByCategory.rejected, (state, action) => {
+    console.log('ERROR', action);
     state.error = action.payload as string;
    })
    .addCase(getProductsBySearch.pending, (state) => {
