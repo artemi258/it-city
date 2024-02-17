@@ -17,7 +17,7 @@ export class ProductService {
   return await this.productModel.insertMany(products);
  }
 
- async getProductsBySubCategory({
+ async findProductsBySubCategory({
   subCategory,
   offset,
   limit,
@@ -34,7 +34,7 @@ export class ProductService {
    .exec();
  }
 
- async getProductsByCategory({
+ async findProductsByCategory({
   category,
   offset,
   limit,
@@ -51,19 +51,22 @@ export class ProductService {
    .exec();
  }
 
- async getCategories(key: string): Promise<unknown[]> {
+ async findAllCategories(key: string): Promise<unknown[]> {
   return await this.productModel.distinct(key).lean().exec();
  }
 
- async getSubCategories(category: string): Promise<ProductMenu[]> {
+ async findAllSubCategories(category: string): Promise<ProductMenu[]> {
   return await this.productModel
    .find({ 'category.latin': category })
    .distinct('subCategory')
    .lean()
    .exec();
  }
-
- //  async changeProductById(product: IChangeProductService): Promise<ProductModel> {
- //   return await this.productModel.findByIdAndUpdate(product.id, product).lean().exec();
- //  }
+ async findProductsByName({ category, text }: { category: string; text: string }) {
+  return await this.productModel
+   .find({ 'category.latin': category, name: new RegExp(`.*${text}.*`, 'i') })
+   .limit(10)
+   .lean()
+   .exec();
+ }
 }

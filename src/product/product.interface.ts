@@ -1,3 +1,4 @@
+import { Prop } from '@nestjs/mongoose';
 import { ObjectId } from 'mongoose';
 
 export interface IProducts {
@@ -9,6 +10,8 @@ export interface IProducts {
 }
 
 export class ProductMenu {
+ @Prop()
  latin?: string;
+ @Prop()
  ru: string;
 }

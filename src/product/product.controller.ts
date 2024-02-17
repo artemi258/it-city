@@ -43,7 +43,7 @@ export class ProductController {
     };
     return null;
    }
-   return { descr: prod['__EMPTY_1'], price: prod['__EMPTY_3'], category, subCategory };
+   return { name: prod['__EMPTY_1'], price: prod['__EMPTY_3'], category, subCategory };
   });
   const filteredProducts = productsWithCategory.filter((prod) => prod);
   return await this.productService.createProducts(filteredProducts);
@@ -54,13 +54,13 @@ export class ProductController {
  }
 
  @Get('category')
- async getCategory(): Promise<unknown[]> {
-  return await this.productService.getCategories('category');
+ async getCategories(): Promise<unknown[]> {
+  return await this.productService.findAllCategories('category');
  }
 
  @Get('subCategory/:category')
  async getSubCategory(@Param() { category }: { category: string }): Promise<ProductMenu[]> {
-  const subCategories = await this.productService.getSubCategories(category);
+  const subCategories = await this.productService.findAllSubCategories(category);
   return [{ ru: 'Все' }, ...subCategories];
  }
 
@@ -69,7 +69,7 @@ export class ProductController {
   @Param() { subCategory }: { subCategory: string },
   @Query() { offset, limit }: { offset: number; limit: number },
  ): Promise<ProductModel[]> {
-  return await this.productService.getProductsBySubCategory({ subCategory, offset, limit });
+  return await this.productService.findProductsBySubCategory({ subCategory, offset, limit });
  }
 
  @Get('byCategory/:category')
@@ -77,6 +77,11 @@ export class ProductController {
   @Param() { category }: { category: string },
   @Query() { offset, limit }: { offset: number; limit: number },
  ): Promise<ProductModel[]> {
-  return await this.productService.getProductsByCategory({ category, offset, limit });
+  return await this.productService.findProductsByCategory({ category, offset, limit });
+ }
+
+ @Get('search/:category')
+ searchProduct(@Param() { category }: { category: string }, @Query() { text }: { text: string }) {
+  return this.productService.findProductsByName({ category, text });
  }
 }
