@@ -5,8 +5,8 @@ import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getMongoConfig } from './configs/mongo.config';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+import { ServiceModule } from './service/service.module';
 
 @Module({
  imports: [
@@ -15,11 +15,13 @@ import { AuthModule } from './auth/auth.module';
    useFactory: getMongoConfig,
    inject: [ConfigService],
   }),
-  ConfigModule.forRoot({ isGlobal: true }),
+  ConfigModule.forRoot(),
   ProductModule,
   AuthModule,
+  ServiceModule,
  ],
- controllers: [AppController, AuthController],
+ exports: [ConfigModule],
+ controllers: [AppController],
  providers: [AppService],
 })
 export class AppModule {}

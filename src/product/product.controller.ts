@@ -16,7 +16,7 @@ import { ProductModel } from './product.shema';
 import { ChangeProductDto } from './dto/changeProduct.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { read, utils } from 'xlsx';
-import { ProductMenu, IProducts } from './product.interface';
+import { ProductCategory, IProducts } from './product.interface';
 
 @Controller('product')
 export class ProductController {
@@ -27,8 +27,8 @@ export class ProductController {
  async create(@UploadedFile() exel: Express.Multer.File): Promise<ProductModel[]> {
   const wb = read(exel.buffer);
   const products = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-  let category: ProductMenu;
-  let subCategory: ProductMenu;
+  let category: ProductCategory;
+  let subCategory: ProductCategory;
   const productsWithCategory = products.slice(2).map((prod, i, arr) => {
    if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
     category = {
@@ -59,7 +59,7 @@ export class ProductController {
  }
 
  @Get('subCategory/:category')
- async getSubCategory(@Param() { category }: { category: string }): Promise<ProductMenu[]> {
+ async getSubCategory(@Param() { category }: { category: string }): Promise<ProductCategory[]> {
   const subCategories = await this.productService.findAllSubCategories(category);
   return [{ ru: 'Все' }, ...subCategories];
  }
@@ -81,7 +81,10 @@ export class ProductController {
  }
 
  @Get('search/:category')
- searchProduct(@Param() { category }: { category: string }, @Query() { text }: { text: string }) {
+ searchProduct(
+  @Param() { category }: { category: string },
+  @Query() { text }: { text: string },
+ ): Promise<ProductModel[]> {
   return this.productService.findProductsByName({ category, text });
  }
 }

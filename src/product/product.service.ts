@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { ICreateProductService } from './dto/createProduct.dto';
 import { IChangeProductService } from './dto/changeProduct.dto';
-import { ProductMenu, IProducts } from './product.interface';
+import { ProductCategory, IProducts } from './product.interface';
 
 @Injectable()
 export class ProductService {
@@ -55,14 +55,20 @@ export class ProductService {
   return await this.productModel.distinct(key).lean().exec();
  }
 
- async findAllSubCategories(category: string): Promise<ProductMenu[]> {
+ async findAllSubCategories(category: string): Promise<ProductCategory[]> {
   return await this.productModel
    .find({ 'category.latin': category })
    .distinct('subCategory')
    .lean()
    .exec();
  }
- async findProductsByName({ category, text }: { category: string; text: string }) {
+ async findProductsByName({
+  category,
+  text,
+ }: {
+  category: string;
+  text: string;
+ }): Promise<ProductModel[]> {
   return await this.productModel
    .find({ 'category.latin': category, name: new RegExp(`.*${text}.*`, 'i') })
    .limit(10)

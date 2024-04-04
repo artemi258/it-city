@@ -5,11 +5,11 @@ export interface IProducts {
  _id: ObjectId;
  descr: string;
  price: string;
- category: ProductMenu[];
- subCategory: ProductMenu[];
+ category: ProductCategory[];
+ subCategory: ProductCategory[];
 }
 
-export class ProductMenu {
+export class ProductCategory {
  @Prop()
  latin?: string;
  @Prop()
