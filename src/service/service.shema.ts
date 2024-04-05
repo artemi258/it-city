@@ -19,7 +19,10 @@ export class ServiceModel {
  category: ServiceCategory;
 
  @Prop()
- subCategory: ServiceCategory;
+ secondLevelCategory: string;
+
+ @Prop()
+ thirdLevelCategory: string;
 }
 
 export const ServiceSchema = SchemaFactory.createForClass(ServiceModel);

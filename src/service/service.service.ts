@@ -14,4 +14,12 @@ export class ServiceService {
   await this.serviceModel.deleteMany({});
   return await this.serviceModel.insertMany(services);
  }
+
+ async findAllCategories(key: string): Promise<unknown[]> {
+  return await this.serviceModel.distinct(key).lean().exec();
+ }
+
+ async findServicesByCategory(category: string): Promise<unknown[]> {
+  return await this.serviceModel.find({ 'category.latin': category }).lean().exec();
+ }
 }

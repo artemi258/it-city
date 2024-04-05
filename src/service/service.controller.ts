@@ -1,4 +1,4 @@
-import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Post, Get, UseInterceptors, UploadedFile, Param } from '@nestjs/common';
 import { ServiceService } from './service.service';
 import { FileInterceptor } from '@nestjs/platform-express/multer/interceptors/file.interceptor';
 import { read, utils } from 'xlsx';
@@ -14,15 +14,26 @@ export class ServiceController {
   const wb = read(exel.buffer);
   const categories = wb.SheetNames;
   const services = [];
-  let brand;
-  let subCategory;
+  let brand: string;
+  let secondLevelCategory: string;
+  let thirdLevelCategory: string;
   for (let i = 0; i < categories.length; i++) {
-   const currentService: { [key: string]: unknown }[] = utils.sheet_to_json(
+   secondLevelCategory = null;
+   const currentService: { цена: string | number; Наименование: string }[] = utils.sheet_to_json(
     wb.Sheets[wb.SheetNames[i]],
    );
    for (let j = 0; j < currentService.length; j++) {
+    if (
+     !('цена' in currentService[j]) &&
+     currentService[j + 2] &&
+     !('цена' in currentService[j + 1]) &&
+     !('цена' in currentService[j + 2])
+    ) {
+     secondLevelCategory = currentService[j]['Наименование'];
+     continue;
+    }
     if (!('цена' in currentService[j]) && !('цена' in currentService[j + 1])) {
-     subCategory = currentService[j]['Наименование'];
+     thirdLevelCategory = currentService[j]['Наименование'];
      continue;
     }
     if (!('цена' in currentService[j]) && 'цена' in currentService[j + 1]) {
@@ -30,7 +41,7 @@ export class ServiceController {
      continue;
     }
     const service =
-     brand && subCategory
+     brand && thirdLevelCategory
       ? {
          name: currentService[j]['Наименование'],
          price: currentService[j]['цена'],
@@ -38,7 +49,8 @@ export class ServiceController {
           latin: ruToLatin(categories[i]),
           ru: categories[i],
          },
-         subCategory,
+         secondLevelCategory,
+         thirdLevelCategory,
          brand,
         }
       : {
@@ -54,5 +66,15 @@ export class ServiceController {
   }
 
   return this.serviceService.createServices(services);
+ }
+
+ @Get('category')
+ async getCategories(): Promise<unknown[]> {
+  return await this.serviceService.findAllCategories('category');
+ }
+
+ @Get(':category')
+ async getServices(@Param() { category }: { category: string }): Promise<unknown[]> {
+  return await this.serviceService.findServicesByCategory(category);
  }
 }
