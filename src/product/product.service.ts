@@ -75,4 +75,9 @@ export class ProductService {
    .lean()
    .exec();
  }
+
+ async FindAndUpdateImageForProduct({ name, image }: { name: string; image: string }) {
+  console.log(name);
+  return await this.productModel.findOneAndUpdate({ name }, { image });
+ }
 }

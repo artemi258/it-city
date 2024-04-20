@@ -8,13 +8,14 @@ import {
  Post,
  Query,
  UploadedFile,
+ UploadedFiles,
  UseInterceptors,
 } from '@nestjs/common';
 import { CreateProductDto } from './dto/createProduct.dto';
 import { ProductService } from './product.service';
 import { ProductModel } from './product.shema';
 import { ChangeProductDto } from './dto/changeProduct.dto';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor, MulterModule } from '@nestjs/platform-express';
 import { read, utils } from 'xlsx';
 import { ProductCategory, IProducts } from './product.interface';
 
@@ -51,6 +52,20 @@ export class ProductController {
   //  ...dto,
   //  image: `data:${image.mimetype};base64,${image.buffer.toString('base64')}`,
   // });
+ }
+
+ @Post('images')
+ @UseInterceptors(FilesInterceptor('images'))
+ async addImages(@UploadedFiles() images: Express.Multer.File[]) {
+  return new Promise((res) => {
+   for (let i = 0; i < images.length; i++) {
+    this.productService.FindAndUpdateImageForProduct({
+     name: images[i].originalname.split('.')[0],
+     image: `data:${images[i].mimetype};base64,${images[i].buffer.toString('base64')}`,
+    });
+    if (i === images.length - 1) res('ok');
+   }
+  });
  }
 
  @Get('category')
