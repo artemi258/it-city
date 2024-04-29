@@ -70,8 +70,8 @@ export class ProductService {
   text: string;
  }): Promise<ProductModel[]> {
   return await this.productModel
-   .find({ 'category.latin': category, name: new RegExp(`.*${text}.*`, 'i') })
-   .limit(10)
+   .find({ 'category.latin': category, name: new RegExp(`${text}`, 'i') })
+   .limit(12)
    .lean()
    .exec();
  }

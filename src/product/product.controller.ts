@@ -3,6 +3,8 @@ import {
  Body,
  Controller,
  Get,
+ HttpException,
+ HttpStatus,
  Param,
  Patch,
  Post,
@@ -96,10 +98,14 @@ export class ProductController {
  }
 
  @Get('search/:category')
- searchProduct(
+ async searchProduct(
   @Param() { category }: { category: string },
   @Query() { text }: { text: string },
  ): Promise<ProductModel[]> {
-  return this.productService.findProductsByName({ category, text });
+  const products = await this.productService.findProductsByName({ category, text });
+  if (!products.length) {
+   throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+  }
+  return products;
  }
 }
