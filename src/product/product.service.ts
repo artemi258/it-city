@@ -65,12 +65,15 @@ export class ProductService {
  async findProductsByName({
   category,
   text,
+  offset,
  }: {
   category: string;
   text: string;
+  offset: number;
  }): Promise<ProductModel[]> {
   return await this.productModel
    .find({ 'category.latin': category, name: new RegExp(`${text}`, 'i') })
+   .skip(offset)
    .limit(12)
    .lean()
    .exec();

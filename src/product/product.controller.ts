@@ -100,10 +100,10 @@ export class ProductController {
  @Get('search/:category')
  async searchProduct(
   @Param() { category }: { category: string },
-  @Query() { text }: { text: string },
+  @Query() { text, offset }: { text: string; offset: number },
  ): Promise<ProductModel[]> {
-  const products = await this.productService.findProductsByName({ category, text });
-  if (!products.length) {
+  const products = await this.productService.findProductsByName({ category, text, offset });
+  if (!products.length && !+offset) {
    throw new HttpException('Not found', HttpStatus.NOT_FOUND);
   }
   return products;
