@@ -61,11 +61,19 @@ export class ProductController {
  async addImages(@UploadedFiles() images: Express.Multer.File[]) {
   return new Promise((res) => {
    for (let i = 0; i < images.length; i++) {
+    console.log(images[i].originalname.split('.'));
+    let origName: string | string[] = images[i].originalname.split('.');
+    if (origName.length > 2) {
+     origName.pop();
+     origName = origName.join('.');
+    } else {
+     origName = origName[0];
+    }
     this.productService.FindAndUpdateImageForProduct({
-     name: images[i].originalname.split('.')[0],
+     name: origName,
      image: `data:${images[i].mimetype};base64,${images[i].buffer.toString('base64')}`,
     });
-    if (i === images.length - 1) res('ok');
+    if (i === images.length - 1) res({ resul: 'ok' });
    }
   });
  }
