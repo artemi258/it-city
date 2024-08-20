@@ -68,9 +68,11 @@ export class ServiceController {
   return this.serviceService.createServices(services);
  }
 
- @Get('category')
- async getCategories(): Promise<unknown[]> {
-  return await this.serviceService.findAllCategories('category');
+ @Get('categories')
+ async getCategories(): Promise<unknown> {
+  const data = await this.serviceService.findAllCategories('category');
+  console.log(data);
+  return { data };
  }
 
  @Get(':category')

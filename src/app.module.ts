@@ -11,15 +11,15 @@ import { MailModule } from './mail/mail.module';
 
 @Module({
  imports: [
-  //   MongooseModule.forRootAsync({
-  //    imports: [ConfigModule],
-  //    useFactory: getMongoConfig,
-  //    inject: [ConfigService],
-  //   }),
+  MongooseModule.forRootAsync({
+   imports: [ConfigModule],
+   useFactory: getMongoConfig,
+   inject: [ConfigService],
+  }),
   ConfigModule.forRoot(),
-  //   ProductModule,
-  //   AuthModule,
-  //   ServiceModule,
+  ProductModule,
+  AuthModule,
+  ServiceModule,
   MailModule,
  ],
  exports: [ConfigModule],

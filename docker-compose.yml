@@ -1,24 +1,61 @@
-version: '3'
 services:
- #  server:
- #   build: ./
- #   container_name: server
- #   restart: always
- #   ports:
- #    - 3001:3001
- #   volumes:
- #    - ./:/app
- #   command: npm run start:dev
- #   depends_on:
- #    - mongo
- mongo:
-  image: mongo
-  container_name: mongo
-  restart: always
-  environment:
-   - MONGO_INITDB_ROOT_USERNAME=${MONGO_LOGIN}
-   - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
-  ports:
-   - 27019:27017
-  volumes:
-   - ./mongo-data:/data/db
+  front:
+   build: front
+   container_name: server
+   restart: always
+   ports:
+    - 8080:8080
+   develop:
+      watch:
+        - action: sync
+          path: ./front
+          target: /app
+          ignore:
+            - node_modules/
+              templates/
+              .eslintrc.json
+              .gitignore
+              .prettierrc
+              generate-react-cli.json
+              README.md
+              Прайс-лист_03.02.24 (1).xlsx
+              услуги.xlsx
+        - action: rebuild
+          path: package.json
+   depends_on:
+    - mongo
+  server:
+   build: back
+   container_name: server
+   restart: always
+   ports:
+    - 3001:3001
+   develop:
+      watch:
+        - action: sync
+          path: ./back
+          target: /app
+          ignore:
+            - node_modules/
+              templates/
+              .eslintrc.json
+              .gitignore
+              .prettierrc
+              README.md
+              Dockerfile
+              .dockerignore
+        - action: rebuild
+          path: package.json
+   depends_on:
+    - mongo
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=${MONGO_LOGIN}
+    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    ports:
+    - 27019:27017
+    volumes:
+    - ./mongo-data:/data/db

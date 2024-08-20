@@ -1,5 +1,5 @@
-FROM node:18-alpine
+FROM node:alpine
 WORKDIR /app
-COPY package*.json ./
 RUN npm install
-CMD ["node", "dist/main"]
+RUN npm run build
+CMD [ "npm", "run", "start" ]
