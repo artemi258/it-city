@@ -23,7 +23,7 @@ services:
         - action: rebuild
           path: package.json
    depends_on:
-    - mongo
+    - server
   server:
    build: back
    container_name: server
