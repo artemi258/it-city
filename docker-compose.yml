@@ -1,13 +1,15 @@
 services:
   front:
-   build: front
-   container_name: server
-   restart: always
-   ports:
-    - 8080:8080
-   develop:
+    build: front
+    container_name: front
+    restart: always
+    ports:
+      - 8080:3000
+    expose:
+      - 8080
+    develop:
       watch:
-        - action: sync
+        - action: rebuild
           path: ./front
           target: /app
           ignore:
@@ -20,19 +22,19 @@ services:
               README.md
               Прайс-лист_03.02.24 (1).xlsx
               услуги.xlsx
-        - action: rebuild
-          path: package.json
-   depends_on:
-    - server
-  server:
-   build: back
-   container_name: server
-   restart: always
-   ports:
-    - 3001:3001
-   develop:
+    depends_on:
+      - serverit
+  serverit:
+    build: back
+    container_name: server
+    restart: always
+    expose:
+      - 3001
+    ports:
+      - 3001:3001
+    develop:
       watch:
-        - action: sync
+        - action: rebuild
           path: ./back
           target: /app
           ignore:
@@ -44,18 +46,16 @@ services:
               README.md
               Dockerfile
               .dockerignore
-        - action: rebuild
-          path: package.json
-   depends_on:
-    - mongo
+    depends_on:
+      - mongo
   mongo:
     image: mongo
     container_name: mongo
     restart: always
     environment:
-    - MONGO_INITDB_ROOT_USERNAME=${MONGO_LOGIN}
-    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=pass
     ports:
-    - 27019:27017
+      - 27019:27017
     volumes:
-    - ./mongo-data:/data/db
+      - ./mongo-data:/data/db
