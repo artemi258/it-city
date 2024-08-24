@@ -8,7 +8,7 @@ export class MailService {
 
  sendMailForMessage(dto: sendMailForMessageDTO) {
   return this.mailService.sendMail({
-   to: 'Artem2k17Xia@yandex.ru',
+   to: 'itcity.su@gmail.com',
    html: `<strong style="color: blue">Имя</strong>: ${dto.name}<br/>
 		  <strong style="color: blue">Телефон</strong>: ${dto.phone}<br/>
           <strong style="color: blue">Емаил</strong>: ${dto.email}<br/>
