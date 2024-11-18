@@ -20,6 +20,7 @@ import { ChangeProductDto } from './dto/changeProduct.dto';
 import { FileInterceptor, FilesInterceptor, MulterModule } from '@nestjs/platform-express';
 import { read, utils } from 'xlsx';
 import { ProductCategory, IProducts } from './product.interface';
+import { getImage } from '@/utils/getImage';
 
 @Controller('product')
 export class ProductController {
@@ -29,10 +30,27 @@ export class ProductController {
  @UseInterceptors(FileInterceptor('exel'))
  async create(@UploadedFile() exel: Express.Multer.File): Promise<ProductModel[]> {
   const wb = read(exel.buffer);
-  const products = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+  const products = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]).slice(2);
   let category: ProductCategory;
   let subCategory: ProductCategory;
-  const productsWithCategory = products.slice(2).map((prod, i, arr) => {
+  const images: string[] = [];
+  for (let i = 0; i < products.length; i++) {
+   if (
+    !(Object.values(products[i]).length === 1 && Object.values(products[i + 1]).length === 1) &&
+    !(Object.values(products[i]).length === 1)
+   ) {
+    const url = await getImage(products[i]['__EMPTY_1']).catch(() =>
+     console.log('ошибка', products[i]),
+    );
+
+    if (url) {
+     images.push(url);
+    } else {
+     images.push(null);
+    }
+   }
+  }
+  const productsWithCategory = products.map(async (prod, i, arr) => {
    if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
     category = {
      latin: ruToLatin(prod['__EMPTY_1']),
@@ -46,8 +64,13 @@ export class ProductController {
     };
     return null;
    }
-   return { name: prod['__EMPTY_1'], price: prod['__EMPTY_3'], category, subCategory };
+
+   const image = images[i];
+   console.log(image);
+
+   return { name: prod['__EMPTY_1'], image, price: prod['__EMPTY_3'], category, subCategory };
   });
+
   const filteredProducts = productsWithCategory.filter((prod) => prod);
   return await this.productService.createProducts(filteredProducts);
   // return await this.productService.createProduct({
