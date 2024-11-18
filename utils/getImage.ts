@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer';
 
 export const getImage = async (value: string): Promise<string> => {
  console.log('value', value);
- const browser = await puppeteer.launch({ headless: false });
+ const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
  try {
   const page = await browser.newPage();
   await page
