@@ -1,53 +1,53 @@
 services:
- # front:
- #   build: front
- #   container_name: front
- #   restart: always
- #   ports:
- #     - 8080:3000
- #   expose:
- #     - 8080
- #   develop:
- #     watch:
- #       - action: rebuild
- #         path: ./front
- #         target: /app
- #         ignore:
- #           - node_modules/
- #             templates/
- #             .eslintrc.json
- #             .gitignore
- #             .prettierrc
- #             generate-react-cli.json
- #             README.md
- #             Прайс-лист_03.02.24 (1).xlsx
- #             услуги.xlsx
- #   depends_on:
- #     - serverit
- # serverit:
- #   build: back
- #   container_name: server
- #   restart: always
- #   expose:
- #     - 3001
- #   ports:
- #     - 3001:3001
- #   develop:
- #     watch:
- #       - action: rebuild
- #         path: ./back
- #         target: /app
- #         ignore:
- #           - node_modules/
- #             templates/
- #             .eslintrc.json
- #             .gitignore
- #             .prettierrc
- #             README.md
- #             Dockerfile
- #             .dockerignore
- #   depends_on:
- #     - mongo
+ front:
+   build: front
+   container_name: front
+   restart: always
+   ports:
+     - 8080:3000
+   expose:
+     - 8080
+   develop:
+     watch:
+       - action: rebuild
+         path: ./front
+         target: /app
+         ignore:
+           - node_modules/
+             templates/
+             .eslintrc.json
+             .gitignore
+             .prettierrc
+             generate-react-cli.json
+             README.md
+             Прайс-лист_03.02.24 (1).xlsx
+             услуги.xlsx
+   depends_on:
+     - serverit
+ serverit:
+   build: back
+   container_name: server
+   restart: always
+   expose:
+     - 3001
+   ports:
+     - 3001:3001
+   develop:
+     watch:
+       - action: rebuild
+         path: ./back
+         target: /app
+         ignore:
+           - node_modules/
+             templates/
+             .eslintrc.json
+             .gitignore
+             .prettierrc
+             README.md
+             Dockerfile
+             .dockerignore
+   depends_on:
+     - mongo
  mongo:
   image: mongo
   container_name: mongo

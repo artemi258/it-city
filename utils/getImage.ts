@@ -3,20 +3,30 @@ import puppeteer from 'puppeteer';
 export const getImage = async (value: string): Promise<string> => {
  console.log('value', value);
  const browser = await puppeteer.launch({ headless: false });
- const page = await browser.newPage();
- await page.goto('https://www.google.ru/imghp', { waitUntil: 'load' });
+ try {
+  const page = await browser.newPage();
+  await page
+   .goto('https://www.google.ru/imghp', { waitUntil: 'load' })
+   .catch((err) => console.log('goto', err));
 
- await page.$eval('textarea', (input, localValue) => (input.value = localValue), value);
+  await page.$eval('textarea', (input, localValue) => (input.value = localValue), value);
 
- await page.locator('[aria-label="Поиск в Google"]').click();
+  await new Promise((res) => setTimeout(res, 1000));
 
- await page.waitForNavigation();
+  await page.locator('[aria-label="Поиск в Google"]').click();
 
- const img = await page.$('.dURPMd img');
+  await page.waitForNavigation();
 
- const url = await (await img.getProperty('src')).jsonValue();
+  await new Promise((res) => setTimeout(res, 1000));
 
- console.log(url);
- await browser.close();
- return url;
+  const img = await page.$('.dURPMd img');
+
+  const url = await (await img.getProperty('src')).jsonValue();
+
+  await browser.close();
+  return url;
+ } catch (error) {
+  await browser.close();
+  throw new Error(error);
+ }
 };
