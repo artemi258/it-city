@@ -1,12 +1,10 @@
 import { ruToLatin } from '@/utils/ruToLatin';
 import {
- Body,
  Controller,
  Get,
  HttpException,
  HttpStatus,
  Param,
- Patch,
  Post,
  Query,
  UploadedFile,

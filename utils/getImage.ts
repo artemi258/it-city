@@ -2,7 +2,10 @@ import puppeteer from 'puppeteer';
 
 export const getImage = async (value: string): Promise<string> => {
  console.log('value', value);
- const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
+ const browser = await puppeteer.launch({
+  args: ['--disable-gpu', '--no-sandbox'],
+  executablePath: '../../../usr/bin/chromium-browser',
+ });
  try {
   const page = await browser.newPage();
   await page
