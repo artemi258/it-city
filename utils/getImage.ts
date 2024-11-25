@@ -20,7 +20,7 @@ export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
   executablePath: '../../../usr/bin/chromium-browser',
  });
 
- const getUrlImage = (product: Omit<IProduct, 'image'>): Promise<string> => {
+ const getUrlImage = (product: IProduct): Promise<string> => {
   return new Promise((res, rej) => {
    (async function async() {
     const page = await browser.newPage().catch((err) => rej(`не удалось открыть страницу ${err}`));
