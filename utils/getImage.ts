@@ -1,5 +1,5 @@
 import { ProductCategory } from '@/src/product/product.interface';
-import puppeteer from 'puppeteer';
+import puppeteer, { Browser } from 'puppeteer';
 
 interface IProduct {
  name: any;
@@ -15,15 +15,29 @@ interface IImages {
 
 export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
  const images = [];
- const browser = await puppeteer.launch({
-  args: ['--disable-gpu', '--no-sandbox'],
-  executablePath: '../../../usr/bin/chromium-browser',
- });
+
+ let browser: Browser;
+
+ const openBrowser = async () => {
+  browser = await puppeteer.launch({
+   args: ['--disable-gpu', '--no-sandbox'],
+   executablePath: '../../../usr/bin/chromium-browser',
+  });
+
+  return browser;
+ };
+
+ openBrowser();
 
  const getUrlImage = (product: IProduct): Promise<string> => {
   return new Promise((res, rej) => {
    (async function async() {
-    const page = await browser.newPage().catch((err) => rej(`не удалось открыть страницу ${err}`));
+    const page = await browser.newPage().catch((err) =>
+     rej({
+      err: 'page',
+      message: `не удалось открыть страницу ${err}`,
+     }),
+    );
     try {
      if (page) {
       console.log('product', product.name);
@@ -62,7 +76,14 @@ export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
      name: products[i].name,
     }),
    )
-   .catch((err) => console.log(err));
+   .catch(async (err) => {
+    if (err.err) {
+     console.log(err.message);
+     await browser.close();
+     await openBrowser();
+    }
+    console.log(err);
+   });
  }
  await browser.close();
  return images;

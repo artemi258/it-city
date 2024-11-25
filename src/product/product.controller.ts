@@ -53,11 +53,11 @@ export class ProductController {
   const images = await getImage(filteredProducts);
 
   const productsWithImage = filteredProducts.map((prod) => {
-   const { image } = images.find((img) => img.name === prod.name);
+   const findImage = images.find((img) => img.name === prod.name);
 
    return {
     ...prod,
-    image,
+    image: findImage ? findImage.image : null,
    };
   });
   return await this.productService.createProducts(productsWithImage);
