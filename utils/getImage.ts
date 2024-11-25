@@ -47,6 +47,7 @@ export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
       res(url);
      }
     } catch (error) {
+     if (page) await page.close();
      rej(error);
     }
    })();
