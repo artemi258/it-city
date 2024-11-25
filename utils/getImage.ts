@@ -1,35 +1,68 @@
+import { ProductCategory } from '@/src/product/product.interface';
 import puppeteer from 'puppeteer';
 
-export const getImage = async (value: string): Promise<string> => {
- console.log('value', value);
+interface IProduct {
+ name: any;
+ price: any;
+ category: ProductCategory;
+ subCategory: ProductCategory;
+}
+
+interface IImages {
+ image: string;
+ name: string;
+}
+
+export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
+ const images = [];
  const browser = await puppeteer.launch({
   args: ['--disable-gpu', '--no-sandbox'],
   executablePath: '../../../usr/bin/chromium-browser',
  });
- try {
-  const page = await browser.newPage();
-  await page
-   .goto('https://www.google.ru/imghp', { waitUntil: 'load' })
-   .catch((err) => console.log('goto', err));
 
-  await page.$eval('textarea', (input, localValue) => (input.value = localValue), value);
+ const getUrlImage = (product: Omit<IProduct, 'image'>): Promise<string> => {
+  return new Promise((res, rej) => {
+   (async function async() {
+    const page = await browser.newPage().catch((err) => rej(`не удалось открыть страницу ${err}`));
+    try {
+     if (page) {
+      console.log('product', product.name);
+      await page.goto('https://www.google.ru/imghp', { waitUntil: 'load' });
 
-  await new Promise((res) => setTimeout(res, 1000));
+      await page.$eval('textarea', (input, localValue) => (input.value = localValue), product.name);
 
-  await page.locator('[aria-label="Поиск в Google"]').click();
+      await new Promise((res) => setTimeout(res, 1000));
 
-  await page.waitForNavigation();
+      await page.locator('[aria-label="Поиск в Google"]').click();
 
-  await new Promise((res) => setTimeout(res, 1000));
+      await page.waitForNavigation();
 
-  const img = await page.$('.dURPMd img');
+      await new Promise((res) => setTimeout(res, 1000));
 
-  const url = await (await img.getProperty('src')).jsonValue();
+      const img = await page.$('.dURPMd img');
 
-  await browser.close();
-  return url;
- } catch (error) {
-  await browser.close();
-  throw new Error(error);
+      const url = await (await img.getProperty('src')).jsonValue();
+      await page.close();
+
+      res(url);
+     }
+    } catch (error) {
+     rej(error);
+    }
+   })();
+  });
+ };
+
+ for (let i = 0; i < products.length; i++) {
+  await getUrlImage(products[i])
+   .then((image) =>
+    images.push({
+     image,
+     name: products[i].name,
+    }),
+   )
+   .catch((err) => console.log(err));
  }
+ await browser.close();
+ return images;
 };

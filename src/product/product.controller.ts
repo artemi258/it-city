@@ -29,28 +29,6 @@ export class ProductController {
   const products = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]).slice(2);
   let category: ProductCategory;
   let subCategory: ProductCategory;
-  let image = '';
-
-  const images: string[] = [];
-  for (let i = 0; i < products.length; i++) {
-   if (
-    !(Object.values(products[i]).length === 1 && Object.values(products[i + 1]).length === 1) &&
-    !(Object.values(products[i]).length === 1)
-   ) {
-    const url = await getImage(products[i]['__EMPTY_1']).catch((err) => {
-     console.log('ошибка', products[i]);
-     console.log(err);
-    });
-
-    if (url) {
-     images.push(url);
-    } else {
-     images.push(null);
-    }
-   } else {
-    images.push(null);
-   }
-  }
 
   const productsWithCategory = products.map((prod, i, arr) => {
    if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
@@ -65,16 +43,24 @@ export class ProductController {
      ru: prod['__EMPTY_1'],
     };
     return null;
-   } else {
-    image = images[i];
    }
 
-   return { name: prod['__EMPTY_1'], image, price: prod['__EMPTY_3'], category, subCategory };
+   return { name: prod['__EMPTY_1'], price: prod['__EMPTY_3'], category, subCategory };
   });
 
   const filteredProducts = productsWithCategory.filter((prod) => prod);
 
-  return await this.productService.createProducts(filteredProducts);
+  const images = await getImage(filteredProducts);
+
+  const productsWithImage = filteredProducts.map((prod) => {
+   const { image } = images.find((img) => img.name === prod.name);
+
+   return {
+    ...prod,
+    image,
+   };
+  });
+  return await this.productService.createProducts(productsWithImage);
  }
 
  @Post('images')
