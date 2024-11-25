@@ -27,7 +27,7 @@ export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
   return browser;
  };
 
- openBrowser();
+ await openBrowser();
 
  const getUrlImage = (product: IProduct): Promise<string> => {
   return new Promise((res, rej) => {
