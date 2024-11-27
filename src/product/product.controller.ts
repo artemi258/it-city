@@ -29,23 +29,24 @@ export class ProductController {
   const products = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]).slice(2);
   let category: ProductCategory;
   let subCategory: ProductCategory;
-
   const productsWithCategory = products.map((prod, i, arr) => {
-   if (Object.values(prod).length === 1 && Object.values(arr[i + 1]).length === 1) {
+   const dataCurr = Object.values(prod);
+   const dataNext = arr[i + 1] && Object.values(arr[i + 1]);
+   if (dataCurr.length === 1 && dataNext?.length === 1) {
     category = {
-     latin: ruToLatin(prod['__EMPTY_1']),
-     ru: prod['__EMPTY_1'],
+     latin: ruToLatin(dataCurr[0]),
+     ru: dataCurr[0],
     };
     return null;
-   } else if (Object.values(prod).length === 1) {
+   } else if (dataCurr.length === 1) {
     subCategory = {
-     latin: ruToLatin(prod['__EMPTY_1']),
-     ru: prod['__EMPTY_1'],
+     latin: ruToLatin(dataCurr[0]),
+     ru: dataCurr[0],
     };
     return null;
    }
 
-   return { name: prod['__EMPTY_1'], price: prod['__EMPTY_3'], category, subCategory };
+   return { name: dataCurr[0], price: dataCurr[3], category, subCategory };
   });
 
   const filteredProducts = productsWithCategory.filter((prod) => prod);
