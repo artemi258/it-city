@@ -46,7 +46,7 @@ export class ProductController {
     return null;
    }
 
-   return { name: dataCurr[0], price: dataCurr[3], category, subCategory };
+   return { name: dataCurr[0], price: dataCurr[2], category, subCategory };
   });
 
   const filteredProducts = productsWithCategory.filter((prod) => prod);

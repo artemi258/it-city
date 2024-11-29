@@ -1,5 +1,5 @@
 import { ProductCategory } from '@/src/product/product.interface';
-import puppeteer, { Browser } from 'puppeteer';
+import puppeteer from 'puppeteer';
 
 interface IProduct {
  name: any;
@@ -18,9 +18,15 @@ export const getImage = async (products: IProduct[]): Promise<IImages[]> => {
 
  const getUrlImage = async (product: IProduct): Promise<string> => {
   const browser = await puppeteer.launch({
+   headless: 'shell',
    args: ['--disable-gpu', '--no-sandbox'],
    executablePath: '../../../usr/bin/chromium-browser',
   });
+  // const browser = await puppeteer.launch({
+  //  headless: false,
+  //  args: ['--disable-gpu', '--no-sandbox'],
+  //  //  executablePath: '../../../usr/bin/chromium-browser',
+  // });
 
   try {
    const page = await browser.newPage();
