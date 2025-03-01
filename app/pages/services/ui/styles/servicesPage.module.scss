@@ -1,0 +1,9 @@
+.services {
+ display: grid;
+ position: relative;
+ grid-template: auto / 250px 1fr;
+ gap: 10px;
+ margin: 20px auto;
+}
+
+@import './servicesPage.module.media.scss';

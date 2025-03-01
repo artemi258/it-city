@@ -1,0 +1,6 @@
+.services {
+ display: grid;
+ grid-template: auto / 1fr;
+ grid-auto-rows: auto;
+ animation: fadeIn 0.5s linear both;
+}

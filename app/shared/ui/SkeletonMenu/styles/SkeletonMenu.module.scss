@@ -1,0 +1,14 @@
+@import 'public/style/animations.scss';
+
+.skeleton {
+ display: grid;
+ grid-template: 30px / 1fr;
+ grid-auto-rows: 30px;
+ gap: 20px;
+}
+
+.list {
+ background-color: #b0b8c2;
+ border-radius: 10px 0 0 10px;
+ animation: pulse linear infinite 1s alternate;
+}

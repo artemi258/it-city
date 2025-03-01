@@ -1,0 +1,28 @@
+@media (max-width: 1199px) {
+ .list {
+  grid-template: 195px 140px / 1fr;
+ }
+
+ .wrapper {
+  grid-template: 110px 25px / 1fr;
+ }
+}
+
+@media (max-width: 767px) {
+ .list {
+  grid-template: 1fr / 1fr 1fr;
+ }
+ .wrapper {
+  grid-template: 2fr 1fr / 1fr;
+  padding: 5px;
+ }
+ .price {
+  align-items: end;
+ }
+ .img {
+  img {
+   border-radius: 5px 0 0 5px;
+   object-fit: contain;
+  }
+ }
+}

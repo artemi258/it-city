@@ -1,0 +1,41 @@
+@import 'public/style/animations.scss';
+
+.list {
+ display: grid;
+ position: relative;
+ width: 100%;
+ grid-template: 195px 170px / 1fr;
+ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ gap: 5px;
+ background-color: #fff;
+ border-radius: 5px;
+ color: var(--blue);
+ animation: fadeIn 0.5s linear;
+}
+
+.wrapper {
+ display: grid;
+ grid-template: 135px 25px / 1fr;
+ padding: 0 5px 5px 5px;
+ gap: 5px;
+}
+
+.img {
+ position: relative;
+ img {
+  border-radius: 5px 5px 0 0;
+ }
+}
+
+.descr {
+ text-align: start;
+ line-height: 18px;
+}
+.price {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+ font-size: 18px;
+}
+
+@import './list.module.media.scss';

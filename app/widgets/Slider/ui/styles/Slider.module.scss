@@ -1,0 +1,48 @@
+.slider {
+ grid-area: carusel;
+ position: relative;
+ justify-self: center;
+ display: flex;
+ justify-content: center;
+ width: 60%;
+ height: 100%;
+}
+
+.inner {
+ width: 600px;
+ height: 100%;
+}
+
+.sliderBtn {
+ position: absolute;
+ border: none;
+ background-color: transparent;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 40px;
+ height: 40px;
+ cursor: pointer;
+ img {
+  width: 100%;
+  height: 100%;
+ }
+}
+
+.image {
+ object-fit: fill;
+ width: 100%;
+ height: 100%;
+}
+
+.btnNext {
+ right: -60px;
+}
+
+.btnPrev {
+ left: -60px;
+ img {
+  transform: rotate(180deg);
+ }
+}
+
+@import './Slider.module.media.scss';

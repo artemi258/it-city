@@ -1,0 +1,79 @@
+.header {
+ width: 100%;
+ height: auto;
+ background-color: var(--dark-blue);
+ padding: 10px 0;
+}
+
+.wrapper {
+ display: grid;
+ grid-template: repeat(2, auto) / 1fr;
+ align-items: start;
+ gap: 10px;
+}
+
+.information {
+ display: grid;
+ grid-template: auto / 115px repeat(4, auto);
+ grid-auto-rows: auto;
+ justify-content: space-between;
+}
+
+.divinder {
+ width: 100%;
+ height: 1px;
+ background-color: #fff;
+}
+
+.phone {
+ display: grid;
+ grid-template: auto auto auto / auto;
+ color: white;
+}
+
+.adress {
+ display: grid;
+ grid-template: auto auto / auto;
+ align-items: start;
+ color: white;
+ font-style: normal;
+}
+
+.number {
+ color: white;
+ border-bottom: 1px dashed;
+ width: fit-content;
+ &:hover {
+  color: var(--azure);
+ }
+}
+
+.time {
+ display: grid;
+ grid-template: repeat(3, auto) / auto;
+ color: white;
+}
+
+.email {
+ display: grid;
+ grid-template: repeat(2, auto) / auto;
+ color: white;
+ a {
+  border-bottom: 1px dashed;
+  &:hover {
+   color: var(--azure);
+  }
+ }
+}
+
+.logo {
+ height: 50px;
+ width: 115px;
+ align-self: center;
+ img {
+  width: 100%;
+  height: 100%;
+ }
+}
+
+@import './Header.module.media.scss';

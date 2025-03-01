@@ -1,0 +1,11 @@
+@media (max-width: 991px) {
+ .services {
+  grid-template: auto / 1fr;
+ }
+}
+
+@media (max-width: 767px) {
+ .services {
+  grid-template: auto / 1fr;
+ }
+}

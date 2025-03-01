@@ -1,0 +1,67 @@
+@media (max-width: 1199px) {
+ .logo {
+  display: none;
+ }
+ .information {
+  grid-template: auto / repeat(4, auto);
+ }
+}
+
+@media (max-width: 991px) {
+ .information {
+  grid-template: auto / repeat(3, auto);
+  justify-content: space-around;
+ }
+}
+
+@media (max-width: 767px) {
+ .information {
+  grid-template: auto / repeat(2, auto);
+  row-gap: 5px;
+  justify-items: start;
+  grid-template-areas:
+   'adress email'
+   'phone .'
+   'time time';
+ }
+
+ .phone {
+  grid-area: phone;
+ }
+
+ .email {
+  grid-area: email;
+ }
+
+ .time {
+  grid-area: time;
+ }
+
+ .adress {
+  grid-area: adress;
+ }
+}
+
+@media (max-width: 480px) {
+ .wrapper {
+  grid-template: auto / auto;
+ }
+
+ .information {
+  grid-template: auto / repeat(1, auto);
+  row-gap: 10px;
+  grid-template-areas:
+   'adress'
+   'email'
+   'phone'
+   'time';
+ }
+
+ .time {
+  span {
+   &:first-child {
+    font-size: 13px;
+   }
+  }
+ }
+}

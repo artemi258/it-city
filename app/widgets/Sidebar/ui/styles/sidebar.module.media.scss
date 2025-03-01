@@ -1,0 +1,21 @@
+@media (max-width: 991px) {
+ .sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-radius: 0;
+  height: 100vh;
+  overflow-y: auto;
+  animation: none;
+  z-index: 100;
+ }
+}
+
+@media (max-width: 480px) {
+ .close {
+  height: 30px;
+  width: 30px;
+  font-size: 40px;
+ }
+}

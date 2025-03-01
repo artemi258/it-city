@@ -1,0 +1,29 @@
+.list {
+ display: grid;
+ grid-template: auto / 4fr 1fr;
+ border: var(--dark-blue) solid;
+ border-width: 1px 1px 0 1px;
+ border-radius: 5px;
+ color: var(--blue);
+ &:last-child {
+  border-bottom-width: 1px;
+ }
+}
+
+.text {
+ padding: 8px;
+ position: relative;
+ border: var(--dark-blue) solid;
+ border-width: 0 1px 0 0;
+}
+.price {
+ padding: 8px;
+ text-align: center;
+ align-self: center;
+}
+
+.title {
+ padding: 5px 0;
+}
+
+@import './list.module.media.scss';

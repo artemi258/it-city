@@ -1,0 +1,16 @@
+@media (max-width: 767px) {
+ .text {
+  padding: 4px;
+  &::before {
+   height: calc(100% + 8px);
+   top: -4px;
+  }
+ }
+
+ .price {
+  padding: 4px;
+ }
+}
+
+@media (max-width: 480px) {
+}

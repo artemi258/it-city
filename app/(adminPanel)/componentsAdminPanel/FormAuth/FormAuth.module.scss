@@ -1,0 +1,65 @@
+.formAuth {
+ width: 500px;
+ margin: 0 auto;
+ padding: 50px 0;
+}
+
+.wrapper {
+ background-color: var(--light-blue);
+ border-radius: 5px;
+ padding: 20px 30px;
+}
+
+.title {
+ grid-area: title;
+ font-size: 25px;
+ color: #ffffff;
+ margin-bottom: 10px;
+}
+
+.form {
+ display: grid;
+ grid-template: repeat(5, auto) / 1fr;
+ text-align: center;
+ grid-template-areas:
+  'title'
+  'inputLogin'
+  'inputPass'
+  'spinner'
+  'button';
+}
+
+.input {
+ margin-bottom: 10px;
+}
+
+.inputLogin {
+ grid-area: inputLogin;
+}
+
+.inputPass {
+ grid-area: inputPass;
+}
+
+.button {
+ grid-area: button;
+ justify-self: center;
+ margin-top: 10px;
+}
+
+.spinner {
+ grid-area: spinner;
+ overflow: hidden;
+}
+
+.success {
+ color: rgb(101, 237, 101);
+ text-align: center;
+ margin-top: 10px;
+}
+
+.error {
+ color: rgb(249, 73, 73);
+ text-align: center;
+ margin-top: 10px;
+}

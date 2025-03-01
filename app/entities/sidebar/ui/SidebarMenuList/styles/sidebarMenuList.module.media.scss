@@ -1,0 +1,23 @@
+@media (max-width: 1199px) {
+ .menu {
+  padding: 25px 0 25px 15px;
+ }
+}
+
+@media (max-width: 767px) {
+ .menu {
+  padding-top: 0;
+ }
+ .subMenu {
+  margin-top: 5px;
+ }
+}
+
+@media (max-width: 480px) {
+ .menu {
+  padding: 0 0 10px 10px;
+ }
+ .subMenu {
+  margin-top: 5px;
+ }
+}

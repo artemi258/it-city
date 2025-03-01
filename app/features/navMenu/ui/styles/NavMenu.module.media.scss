@@ -1,0 +1,13 @@
+@media (max-width: 767px) {
+ .menu {
+  grid-template: minmax(45px, auto) / repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0;
+  justify-content: space-between;
+ }
+}
+
+@media (max-width: 480px) {
+ .menu {
+  grid-template: minmax(40px, auto) / repeat(auto-fit, minmax(100px, 1fr));
+ }
+}

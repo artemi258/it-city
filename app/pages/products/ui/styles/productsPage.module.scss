@@ -1,0 +1,8 @@
+.products {
+ display: grid;
+ grid-template: auto / 250px 1fr;
+ gap: 20px;
+ margin: 20px auto;
+}
+
+@import './productsPage.module.media.scss';

@@ -1,0 +1,30 @@
+@import 'public/style/animations.scss';
+
+.sidebar {
+ background-color: var(--dark-purple);
+ animation: fadeIn 0.5s ease-in-out both;
+ border-radius: 20px;
+ width: 100%;
+ overflow: hidden;
+}
+
+.sidebarMobile {
+ display: flex;
+}
+
+.close {
+ height: 35px;
+ width: 35px;
+ font-size: 45px;
+ padding: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #ffffff;
+ background-color: var(--purple);
+ justify-self: end;
+ box-shadow: none;
+ cursor: none;
+}
+
+@import './sidebar.module.media.scss';

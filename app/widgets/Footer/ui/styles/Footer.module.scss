@@ -1,0 +1,52 @@
+.footer {
+ width: 100%;
+ background-color: var(--dark-blue);
+ padding: 20px 0;
+}
+
+.wrapper {
+ display: grid;
+ grid-template: auto / auto 1fr;
+ justify-content: center;
+}
+
+.title {
+ color: white !important;
+}
+
+.logo {
+ height: 50px;
+ width: 115px;
+}
+
+.linkLogo {
+ display: flex;
+ align-items: center;
+}
+
+.socials {
+ display: grid;
+ grid-template: 35px / repeat(3, 35px);
+ justify-content: center;
+ margin-top: 10px;
+ gap: 10px;
+ img {
+  width: 100%;
+  height: 100%;
+ }
+}
+
+.icon {
+ width: 100%;
+ height: 100%;
+ border-radius: 100%;
+ transition: all 0.2s linear;
+ @media (hover: hover) {
+  &:hover {
+   transform: translateY(-2px);
+   box-shadow: -2px 2px 3px #000000;
+  }
+ }
+}
+
+@import './Footer.module.media.scss';

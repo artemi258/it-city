@@ -1,0 +1,25 @@
+.menu {
+ display: grid;
+ width: 100%;
+ grid-template: minmax(50px, auto) / repeat(auto-fit, minmax(120px, 150px));
+ grid-auto-rows: minmax(50px, auto);
+ justify-content: start;
+ gap: 10px;
+}
+
+.error {
+ color: white;
+ text-align: center;
+ font-size: 18px;
+ margin-bottom: 10px;
+}
+
+.more {
+ background-color: inherit;
+ color: var(--light-blue);
+ &:hover {
+  background: linear-gradient(180deg, var(--background) 0%, var(--azure) 100%);
+ }
+}
+
+@import './NavMenu.module.media.scss';

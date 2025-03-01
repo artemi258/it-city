@@ -1,0 +1,10 @@
+@media (pointer: coarse) {
+ .link {
+  cursor: none;
+  transition: background-color 1s ease;
+  width: 100%;
+  &:active {
+   background-color: var(--purple);
+  }
+ }
+}

@@ -1,0 +1,45 @@
+@media (max-width: 991px) {
+ .wrapper {
+  padding: 15px 25px;
+ }
+}
+
+@media (max-width: 767px) {
+ .title {
+  font-size: 20px;
+ }
+
+ .wrapper {
+  padding: 10px 20px;
+  width: 481px;
+ }
+
+ .close {
+  height: 35px;
+ }
+}
+
+@media (max-width: 480px) {
+ .title {
+  font-size: 18px;
+ }
+
+ .wrapper {
+  padding: 5px 15px;
+  width: 300px;
+ }
+
+ .close {
+  height: 30px;
+ }
+
+ .spinner {
+  width: 35px;
+  height: 35px;
+ }
+
+ .message {
+  font-size: 14px;
+  margin-top: 10px;
+ }
+}

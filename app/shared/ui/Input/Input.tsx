@@ -1,0 +1,24 @@
+import { ForwardedRef, forwardRef } from 'react';
+import styles from './styles/Input.module.scss';
+import { IInputProps } from './Input.props';
+import cn from 'classnames';
+
+export const Input = forwardRef(
+ (
+  { className, error, ...props }: IInputProps,
+  ref: ForwardedRef<HTMLInputElement>,
+ ): JSX.Element => {
+  return (
+   <div className={cn(className, styles.inputWrapper)}>
+    <input
+     className={cn(styles.input, {
+      [styles.error]: error,
+     })}
+     ref={ref}
+     {...props}
+    />
+    {error && <div className={styles.errorMessage}>{error.message}</div>}
+   </div>
+  );
+ },
+);

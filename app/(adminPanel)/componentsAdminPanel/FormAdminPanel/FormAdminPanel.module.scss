@@ -1,0 +1,89 @@
+.formAdminPanel {
+ width: 500px;
+ margin: 0 auto;
+}
+
+.wrapper {
+ background-color: var(--light-blue);
+ border-radius: 5px;
+ padding: 20px 30px;
+}
+
+.form {
+ display: grid;
+ grid-template: repeat(9, auto) / 1fr;
+ text-align: center;
+ grid-template-areas:
+  'title'
+  'inputImage'
+  'inputTitle'
+  'inputDescription'
+  'inputPrice'
+  'spinner'
+  'button'
+  'message';
+}
+
+.title {
+ grid-area: title;
+ font-size: 25px;
+ color: #ffffff;
+ margin-bottom: 10px;
+}
+
+.input {
+ margin-bottom: 10px;
+}
+
+.inputImage {
+ grid-area: inputImage;
+}
+
+.inputTitle {
+ grid-area: inputTitle;
+}
+
+.inputDescription {
+ grid-area: inputDescription;
+}
+.inputPrice {
+ grid-area: inputPrice;
+}
+
+.spinner {
+ grid-area: spinner;
+ overflow: hidden;
+}
+
+.text {
+ color: #ffffff;
+ cursor: pointer;
+}
+
+.link {
+ color: var(--blue);
+ margin-left: 5px;
+ text-decoration: underline;
+}
+
+.button {
+ grid-area: button;
+ justify-self: center;
+ margin-top: 10px;
+}
+
+.message {
+ grid-area: message;
+ font-size: 22px;
+ margin-top: 10px;
+}
+
+.success {
+ color: rgb(101, 237, 101);
+ text-align: center;
+}
+
+.error {
+ color: rgb(249, 73, 73);
+ text-align: center;
+}

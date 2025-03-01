@@ -1,0 +1,10 @@
+'use client';
+
+import { useState } from 'react';
+import { FormAuth } from '../componentsAdminPanel/FormAuth/FormAuth';
+
+export default function AdminPanelLayout({ children }: { children: React.ReactNode }): JSX.Element {
+ const [auth, setAuth] = useState<boolean>(false);
+
+ return <main className='container'>{auth ? children : <FormAuth cb={setAuth} />}</main>;
+}

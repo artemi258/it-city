@@ -1,0 +1,44 @@
+.popup {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ background-color: rgba(#000000, 0.6);
+ z-index: 1;
+}
+
+.wrapper {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background-color: var(--light-blue);
+ border-radius: 5px;
+ padding: 20px 30px;
+ width: 500px;
+ z-index: 10;
+}
+
+.close {
+ position: absolute;
+ top: 0;
+ right: 0;
+ height: 40px;
+ width: 40px;
+ font-size: 50px;
+ padding: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #ffffff;
+ box-shadow: none;
+ cursor: pointer;
+ transition: all 0.3s linear;
+ &:hover {
+  background: transparent;
+  box-shadow: -2px 2px 4px black;
+ }
+}
+
+@import './popup.module.media.scss';

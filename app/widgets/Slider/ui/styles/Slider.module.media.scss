@@ -1,0 +1,30 @@
+@media (max-width: 767px) {
+ .slider {
+  width: 95%;
+ }
+
+ .sliderBtn {
+  display: none;
+ }
+}
+
+@media (max-width: 480px) {
+ .slider {
+  width: 100%;
+ }
+
+ .wrapper {
+  grid-template: 1fr / 1fr 1fr;
+ }
+
+ .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+ }
+ .content {
+  border-radius: 0 5px 5px 0;
+  background-color: #d8dfe7;
+  padding: 5px;
+ }
+}
