@@ -8,9 +8,9 @@ export const API = {
  product: product(request),
  service: service(request),
  mail: {
-  question: (data: IPopup): Promise<void> => request(`/mail`, 'POST', JSON.stringify(data)),
+  question: (data: IPopup): Promise<void> => request(`mail`, 'POST', JSON.stringify(data)),
  },
- auth: (data: IAuth): Promise<{ auth: boolean }> => request('/auth', 'POST', JSON.stringify(data)),
+ auth: (data: IAuth): Promise<{ auth: boolean }> => request('auth', 'POST', JSON.stringify(data)),
  adminPanel: {
   createProducts: (data: FormData): Promise<IProductWithId> =>
    request(`products`, 'POST', data, {}),
@@ -19,12 +19,3 @@ export const API = {
   createService: (data: FormData): Promise<IProductWithId> => request(`services`, 'POST', data, {}),
  },
 };
-
-// export const Auth = async (data: IAuth): Promise<{ auth: boolean }> => {
-//  const res = await fetch(`${baseURL}/api/auth`, {
-//   method: 'POST',
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify(data),
-//  });
-//  return await res.json();
-// };

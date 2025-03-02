@@ -1,7 +1,6 @@
 import { IHttpHook } from '@shared';
 
-const baseURL = 'http://localhost:8080/api';
-// const baseURL = 'https://it-city.onrender.com/api';
+const baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`;
 
 export const useHttp = (): IHttpHook => {
  const request = async (
