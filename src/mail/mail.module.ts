@@ -6,7 +6,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 @Module({
  imports: [
   MailerModule.forRoot({
-   transport: 'smtps://it-city-mira4@yandex.ru:oggbmydcpiubrlcf@smtp.yandex.ru',
+   transport: 'smtps://mail:pass@smtp.yandex.ru',
    defaults: {
     from: '"Сообщение от клиента" <it-city-mira4@yandex.ru>',
    },
