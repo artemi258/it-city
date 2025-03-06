@@ -19,17 +19,17 @@ export const MoreButton = ({ categories }: IMoreButtonProps): JSX.Element => {
  const search = useSearchParams().get('search');
  const { last } = useAppSelector<IProductsState>((state) => state.products);
  const addingMoreProducts = (): void => {
-  setOffset((prev) => prev + 15);
+  setOffset((prev) => prev + 18);
   if (!categories) {
-   dispatch(getProducts({ offset: offset + 15, search }));
+   dispatch(getProducts({ offset: offset + 18, search }));
   } else if (categories[0] && !categories[1]) {
-   dispatch(getProductsByCategory({ category: categories[0], offset: offset + 15, search }));
+   dispatch(getProductsByCategory({ category: categories[0], offset: offset + 18, search }));
   } else if (categories[0] && categories[1]) {
    dispatch(
     getProductsBySubCategory({
      category: categories[0],
      subCategory: categories[1],
-     offset: offset + 15,
+     offset: offset + 18,
      search,
     }),
    );
