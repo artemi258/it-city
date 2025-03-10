@@ -19,7 +19,6 @@ export const ProductsList = ({ categories = [] }: IProductsListProps): JSX.Eleme
  const dispatch = useAppDispatch();
  const search = useSearchParams().get('search');
  const { products, loading, error } = useAppSelector<IProductsState>((state) => state.products);
-
  useEffect(() => {
   products.length && dispatch(clearProducts());
   if (!categories.length) {
@@ -47,8 +46,8 @@ export const ProductsList = ({ categories = [] }: IProductsListProps): JSX.Eleme
    )}
    {!error && products.length ? (
     <ul className={styles.wrapper}>
-     {products.map(({ id, name, price, image }) => (
-      <List id={id} name={name} image={image} price={price} key={id} />
+     {products.map(({ id, name, price, image, isStock }) => (
+      <List id={id} isStock={isStock} name={name} image={image} price={price} key={id} />
      ))}
     </ul>
    ) : null}

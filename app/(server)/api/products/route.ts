@@ -94,6 +94,7 @@ export async function POST(req: NextRequest): Promise<
     image: isExistImage,
     category,
     subCategory,
+    isStock: true,
    };
   });
 
@@ -103,7 +104,7 @@ export async function POST(req: NextRequest): Promise<
 
   const images = await getImage(filteredProducts);
 
-  const productsWithImage = filteredProducts.map((prod) => {
+  let productsWithImage = filteredProducts.map((prod) => {
    const findImage = images.find((img) => img.name === prod.name);
 
    return {
@@ -111,6 +112,14 @@ export async function POST(req: NextRequest): Promise<
     image: findImage ? findImage.image : null,
    };
   });
+
+  const noProductsInStock = productsFromBD
+   ?.filter((p) => !productsWithImage.find((pwi) => pwi.name === p.name))
+   .map((p) => ({ ...p, isStock: false }));
+
+  if (noProductsInStock?.length) {
+   productsWithImage = [...productsWithImage, ...noProductsInStock];
+  }
 
   await createProducts(productsWithImage);
 

@@ -7,6 +7,7 @@ export interface IProducts {
  image: string | null;
  category: ICategory;
  subCategory: ICategory;
+ isStock: boolean;
 }
 
 export interface IParamsSubCategory extends IParamsCategory {

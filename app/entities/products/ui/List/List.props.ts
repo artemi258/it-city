@@ -3,4 +3,5 @@ export interface IListProps {
  image: string;
  name: string;
  price: string;
+ isStock: boolean;
 }

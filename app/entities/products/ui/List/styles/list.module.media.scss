@@ -12,6 +12,12 @@
  .list {
   grid-template: 1fr / 1fr 1fr;
  }
+ .noStock {
+  left: 0;
+  right: auto;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10px;
+ }
  .wrapper {
   grid-template: 2fr 1fr / 1fr;
   padding: 5px;
