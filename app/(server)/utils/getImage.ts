@@ -19,7 +19,7 @@ export const getImage = async (products: IProducts[]): Promise<IImages[]> => {
    ? {
       headless: 'shell' as const,
       args: ['--disable-gpu', '--no-sandbox'],
-      executablePath: '../../../usr/bin/chromium-browser',
+      executablePath: '../../../usr/bin/google-chrome',
      }
    : { headless: false };
  const getUrlImage = async (product: IProducts): Promise<string> => {
