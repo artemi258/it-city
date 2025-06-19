@@ -31,8 +31,8 @@ export const Header = async (): Promise<JSX.Element> => {
       </div>
       <div className={styles.phone}>
        Звоните нам:
-       <a href='tel:+79533865588' className={styles.number}>
-        +7 (953) 386-55-88
+       <a href='tel:+79321234005' className={styles.number}>
+        +7 (932) 123-40-05
        </a>
        <a href='tel:+73438021312' className={styles.number}>
         +7 (34380) 2-13-12
