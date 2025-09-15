@@ -55,7 +55,7 @@ export const getImage = async (products: IProducts[]): Promise<IImages[]> => {
 
    const url = img && (await (await img.getProperty('src')).jsonValue());
    await browser.close();
-   console.log(url, url);
+   console.log('url', url);
    return url;
   } catch (error) {
    if (error instanceof Error) {

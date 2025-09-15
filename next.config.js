@@ -2,6 +2,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+ images: {
+  remotePatterns: [
+   {
+    protocol: 'https',
+    hostname: 'encrypted-tbn0.gstatic.com',
+    port: '',
+    pathname: '/**',
+   },
+  ],
+ },
  async headers() {
   return [
    {
