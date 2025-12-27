@@ -32,23 +32,23 @@ export const getImage = async (products: IProducts[]): Promise<IImages[]> => {
 
    await page
     .$eval(
-     'textarea',
+     'form input',
      (input, localValue) => {
       input.focus();
       input.value = localValue;
      },
      product.name,
     )
-    .catch(() => console.log('TEXT'));
+    .catch(() => console.log('Не найдено поисковое поле!'));
 
    await new Promise((res) => setTimeout(res, 1000));
    await page.keyboard.press('Enter');
 
    await page.waitForNavigation();
 
-   await new Promise((res) => setTimeout(res, 10000));
+   await new Promise((res) => setTimeout(res, 1000));
 
-   const img = await page.$('#rso img');
+   const img = await page.$('div a > img');
    await new Promise((res) => setTimeout(res, 1000));
 
    if (!img) throw new Error('не найдена картинка');
